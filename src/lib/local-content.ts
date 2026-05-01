@@ -24,7 +24,7 @@ function parseFrontmatter(fileContents: string) {
   return { data, content };
 }
 
-export function getLocalArticles(directory: 'blog' | 'services' | 'academy'): LocalArticle[] {
+export function getLocalArticles(directory: 'blog' | 'services' | 'academy' | 'apps/site-downloader'): LocalArticle[] {
   const contentPath = path.join(process.cwd(), 'src', 'content', directory);
   
   if (!fs.existsSync(contentPath)) {
@@ -54,7 +54,7 @@ export function getLocalArticles(directory: 'blog' | 'services' | 'academy'): Lo
     .sort((a, b) => (b.date > a.date ? 1 : -1));
 }
 
-export function getLocalArticleBySlug(directory: 'blog' | 'services' | 'academy', slug: string): LocalArticle | null {
+export function getLocalArticleBySlug(directory: 'blog' | 'services' | 'academy' | 'apps/site-downloader', slug: string): LocalArticle | null {
   const fullPath = path.join(process.cwd(), 'src', 'content', directory, `${slug}.md`);
   
   if (!fs.existsSync(fullPath)) {

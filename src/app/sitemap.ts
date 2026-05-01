@@ -35,6 +35,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
             priority: 0.8,
         },
         {
+            url: `${baseUrl}/academy`,
+            lastModified: new Date(),
+            changeFrequency: 'monthly',
+            priority: 0.8,
+        },
+        {
+            url: `${baseUrl}/apps/site-downloader`,
+            lastModified: new Date(),
+            changeFrequency: 'monthly',
+            priority: 0.8,
+        },
+        {
             url: `${baseUrl}/contact`,
             lastModified: new Date(),
             changeFrequency: 'monthly',
@@ -123,6 +135,22 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         allPages = [...allPages, ...servicePages];
     } catch (e) {
         console.error('[Sitemap] Failed to fetch service articles:', e);
+    }
+
+    // 6. Site Downloader ドキュメント
+    try {
+        const siteDownloaderDocs = getLocalArticles('apps/site-downloader');
+        const siteDownloaderPages: MetadataRoute.Sitemap = siteDownloaderDocs
+            .filter(article => article.date)
+            .map((article) => ({
+                url: `${baseUrl}/apps/site-downloader/${article.slug}`,
+                lastModified: isValidDate(article.date) ? new Date(article.date) : new Date(),
+                changeFrequency: 'monthly',
+                priority: 0.8,
+            }));
+        allPages = [...allPages, ...siteDownloaderPages];
+    } catch (e) {
+        console.error('[Sitemap] Failed to fetch site-downloader docs:', e);
     }
 
     return allPages;

@@ -14,6 +14,7 @@ export function SiteFooter({ className }: React.HTMLAttributes<HTMLElement>) {
           </p>
           <nav className="flex items-center gap-4 text-sm font-medium text-muted-foreground">
             <Link href="/academy" className="hover:text-foreground transition-colors">Academy</Link>
+            <Link href="/apps/site-downloader" className="hover:text-foreground transition-colors">Site Downloader</Link>
             <Link href="/about" className="hover:text-foreground transition-colors">About</Link>
             <Link href="/contact" className="hover:text-foreground transition-colors">Contact</Link>
             <a href="https://note.com/ayato_studio" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">note.com</a>
