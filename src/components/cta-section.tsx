@@ -6,18 +6,42 @@ import { cn } from "@/lib/utils";
 
 interface CTASectionProps {
   className?: string;
-  theme?: "blue" | "indigo";
+  theme?: "blue" | "indigo" | "cyan";
 }
 
 export function CTASection({ className, theme = "blue" }: CTASectionProps) {
-  const isIndigo = theme === "indigo";
+  const themeStyles = {
+    blue: {
+      accent: "bg-blue-500",
+      tag: "bg-blue-500/10 text-blue-400",
+      ping: "bg-blue-400",
+      dot: "bg-blue-500",
+      button: "bg-blue-600 hover:bg-blue-500 shadow-blue-500/20"
+    },
+    indigo: {
+      accent: "bg-indigo-500",
+      tag: "bg-indigo-500/10 text-indigo-400",
+      ping: "bg-indigo-400",
+      dot: "bg-indigo-500",
+      button: "bg-indigo-600 hover:bg-indigo-500 shadow-indigo-500/20"
+    },
+    cyan: {
+      accent: "bg-cyan-500",
+      tag: "bg-cyan-500/10 text-cyan-400",
+      ping: "bg-cyan-400",
+      dot: "bg-cyan-500",
+      button: "bg-cyan-600 hover:bg-cyan-500 shadow-cyan-500/20"
+    }
+  };
+
+  const styles = themeStyles[theme];
   
   return (
     <section className={cn("mt-24 relative overflow-hidden", className)}>
       {/* Background Accent */}
       <div className={cn(
         "absolute -top-24 -right-24 w-64 h-64 blur-[100px] opacity-20 rounded-full",
-        isIndigo ? "bg-indigo-500" : "bg-blue-500"
+        styles.accent
       )} />
       
       <div className="relative p-8 md:p-12 rounded-[3rem] border border-white/5 bg-white/[0.02] backdrop-blur-2xl">
@@ -25,11 +49,11 @@ export function CTASection({ className, theme = "blue" }: CTASectionProps) {
           <div>
             <div className={cn(
               "inline-flex items-center gap-2 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest mb-6",
-              isIndigo ? "bg-indigo-500/10 text-indigo-400" : "bg-blue-500/10 text-blue-400"
+              styles.tag
             )}>
               <span className="relative flex h-2 w-2">
-                <span className={cn("animate-ping absolute inline-flex h-full w-full rounded-full opacity-75", isIndigo ? "bg-indigo-400" : "bg-blue-400")}></span>
-                <span className={cn("relative inline-flex rounded-full h-2 w-2", isIndigo ? "bg-indigo-500" : "bg-blue-500")}></span>
+                <span className={cn("animate-ping absolute inline-flex h-full w-full rounded-full opacity-75", styles.ping)}></span>
+                <span className={cn("relative inline-flex rounded-full h-2 w-2", styles.dot)}></span>
               </span>
               Ayato Studio Business Support
             </div>
@@ -50,9 +74,7 @@ export function CTASection({ className, theme = "blue" }: CTASectionProps) {
               rel="noopener noreferrer"
               className={cn(
                 "flex-1 inline-flex items-center justify-center gap-3 px-8 py-5 rounded-2xl text-sm font-black uppercase tracking-widest transition-all hover:scale-[1.02] active:scale-[0.98] shadow-xl",
-                isIndigo 
-                  ? "bg-indigo-600 text-white hover:bg-indigo-500 shadow-indigo-500/20" 
-                  : "bg-blue-600 text-white hover:bg-blue-500 shadow-blue-500/20"
+                styles.button
               )}
             >
               CrowdWorksで相談
