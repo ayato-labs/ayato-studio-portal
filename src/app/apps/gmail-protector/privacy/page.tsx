@@ -158,11 +158,11 @@ export default function GmailProtectorPrivacyPage() {
                                     本ポリシーに関するご質問は、以下のメールアドレスまでお問い合わせください。
                                 </p>
                                 <a 
-                                    href="mailto:syukatu.cw@gmail.com" 
+                                    href="mailto:cwblog69@gmail.com" 
                                     className="inline-flex items-center gap-2 text-blue-400 font-bold hover:text-blue-300 transition-colors"
                                 >
                                     <Icons.mail className="w-5 h-5" />
-                                    syukatu.cw@gmail.com
+                                    cwblog69@gmail.com
                                 </a>
                             </section>
                         </div>
