@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 export const metadata = {
   title: "Applications - Ayato Studio",
-  description: "Ayato Studio が提供する AI アプリケーションとツールの一覧。",
+  description: "AI駆動開発の専門家が運営する AI アプリケーション・エコシステム。最前線の知見を活用したニッチなツールを提供します。",
 };
 
 async function AppsList() {
@@ -86,8 +86,8 @@ export default function AppsPage() {
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-blue-500">APPLICATIONS</span>
           </h1>
           <p className="text-xl md:text-2xl text-gray-500 font-medium leading-relaxed max-w-2xl">
-            情報の洪水からあなたを解放し、<br />
-            クリエイティビティを最大化するための専用ツール群。
+            AI開発の最前線から得られる知見とAIを活用して、<br />
+            クリエイティビティを最大化するための専用ツールを配信します。
           </p>
         </div>
 

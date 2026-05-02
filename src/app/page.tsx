@@ -170,9 +170,9 @@ export default function Home() {
           
           <div className="max-w-3xl">
             <p className="text-xl md:text-3xl text-gray-400 font-medium leading-tight tracking-tight mb-12">
-                AIによる人間の作業からの解放。<br />
-                Ayato Studio は、あなたを情報の洪水とルーチンワークから解放し、<br />
-                真に創造的な価値の深淵へと導くインテリジェンス・プラットフォーム。
+                AI駆動開発の専門家が運営する、AIを駆使したインテリジェンス・プラットフォーム。<br />
+                Ayato Studio は、AI開発の最前線から得られる知見と<br />
+                AIを活用してニッチな情報を配信します。
             </p>
             <div className="flex gap-4">
                 <Link href="/blog" className="px-8 py-4 rounded-full bg-blue-600 text-white font-black uppercase tracking-widest hover:bg-blue-700 transition-colors">

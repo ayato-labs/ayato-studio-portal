@@ -56,10 +56,18 @@ export default function SiteDownloaderPage() {
             SITE<br />
             <span className="text-cyan-500">DOWNLOADER</span>
           </h1>
-          <p className="text-xl text-gray-500 font-medium leading-relaxed">
+          <p className="text-xl text-gray-500 font-medium leading-relaxed mb-8">
             Web サイトを高速にダウンロード・保存するための<br className="hidden md:block" />
             Chrome 拡張機能のドキュメント・ガイドセンター。
           </p>
+          <div className="flex gap-4">
+            <Link 
+              href="/apps/site-downloader/privacy" 
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-xs font-black uppercase tracking-widest text-gray-400 hover:text-white hover:bg-white/10 transition-all"
+            >
+              Privacy Policy
+            </Link>
+          </div>
         </div>
 
         <Suspense fallback={<div className="animate-pulse text-gray-700 font-black">Loading documentation...</div>}>
