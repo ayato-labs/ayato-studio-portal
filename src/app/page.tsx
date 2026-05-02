@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 import { fetchReports } from "@/lib/api";
-import { getLocalArticles } from "@/lib/local-content";
+import { getLocalArticles, getAppsList } from "@/lib/local-content";
 import { LocalArticle } from "@/lib/types";
 import ReportCard from "@/components/ReportCard";
 import { NoteFeedSection } from "@/components/note-feed-section";
@@ -30,6 +30,36 @@ async function ServicesSection() {
           </p>
         </Link>
       ))}
+    </div>
+  );
+}
+
+async function AppsSection() {
+  const apps = getAppsList().slice(0, 3);
+  
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-32">
+      {apps.map((appSlug: string) => {
+        const articles = getLocalArticles(`apps/${appSlug}`);
+        const title = appSlug.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+        const description = articles.length > 0 ? articles[0].description : "Documentation and guides.";
+
+        return (
+          <Link key={appSlug} href={`/apps/${appSlug}`} className="group p-8 rounded-[2.5rem] bg-white/[0.02] border border-white/5 hover:border-cyan-500/30 transition-all duration-500">
+            <div className="h-12 w-12 rounded-2xl bg-cyan-500/10 flex items-center justify-center text-cyan-500 mb-6 group-hover:scale-110 transition-transform">
+              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+              </svg>
+            </div>
+            <h4 className="text-xl font-black text-white mb-3 group-hover:text-cyan-400 transition-colors uppercase tracking-tight">
+              {title}
+            </h4>
+            <p className="text-sm text-gray-500 leading-relaxed line-clamp-2">
+              {description}
+            </p>
+          </Link>
+        );
+      })}
     </div>
   );
 }
@@ -154,6 +184,17 @@ export default function Home() {
             </div>
           </div>
         </div>
+
+        {/* --- Tier 4: Applications (Ecosystem) --- */}
+        <section className="mb-40">
+           <div className="flex flex-col mb-12">
+                <h2 className="text-xs uppercase font-black tracking-[0.4em] text-cyan-500 mb-2">Tier 04 // Ecosystem</h2>
+                <span className="text-3xl md:text-5xl font-black text-white tracking-tight uppercase">Intelligent Apps</span>
+            </div>
+            <Suspense fallback={<div className="h-40 glass rounded-[2.5rem] animate-pulse" />}>
+                <AppsSection />
+            </Suspense>
+        </section>
 
         {/* --- Tier 3: Services (Portfolio) --- */}
         <section className="mb-40">

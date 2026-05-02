@@ -24,7 +24,7 @@ function parseFrontmatter(fileContents: string) {
   return { data, content };
 }
 
-export function getLocalArticles(directory: 'blog' | 'services' | 'academy' | 'apps/site-downloader'): LocalArticle[] {
+export function getLocalArticles(directory: string): LocalArticle[] {
   const contentPath = path.join(process.cwd(), 'src', 'content', directory);
   
   if (!fs.existsSync(contentPath)) {
@@ -54,7 +54,7 @@ export function getLocalArticles(directory: 'blog' | 'services' | 'academy' | 'a
     .sort((a, b) => (b.date > a.date ? 1 : -1));
 }
 
-export function getLocalArticleBySlug(directory: 'blog' | 'services' | 'academy' | 'apps/site-downloader', slug: string): LocalArticle | null {
+export function getLocalArticleBySlug(directory: string, slug: string): LocalArticle | null {
   const fullPath = path.join(process.cwd(), 'src', 'content', directory, `${slug}.md`);
   
   if (!fs.existsSync(fullPath)) {
@@ -119,4 +119,19 @@ export function getLocalReports(): Report[] {
   }
 
   return localReports;
+}
+
+/**
+ * Lists all application directories in src/content/apps.
+ */
+export function getAppsList(): string[] {
+  const appsPath = path.join(process.cwd(), 'src', 'content', 'apps');
+  
+  if (!fs.existsSync(appsPath)) {
+    return [];
+  }
+
+  return fs.readdirSync(appsPath, { withFileTypes: true })
+    .filter(dirent => dirent.isDirectory())
+    .map(dirent => dirent.name);
 }

@@ -7,6 +7,10 @@ export function SiteHeader() {
         <MainNav
           items={[
               {
+                title: "Apps",
+                href: "/apps",
+              },
+              {
                 title: "Reports",
                 href: "/reports",
               },
