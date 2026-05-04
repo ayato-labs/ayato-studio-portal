@@ -8,7 +8,7 @@ image: /images/apps/site-downloader-chrome.png
 
 # Chrome Web Store 自動デプロイ設定ガイド
 
-このガイドでは、GitHub Actions を使用して `Site Downloader` を自動的に Chrome Web Store へアップロード（下書き保存）するための認証情報取得手順を説明します。
+このガイドでは、GitHub Actions を使用して `Site Downloader` を自動的に Chrome Web Store へアップロード(下書き保存)するための認証情報取得手順を説明します。
 
 ## ステップ 1: Chrome Web Store に下書きを登録する
 1. [Chrome Web Store Developer Dashboard](https://chrome.google.com/webstore/devconsole/) にアクセスします。
@@ -25,7 +25,7 @@ image: /images/apps/site-downloader-chrome.png
 
 ## ステップ 3: リフレッシュトークンの取得
 1. [OAuth 2.0 Playground](https://developers.google.com/oauthplayground/) にアクセスします。
-2. 右上の設定アイコン（歯車）をクリックし、"Use your own OAuth credentials" にチェックを入れ、ステップ 2 で取得した ID とシークレットを入力します。
+2. 右上の設定アイコン(歯車)をクリックし、"Use your own OAuth credentials" にチェックを入れ、ステップ 2 で取得した ID とシークレットを入力します。
 3. 左側の "Step 1" で、`https://www.googleapis.com/auth/chromewebstore` を入力し、"Authorize APIs" をクリックします。
 4. Google アカウントでログインし、権限を許可します。
 5. "Step 2" で "Exchange authorization code for tokens" をクリックします。
@@ -40,4 +40,4 @@ GitHub リポジトリの `Settings > Secrets and variables > Actions` に移動
 - `REFRESH_TOKEN`
 
 ---
-これで準備は完了です！今後 `main` ブランチにプッシュ（またはPRをマージ）するたびに、自動的にバージョンが上がり、ストアに下書きがアップロードされます。
+これで準備は完了です!今後 `main` ブランチにプッシュ(またはPRをマージ)するたびに、自動的にバージョンが上がり、ストアに下書きがアップロードされます。

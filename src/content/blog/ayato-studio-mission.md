@@ -24,7 +24,7 @@ Ayato Studio の社会的意義は、**「AIによる高度な情報の選別と
 
 この課題に対する具体的な解答として、以下のプロジェクトを推進しています。
 
-- **[Ayato Reporter](file:///c:/Users/saiha/My_Service/AI-agent/product/ayato_reporter)**: 無数のデータソースから価値ある情報を自動で選別・抽出し、ナレッジとして集約。人間を「情報のトリアージ（仕分け）」という作業から解放します。
+- **[Ayato Reporter](file:///c:/Users/saiha/My_Service/AI-agent/product/ayato_reporter)**: 無数のデータソースから価値ある情報を自動で選別・抽出し、ナレッジとして集約。人間を「情報のトリアージ(仕分け)」という作業から解放します。
 - **SharedMemoryServer / MovieToText**: 膨大なコンテキストを管理可能な形へ変換し、思考を停止させないための「知覚の補助」を提供。
 
 これらのプロジェクトはすべて、「知覚の補助」と「時間の創出」という一貫した設計思想に基づいています。
