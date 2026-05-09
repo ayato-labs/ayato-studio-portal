@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/ayato-labs/ayato-studio-portal/compare/v1.0.2...v1.1.0) (2026-05-09)
+
+
+### Features
+
+* add ripen service documentation and thumbnail asset ([b8c221e](https://github.com/ayato-labs/ayato-studio-portal/commit/b8c221e06633f09a9b2d554a4213593d1e021435))
+
 ## [1.0.2](https://github.com/ayato-labs/ayato-studio-portal/compare/v1.0.1...v1.0.2) (2026-05-09)
 
 
