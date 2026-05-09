@@ -5,10 +5,10 @@ export type { NoteArticle };
 const NOTE_RSS_URL = 'https://note.com/ayato_studio/rss';
 
 interface NoteRSSItem {
-  title: string;
-  link: string;
-  pubDate: string;
-  contentSnippet: string;
+  title?: string;
+  link?: string;
+  pubDate?: string;
+  contentSnippet?: string;
   thumbnail?: string;
   mediaContent?: {
     $: { url: string };
@@ -38,9 +38,8 @@ export async function fetchNoteArticles(limit = 3): Promise<NoteArticle[]> {
         thumbnail = item.mediaContent.$.url;
       }
       
-      // Determine if it's premium based on keywords or magazine link patterns
-      // For Ayato Studio, certain phrases in title or specific magazine structures indicate premium.
-      const isPremium = item.title.includes('エンジン') || item.title.includes('極意') || item.title.includes('マガジン');
+      const title = item.title || '';
+      const isPremium = title.includes('エンジン') || title.includes('極意') || title.includes('マガジン');
 
       return {
         title: item.title || '',
