@@ -50,7 +50,7 @@ export default function SiteDownloaderPrivacyPage() {
                 <div className="space-y-12">
                     <div className="p-8 md:p-12 rounded-[3rem] border border-white/5 bg-white/[0.02] backdrop-blur-3xl shadow-2xl">
                         <p className="text-xl text-gray-300 leading-relaxed mb-12">
-                            Ayato Site Downloader ("the extension") respects your privacy. This policy explains how the extension handles information.
+                            Ayato Site Downloader (&quot;the extension&quot;) respects your privacy. This policy explains how the extension handles information.
                         </p>
 
                         <div className="space-y-16">
