@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/ayato-labs/ayato-studio-portal/compare/v1.0.1...v1.0.2) (2026-05-09)
+
+
+### Bug Fixes
+
+* move blog image to public and fix paths ([aa153ca](https://github.com/ayato-labs/ayato-studio-portal/commit/aa153ca6ded05e38f2de1624b5e198c65df82b10))
+
 ## [1.0.1](https://github.com/ayato-labs/ayato-studio-portal/compare/v1.0.0...v1.0.1) (2026-05-09)
 
 
