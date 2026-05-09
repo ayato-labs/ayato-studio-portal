@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/ayato-labs/ayato-studio-portal/compare/v1.0.0...v1.0.1) (2026-05-09)
+
+
+### Bug Fixes
+
+* resolve Stripe type error in client.ts ([2c01915](https://github.com/ayato-labs/ayato-studio-portal/commit/2c019150da9c2d9e5d8c890a19a7df1f39cb4ded))
+
 # 1.0.0 (2026-05-09)
 
 
