@@ -8,7 +8,7 @@ if (!process.env.STRIPE_SECRET_KEY) {
 
 export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || '', {
   // Use the latest API version or specify a known stable one
-  apiVersion: '2025-02-24-preview' as Stripe.LatestApiVersion,
+  apiVersion: '2025-02-24-preview' as any,
   appInfo: {
     name: 'Ayato Studio Portal',
     version: '1.0.0',
