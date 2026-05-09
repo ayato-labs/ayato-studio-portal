@@ -1,11 +1,24 @@
 "use client";
 
 import Script from "next/script";
+import { usePathname, useSearchParams } from "next/navigation";
+import { useEffect, Suspense } from "react";
+import * as gtag from "@/lib/gtag";
 
-export default function Analytics() {
+function AnalyticsContent() {
+    const pathname = usePathname();
+    const searchParams = useSearchParams();
+
     const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_ID;
     const ADS_ID = process.env.NEXT_PUBLIC_ADS_ID;
     const ADSENSE_ID = process.env.NEXT_PUBLIC_ADSENSE_ID;
+
+    // Route change tracking
+    useEffect(() => {
+        if (pathname) {
+            gtag.pageview(pathname);
+        }
+    }, [pathname, searchParams]);
 
     if (!GA_MEASUREMENT_ID && !ADS_ID && !ADSENSE_ID) return null;
 
@@ -34,12 +47,20 @@ export default function Analytics() {
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
 
-              ${GA_MEASUREMENT_ID ? `gtag('config', '${GA_MEASUREMENT_ID}');` : ""}
+              ${GA_MEASUREMENT_ID ? `gtag('config', '${GA_MEASUREMENT_ID}', { page_path: window.location.pathname });` : ""}
               ${ADS_ID ? `gtag('config', '${ADS_ID}');` : ""}
             `}
                     </Script>
                 </>
             )}
         </>
+    );
+}
+
+export default function Analytics() {
+    return (
+        <Suspense fallback={null}>
+            <AnalyticsContent />
+        </Suspense>
     );
 }
