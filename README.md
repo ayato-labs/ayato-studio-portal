@@ -4,7 +4,8 @@
 [![React 19](https://img.shields.io/badge/React-19-blue?logo=react)](https://reactjs.org/)
 [![Cloudflare Pages](https://img.shields.io/badge/Deployed_on-Cloudflare_Pages-orange?logo=cloudflare)](https://pages.cloudflare.com/)
 [![Supabase](https://img.shields.io/badge/Powered_by-Supabase-green?logo=supabase)](https://supabase.com/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
+[![Commercial License](https://img.shields.io/badge/License-Commercial-green.svg)](COMMERCIAL.md)
 
 **Ayato Studio Portal** is a next-generation intelligence media platform that harmonizes automated AI analysis with deep human insights. It serves as the front-end interface for the **Ayato Intelligence Hub**, displaying real-time market research and strategic reports.
 
@@ -104,9 +105,16 @@ npm run pages:build
 
 ---
 
-## 📄 License & Ownership
+## 📄 License & Dual-Licensing Strategy
 
-This project is licensed under the **MIT License**.
+This project is dual-licensed under:
+1.  **[GNU Affero General Public License v3 (AGPL-3.0)](LICENSE)**: For open-source use. If you use this software to provide a network service, you must release your source code.
+2.  **Commercial License**: For organizations that wish to use the software without the AGPL-3.0 restrictions. Please see **[COMMERCIAL.md](COMMERCIAL.md)** for details.
+
+### Contributing
+By contributing to this repository, you agree to our **[Contributor License Agreement (CLA)](CLA.md)**. This allows us to maintain the dual-licensing model and protect the project's sustainability.
+
+---
 
 Developed and maintained by **Ayato Studio** as a demonstration of synergistic AI workflow integration.
 The backend engine (*Ayato Reporter*) is a proprietary system and not included in this repository.

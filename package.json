@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "AI-Powered Intelligence Media Hub - Synergy between Flow AI and Stock Human Insights.",
   "private": false,
-  "license": "MIT",
+  "license": "AGPL-3.0-only",
   "author": "Ayato Studio",
   "homepage": "https://ayato-studio.ai",
   "scripts": {
