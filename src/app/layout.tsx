@@ -27,7 +27,11 @@ export default function RootLayout({
         "min-h-screen bg-background font-sans antialiased",
         inter.className
       )}>
-        <Analytics />
+        <Analytics 
+          gaId={process.env.NEXT_PUBLIC_GA_ID || process.env.GA_ID} 
+          adsId={process.env.NEXT_PUBLIC_ADS_ID || process.env.ADS_ID}
+          adsenseId={process.env.NEXT_PUBLIC_ADSENSE_ID || process.env.ADSENSE_ID}
+        />
         <div className="relative flex min-h-screen flex-col">
           <SiteHeader />
           <main className="flex-1">{children}</main>

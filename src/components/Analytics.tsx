@@ -5,40 +5,42 @@ import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect, Suspense } from "react";
 import * as gtag from "@/lib/gtag";
 
-function AnalyticsContent() {
+interface AnalyticsProps {
+    gaId?: string;
+    adsId?: string;
+    adsenseId?: string;
+}
+
+function AnalyticsContent({ gaId, adsId, adsenseId }: AnalyticsProps) {
     const pathname = usePathname();
     const searchParams = useSearchParams();
 
-    const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_ID;
-    const ADS_ID = process.env.NEXT_PUBLIC_ADS_ID;
-    const ADSENSE_ID = process.env.NEXT_PUBLIC_ADSENSE_ID;
-
     // Route change tracking
     useEffect(() => {
-        if (pathname) {
-            gtag.pageview(pathname);
+        if (pathname && gaId) {
+            gtag.pageview(pathname, gaId);
         }
-    }, [pathname, searchParams]);
+    }, [pathname, searchParams, gaId]);
 
-    if (!GA_MEASUREMENT_ID && !ADS_ID && !ADSENSE_ID) return null;
+    if (!gaId && !adsId && !adsenseId) return null;
 
     return (
         <>
             {/* Google AdSense */}
-            {ADSENSE_ID && (
+            {adsenseId && (
                 <Script
                     async
-                    src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_ID}`}
+                    src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseId}`}
                     crossOrigin="anonymous"
                     strategy="afterInteractive"
                 />
             )}
 
             {/* Global Site Tag (gtag.js) - Google Analytics / Ads */}
-            {(GA_MEASUREMENT_ID || ADS_ID) && (
+            {(gaId || adsId) && (
                 <>
                     <Script
-                        src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID || ADS_ID}`}
+                        src={`https://www.googletagmanager.com/gtag/js?id=${gaId || adsId}`}
                         strategy="afterInteractive"
                     />
                     <Script id="google-analytics" strategy="afterInteractive">
@@ -47,8 +49,8 @@ function AnalyticsContent() {
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
 
-              ${GA_MEASUREMENT_ID ? `gtag('config', '${GA_MEASUREMENT_ID}', { page_path: window.location.pathname });` : ""}
-              ${ADS_ID ? `gtag('config', '${ADS_ID}');` : ""}
+              ${gaId ? `gtag('config', '${gaId}', { page_path: window.location.pathname });` : ""}
+              ${adsId ? `gtag('config', '${adsId}');` : ""}
             `}
                     </Script>
                 </>
@@ -57,10 +59,10 @@ function AnalyticsContent() {
     );
 }
 
-export default function Analytics() {
+export default function Analytics(props: AnalyticsProps) {
     return (
         <Suspense fallback={null}>
-            <AnalyticsContent />
+            <AnalyticsContent {...props} />
         </Suspense>
     );
 }
