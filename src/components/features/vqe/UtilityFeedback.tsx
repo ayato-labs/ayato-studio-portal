@@ -1,31 +1,37 @@
 "use client";
 
-import { useState } from "react";
-import { valueMetrics } from "@/lib/metrics";
+import { useState, Suspense } from "react";
+import { useVQE } from "@/hooks/use-vqe";
 import { cn } from "@/lib/utils";
-import { Icons } from "@/components/icons";
+import { Icons } from "@/components/ui/Icons";
+import { ContentType } from "@/lib/metrics";
 
 interface UtilityFeedbackProps {
-  reportId: string;
+  id: string;
+  title?: string;
+  contentType?: ContentType;
   className?: string;
 }
 
-/**
- * UtilityFeedback
- * A premium feedback component that tracks user-perceived value (Utility).
- */
-export function UtilityFeedback({ reportId, className }: UtilityFeedbackProps) {
+function UtilityFeedbackContent({ id, title = "Unknown", contentType = "Report", className }: UtilityFeedbackProps) {
   const [feedback, setFeedback] = useState<boolean | null>(null);
   const [efficiencyTracked, setEfficiencyTracked] = useState(false);
+  
+  const { trackFeedback, trackEfficiency } = useVQE({ 
+    id, 
+    title, 
+    contentType, 
+    enabled: false 
+  });
 
   const handleFeedback = (isUseful: boolean) => {
     if (feedback !== null) return; 
     setFeedback(isUseful);
-    valueMetrics.trackUtilityFeedback(reportId, isUseful);
+    trackFeedback(isUseful);
   };
 
   const handleEfficiency = (minutes: number) => {
-    valueMetrics.trackResearchEfficiency(reportId, minutes);
+    trackEfficiency(minutes);
     setEfficiencyTracked(true);
   };
 
@@ -75,5 +81,13 @@ export function UtilityFeedback({ reportId, className }: UtilityFeedbackProps) {
         )}
       </div>
     </div>
+  );
+}
+
+export function UtilityFeedback(props: UtilityFeedbackProps) {
+  return (
+    <Suspense fallback={null}>
+      <UtilityFeedbackContent {...props} />
+    </Suspense>
   );
 }

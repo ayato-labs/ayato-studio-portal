@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { Suspense } from "react";
 import "./globals.css";
 
-import { SiteHeader } from "@/components/site-header";
-import { SiteFooter } from "@/components/site-footer";
+import { SiteHeader } from "@/components/layout/SiteHeader";
+import { SiteFooter } from "@/components/layout/SiteFooter";
 import { cn } from "@/lib/utils";
-import Analytics from "@/components/Analytics";
+import Analytics from "@/components/features/analytics/Analytics";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,11 +28,13 @@ export default function RootLayout({
         "min-h-screen bg-background font-sans antialiased",
         inter.className
       )}>
-        <Analytics 
-          gaId={process.env.NEXT_PUBLIC_GA_ID || process.env.GA_ID} 
-          adsId={process.env.NEXT_PUBLIC_ADS_ID || process.env.ADS_ID}
-          adsenseId={process.env.NEXT_PUBLIC_ADSENSE_ID || process.env.ADSENSE_ID}
-        />
+        <Suspense fallback={null}>
+          <Analytics 
+            gaId={process.env.NEXT_PUBLIC_GA_ID || process.env.GA_ID} 
+            adsId={process.env.NEXT_PUBLIC_ADS_ID || process.env.ADS_ID}
+            adsenseId={process.env.NEXT_PUBLIC_ADSENSE_ID || process.env.ADSENSE_ID}
+          />
+        </Suspense>
         <div className="relative flex min-h-screen flex-col">
           <SiteHeader />
           <main className="flex-1">{children}</main>

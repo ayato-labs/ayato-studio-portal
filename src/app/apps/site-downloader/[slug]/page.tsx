@@ -4,9 +4,9 @@ import Markdown from 'react-markdown';
 import Link from 'next/link';
 
 import { getLocalArticleBySlug, getLocalArticles } from '@/lib/local-content';
-import { Icons } from '@/components/icons';
-import { CTASection } from '@/components/cta-section';
-import { NoteCTA } from '@/components/note-cta';
+import { Icons } from '@/components/ui/Icons';
+import { CTASection } from '@/components/ui/CTASection';
+import { NoteCTA } from '@/components/features/blog/NoteCTA';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -30,6 +30,7 @@ export default async function SiteDownloaderDocPage({ params }: PageProps) {
 
   if (!article) {
     notFound();
+    return null;
   }
 
   const jsonLd = {
@@ -112,7 +113,7 @@ export default async function SiteDownloaderDocPage({ params }: PageProps) {
                     </div>
 
                     {/* Business CTA Section */}
-                    <CTASection theme="cyan" />
+                    <CTASection theme="blue" />
                 </div>
             </div>
 

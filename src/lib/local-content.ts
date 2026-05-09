@@ -8,18 +8,29 @@ import { getSlug } from './api';
  * Avoids extra dependencies for basic use cases.
  */
 function parseFrontmatter(fileContents: string) {
-  const match = fileContents.match(/^---\r?\n([\s\S]*?)\r?\n---/);
-  const data: Record<string, string> = {};
-  let content = fileContents;
+  // Remove BOM and leading/trailing whitespace
+  const sanitized = fileContents.replace(/^\uFEFF/, '').trim();
+  const match = sanitized.match(/^---\r?\n([\s\S]*?)\r?\n---/);
   
-  if (match) {
-    const yaml = match[1];
-    content = fileContents.replace(match[0], '').trim();
-    yaml.split('\n').forEach(line => {
-      const [key, ...val] = line.split(':');
-      if (key && val) data[key.trim()] = val.join(':').trim();
-    });
+  if (!match) {
+    return { data: {}, content: sanitized };
   }
+  
+  const yaml = match[1];
+  const content = sanitized.replace(match[0], '').trim();
+  const data: Record<string, string> = {};
+  
+  yaml.split(/\r?\n/).forEach(line => {
+    const colonIndex = line.indexOf(':');
+    if (colonIndex !== -1) {
+      const key = line.slice(0, colonIndex).trim();
+      const value = line.slice(colonIndex + 1).trim();
+      if (key) {
+        // Remove quotes if present
+        data[key] = value.replace(/^["'](.*)["']$/, '$1');
+      }
+    }
+  });
   
   return { data, content };
 }

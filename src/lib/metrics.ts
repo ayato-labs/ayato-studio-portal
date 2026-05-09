@@ -1,5 +1,7 @@
 import * as gtag from "./gtag";
 
+export type ContentType = "Report" | "App" | "Blog" | "Asset" | "Service";
+
 /**
  * Ayato Studio Value Metrics
  * These functions provide a structured way to track the "Value" of the intelligence portal.

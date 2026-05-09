@@ -2,8 +2,8 @@ import { Suspense } from "react";
 import { fetchReports } from "@/lib/api";
 import { getLocalArticles, getAppsList } from "@/lib/local-content";
 import { LocalArticle } from "@/lib/types";
-import ReportCard from "@/components/ReportCard";
-import { NoteFeedSection } from "@/components/note-feed-section";
+import ReportCard from "@/components/features/reports/ReportCard";
+import { NoteFeedSection } from "@/components/features/blog/NoteFeedSection";
 import Link from 'next/link';
 
 export const revalidate = 60;

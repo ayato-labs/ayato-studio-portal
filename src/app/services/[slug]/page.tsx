@@ -4,7 +4,7 @@ import Markdown from 'react-markdown';
 import Link from 'next/link';
 
 import { getLocalArticleBySlug, getLocalArticles } from '@/lib/local-content';
-import { Icons } from '@/components/icons';
+import { Icons } from '@/components/ui/Icons';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -28,6 +28,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
 
   if (!service) {
     notFound();
+    return null;
   }
 
   return (

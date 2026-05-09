@@ -5,8 +5,8 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 
 import { cn } from "@/lib/utils"
-import { Icons } from "@/components/icons"
-import { MobileNav } from "@/components/mobile-nav"
+import { Icons } from "@/components/ui/Icons"
+import { MobileNav } from "@/components/layout/MobileNav"
 
 interface MainNavProps {
   items?: {

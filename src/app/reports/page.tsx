@@ -1,5 +1,5 @@
 import { fetchReports } from "@/lib/api";
-import { PostItem } from "@/components/post-item";
+import { PostItem } from "@/components/features/blog/PostItem";
 
 export const revalidate = 60;
 

@@ -1,5 +1,6 @@
 import Parser from 'rss-parser';
 import { NoteArticle } from './types';
+export type { NoteArticle };
 
 const NOTE_RSS_URL = 'https://note.com/ayato_studio/rss';
 

@@ -4,39 +4,46 @@ import Markdown from 'react-markdown';
 import Link from 'next/link';
 
 import { getLocalArticleBySlug, getLocalArticles } from '@/lib/local-content';
-import { Icons } from '@/components/icons';
-import { CTASection } from '@/components/cta-section';
-import { NoteCTA } from '@/components/note-cta';
+import { Icons } from '@/components/ui/Icons';
+import { CTASection } from '@/components/ui/CTASection';
+import { NoteCTA } from '@/components/features/blog/NoteCTA';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { slug } = await params;
-  const article = getLocalArticleBySlug('academy', slug);
+export async function generateMetadata(props: PageProps): Promise<Metadata> {
+  const { slug } = await props.params;
+  const articles = getLocalArticles('academy');
+  const article = articles.find(a => a.slug === slug);
   
   if (!article) return { title: 'Lesson Not Found' };
 
   return {
-    title: `${article.title} | Ayato Academy`,
-    description: article.description,
+    title: `${article.title || 'Untitled Lesson'} | Ayato Academy`,
+    description: article.description || '',
   };
 }
 
-export default async function AcademyLessonPage({ params }: PageProps) {
-  const { slug } = await params;
+export default async function AcademyDetailPage(props: PageProps) {
+  const { slug } = await props.params;
   const article = getLocalArticleBySlug('academy', slug);
 
   if (!article) {
     notFound();
+    return null;
   }
+
+  const articleTitle = article.title || "Untitled Lesson";
+  const articleDescription = article.description || "";
+  const articleDate = article.date ? new Date(article.date) : new Date();
+  const formattedDate = isNaN(articleDate.getTime()) ? "Unknown Date" : articleDate.toLocaleDateString("ja-JP", { timeZone: "Asia/Tokyo" }).replace(/\//g, ".");
 
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Course",
-    "name": article.title,
-    "description": article.description,
+    "name": articleTitle,
+    "description": articleDescription,
     "provider": {
       "@type": "Organization",
       "name": "Ayato Academy",
@@ -67,7 +74,7 @@ export default async function AcademyLessonPage({ params }: PageProps) {
                 </div>
                 
                 <h1 className="text-4xl md:text-7xl font-black tracking-tighter mb-8 leading-[0.9]">
-                    {article.title}
+                    {articleTitle}
                 </h1>
                 
                 <div className="flex items-center gap-6 p-6 rounded-3xl border border-white/5 bg-white/[0.02] backdrop-blur-xl">
@@ -81,7 +88,7 @@ export default async function AcademyLessonPage({ params }: PageProps) {
                     <div className="h-10 w-px bg-white/10" />
                     <div>
                         <p className="text-[10px] text-gray-500 uppercase tracking-wider font-bold">Lesson Date</p>
-                        <p className="text-sm font-bold">{new Date(article.date).toLocaleDateString()}</p>
+                        <p className="text-sm font-bold">{formattedDate}</p>
                     </div>
                 </div>
             </div>
@@ -102,7 +109,7 @@ export default async function AcademyLessonPage({ params }: PageProps) {
                         prose-strong:text-white prose-strong:font-bold
                         prose-hr:border-white/10 prose-hr:my-12
                     ">
-                        <Markdown>{article.content}</Markdown>
+                        <Markdown>{article.content || ""}</Markdown>
                     </div>
 
                     {/* Premium Asset CTA (Note) */}

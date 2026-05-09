@@ -1,5 +1,5 @@
 import { fetchNoteArticles } from "@/lib/note"
-import { NoteCard } from "./note-card"
+import { NoteCard } from "./NoteCard"
 import { ChevronRight } from "lucide-react"
 
 export async function NoteFeedSection() {

@@ -3,40 +3,47 @@ import { notFound } from 'next/navigation';
 import Markdown from 'react-markdown';
 import Link from 'next/link';
 
-import { getLocalArticleBySlug, getLocalArticles } from '@/lib/local-content';
-import { Icons } from '@/components/icons';
-import { CTASection } from '@/components/cta-section';
-import { NoteCTA } from '@/components/note-cta';
+import { getLocalArticles } from '@/lib/local-content';
+import { Icons } from '@/components/ui/Icons';
+import { CTASection } from '@/components/ui/CTASection';
+import { NoteCTA } from '@/components/features/blog/NoteCTA';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { slug } = await params;
-  const article = getLocalArticleBySlug('blog', slug);
+export async function generateMetadata(props: PageProps): Promise<Metadata> {
+  const { slug } = await props.params;
+  const articles = getLocalArticles('blog');
+  const article = articles.find(a => a.slug === slug);
   
   if (!article) return { title: 'Post Not Found' };
 
   return {
-    title: `${article.title} | Ayato Studio Blog`,
-    description: article.description,
+    title: `${article.title || 'Untitled Post'} | Ayato Studio Blog`,
+    description: article.description || '',
   };
 }
 
-export default async function BlogPostPage({ params }: PageProps) {
-  const { slug } = await params;
-  const article = getLocalArticleBySlug('blog', slug);
+export default async function BlogPostPage(props: PageProps) {
+  const { slug } = await props.params;
+  const articles = getLocalArticles('blog');
+  const article = articles.find(a => a.slug === slug);
 
   if (!article) {
-    notFound();
+    return notFound();
   }
+
+  const articleTitle = article.title || "Untitled Post";
+  const articleDescription = article.description || "";
+  const articleDate = article.date ? new Date(article.date) : new Date();
+  const formattedDate = isNaN(articleDate.getTime()) ? "Unknown Date" : articleDate.toLocaleDateString("ja-JP", { timeZone: "Asia/Tokyo" }).replace(/\//g, ".");
 
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
-    "headline": article.title,
-    "description": article.description,
+    "headline": articleTitle,
+    "description": articleDescription,
     "datePublished": article.date,
     "author": {
       "@type": "Person",
@@ -75,7 +82,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                 </div>
                 
                 <h1 className="text-4xl md:text-7xl font-black tracking-tighter mb-8 leading-[0.9]">
-                    {article.title}
+                    {articleTitle}
                 </h1>
                 
                 <div className="flex items-center gap-6 p-6 rounded-3xl border border-white/5 bg-white/[0.02] backdrop-blur-xl">
@@ -89,7 +96,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                     <div className="h-10 w-px bg-white/10" />
                     <div>
                         <p className="text-[10px] text-gray-500 uppercase tracking-wider font-bold">Published</p>
-                        <p className="text-sm font-bold">{new Date(article.date).toLocaleDateString("ja-JP", { timeZone: "Asia/Tokyo" }).replace(/\//g, ".")}</p>
+                        <p className="text-sm font-bold">{formattedDate}</p>
                     </div>
                 </div>
             </div>

@@ -4,11 +4,11 @@ import { notFound } from 'next/navigation';
 
 import { fetchReportByFilename, fetchReports } from '@/lib/api';
 import { cn, formatDate, formatDateTime } from '@/lib/utils';
-import { Icons } from '@/components/icons';
-import ReportView from '@/components/ReportView';
-import { CTASection } from '@/components/cta-section';
-import ValueTracker from '@/components/ValueTracker';
-import { UtilityFeedback } from '@/components/UtilityFeedback';
+import { Icons } from '@/components/ui/Icons';
+import ReportView from '@/components/features/reports/ReportView';
+import { CTASection } from '@/components/ui/CTASection';
+import ValueTracker from '@/components/features/vqe/ValueTracker';
+import { UtilityFeedback } from '@/components/features/vqe/UtilityFeedback';
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -39,6 +39,7 @@ export default async function ReportDetailPage({ params }: PageProps) {
 
   if (!report) {
     notFound();
+    return null;
   }
 
   const jsonLd = {
@@ -62,7 +63,7 @@ export default async function ReportDetailPage({ params }: PageProps) {
 
   return (
     <article className="container relative max-w-3xl py-6 lg:py-10 mx-auto px-4 sm:px-8">
-      <ValueTracker reportId={report.slug} reportTitle={report.title} />
+      <ValueTracker id={report.slug} title={report.title} contentType="Report" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -101,7 +102,7 @@ export default async function ReportDetailPage({ params }: PageProps) {
       <ReportView report={report} />
       
       {/* VQE: Utility Feedback */}
-      <UtilityFeedback reportId={report.slug} className="mt-12" />
+      <UtilityFeedback id={report.slug} title={report.title} className="mt-12" />
       
       {/* CTA Section */}
       <CTASection theme="blue" className="mt-16" />

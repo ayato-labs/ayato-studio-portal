@@ -1,6 +1,6 @@
 import Link from "next/link"
 import { getLocalArticles } from "@/lib/local-content"
-import { Icons } from "@/components/icons"
+import { Icons } from "@/components/ui/Icons"
 
 export const metadata = {
   title: "Services - Ayato Studio",
