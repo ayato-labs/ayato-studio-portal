@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
 import { fetchReportByFilename, fetchReports } from '@/lib/api';
-import { cn, formatDate, formatDateTime } from '@/lib/utils';
+import { cn, formatDateTime } from '@/lib/utils';
 import { Icons } from '@/components/ui/Icons';
 import ReportView from '@/components/features/reports/ReportView';
 import { CTASection } from '@/components/ui/CTASection';

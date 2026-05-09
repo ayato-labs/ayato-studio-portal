@@ -1,7 +1,6 @@
 import type { MetadataRoute } from 'next'
 import { fetchReports } from '../lib/api'
 import { getLocalArticles, getLocalReports } from '../lib/local-content'
-import { Report } from '../lib/types'
 
 export const dynamic = 'force-static';
 

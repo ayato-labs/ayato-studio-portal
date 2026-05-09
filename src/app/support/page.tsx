@@ -23,7 +23,7 @@ function SupportPageContent() {
             </svg>
           </div>
           <div>
-            <h4 className="text-blue-500 text-xs font-black uppercase tracking-[0.4em] mb-4">Architect's Note // Mission & Privacy</h4>
+            <h4 className="text-blue-500 text-xs font-black uppercase tracking-[0.4em] mb-4">Architect&apos;s Note // Mission & Privacy</h4>
             <p className="text-gray-400 text-sm leading-relaxed font-bold tracking-tight">
               Ayato Studio のポートラル構築にあたり、当初は独自の決済システム（Stripe）の実装を試みました。しかし、個人開発者としてのプライバシー保護と、法的な情報の透明性を両立させる最適な解として、現在はあえて「特定の価格設定」を持たない自由な支援の形を選択しています。<br /><br />
               新卒エンジニアとしての挑戦を、より健全で安全な形で継続するため、現在は外部プラットフォーム（OFUSE）を唯一の支援窓口としています。

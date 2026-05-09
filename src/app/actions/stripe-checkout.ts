@@ -53,8 +53,9 @@ export async function createCheckoutSession(params: {
     }
 
     return { url: session.url };
-  } catch (error: any) {
+  } catch (error: unknown) {
+    const errorMessage = error instanceof Error ? error.message : 'Payment initiation failed.';
     console.error('[Stripe] Error creating checkout session:', error);
-    return { error: error.message || 'Payment initiation failed.' };
+    return { error: errorMessage };
   }
 }
