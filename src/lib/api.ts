@@ -18,13 +18,14 @@
 
 import { createClient } from '@supabase/supabase-js';
 import { Report, Organization } from './types';
+import { logger } from './logger';
 
 // Single Unified Supabase Client
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || '';
 const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '';
 
 if (!supabaseUrl || !supabaseKey) {
-    console.warn('[API] NEXT_PUBLIC_SUPABASE_URL or ANON_KEY missing.');
+    logger.warn({ url: !!supabaseUrl, key: !!supabaseKey }, 'Supabase configuration missing');
 }
 
 export const supabase = (supabaseUrl && supabaseKey)
@@ -62,77 +63,77 @@ export function getSlug(filename: string): string {
  */
 export async function fetchReports(): Promise<Report[]> {
   if (!supabase) {
-    console.warn('[API] Supabase client not initialized. Returning empty array.');
+    logger.error('Supabase client not initialized. Cannot fetch reports.');
     return [];
   }
 
-  console.log('[API] Fetching reports from generated_reports...');
+  logger.debug('Fetching reports from Supabase (generated_reports)...');
   
-  // 1. Attempt with join first (matching current DB schema: item_id, content_md, generated_at)
-  const { data, error } = await supabase
-    .from('generated_reports')
-    .select(`
-      id,
-      item_id,
-      title,
-      category,
-      generated_at,
-      market,
-      language,
-      content_md
-    `)
-    .order('generated_at', { ascending: false })
-    .limit(100);
-
-  if (error) {
-    console.warn('[API] Main fetch failed, attempting fallback (PGRST200 recovery):', error.message);
-    
-    // 2. Fallback: Fetch without join
-    const { data: fallbackData, error: fallbackError } = await supabase
+  try {
+    // 1. Attempt with join first
+    const { data, error } = await supabase
       .from('generated_reports')
-      .select('id, item_id, title, category, generated_at, market, language, content_md')
+      .select(`
+        id,
+        item_id,
+        title,
+        category,
+        generated_at,
+        market,
+        language,
+        content_md
+      `)
       .order('generated_at', { ascending: false })
       .limit(100);
 
-    if (fallbackError) {
-      console.error('[API] Fallback fetch also failed:', fallbackError.message);
-      return [];
+    if (error) {
+      logger.warn({ error: error.message }, 'Main fetch failed, attempting fallback (PGRST200 recovery)');
+      
+      // 2. Fallback: Fetch without join
+      const { data: fallbackData, error: fallbackError } = await supabase
+        .from('generated_reports')
+        .select('id, item_id, title, category, generated_at, market, language, content_md')
+        .order('generated_at', { ascending: false })
+        .limit(100);
+
+      if (fallbackError) {
+        logger.error({ error: fallbackError.message }, 'Fallback fetch also failed');
+        return [];
+      }
+
+      return (fallbackData || []).map((r: any) => ({
+        id: String(r.id),
+        filename: r.item_id,
+        slug: getSlug(r.item_id),
+        title: r.title || 'Untitled Report',
+        category: r.category || 'General',
+        language: r.language || 'jp',
+        timestamp: r.generated_at || new Date().toISOString(),
+        market: r.market || 'Global',
+        author: 'Ayato Reporter',
+        content: r.content_md || '',
+        sourceUrl: undefined
+      }));
     }
 
-    return (fallbackData || []).map((r: { id: string | number; item_id: string; title: string; category: string; language: string; generated_at: string; market: string; content_md: string }) => ({
+    // 3. Process main result
+    return (data || []).map((r: any) => ({
       id: String(r.id),
       filename: r.item_id,
       slug: getSlug(r.item_id),
       title: r.title || 'Untitled Report',
-      category: r.category || 'General',
+      category: r.category || 'AI/Tech',
       language: r.language || 'jp',
       timestamp: r.generated_at || new Date().toISOString(),
       market: r.market || 'Global',
       author: 'Ayato Reporter',
       content: r.content_md || '',
       sourceUrl: undefined
-    }));
+    })).sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime());
+  } catch (err: any) {
+    logger.error({ error: err.message, stack: err.stack }, 'Critical failure in fetchReports');
+    return [];
   }
-
-  // 3. Process main result
-  const remoteReports = (data || []).map((r: { id: string | number; item_id: string; title: string; category: string; language: string; generated_at: string; market: string; content_md: string }) => ({
-    id: String(r.id),
-    filename: r.item_id,
-    slug: getSlug(r.item_id),
-    title: r.title || 'Untitled Report',
-    category: r.category || 'AI/Tech',
-    language: r.language || 'jp',
-    timestamp: r.generated_at || new Date().toISOString(),
-    market: r.market || 'Global',
-    author: 'Ayato Reporter',
-    content: r.content_md || '',
-    sourceUrl: undefined
-  }));
-
-  // Sort by timestamp descending
-  return remoteReports.sort((a, b) => 
-    new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime()
-  );
 }
 
 export async function fetchReportByFilename(slugOrFilename: string): Promise<Report | null> {

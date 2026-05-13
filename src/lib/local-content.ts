@@ -20,6 +20,7 @@ import fs from 'fs';
 import path from 'path';
 import { LocalArticle, Report } from './types';
 import { getSlug } from './api';
+import { logger } from './logger';
 
 /**
  * Parses simple YAML-like frontmatter from Markdown content.
@@ -113,6 +114,7 @@ export function getLocalReports(): Report[] {
   const reportsDir = path.join(process.cwd(), 'src', 'content', 'reports');
   
   if (!fs.existsSync(reportsDir)) {
+    logger.debug({ path: reportsDir }, 'Local reports directory not found');
     return [];
   }
 
@@ -124,27 +126,30 @@ export function getLocalReports(): Report[] {
         const files = fs.readdirSync(sectorDir).filter(f => f.endsWith('.md'));
         files.forEach(file => {
           const fullPath = path.join(sectorDir, file);
-          const content = fs.readFileSync(fullPath, 'utf8');
-          
-          const { data, content: textContent } = parseFrontmatter(content);
+          try {
+            const content = fs.readFileSync(fullPath, 'utf8');
+            const { data, content: textContent } = parseFrontmatter(content);
 
-          localReports.push({
-            id: `local-${file}`,
-            filename: file,
-            slug: getSlug(file.replace('.md', '')),
-            title: data.title || file,
-            category: data.category || sector.toUpperCase(),
-            language: data.language || 'jp',
-            timestamp: data.date || new Date().toISOString(),
-            market: sector === 'tech' ? 'tech' : (sector === 'finance' ? 'finance' : 'energy'),
-            author: 'Local Engine',
-            content: textContent,
-          });
+            localReports.push({
+              id: `local-${file}`,
+              filename: file,
+              slug: getSlug(file.replace('.md', '')),
+              title: data.title || file,
+              category: data.category || sector.toUpperCase(),
+              language: data.language || 'jp',
+              timestamp: data.date || new Date().toISOString(),
+              market: sector === 'tech' ? 'tech' : (sector === 'finance' ? 'finance' : 'energy'),
+              author: 'Local Engine',
+              content: textContent,
+            });
+          } catch (fileErr: any) {
+            logger.error({ file: fullPath, error: fileErr.message }, 'Failed to read/parse local report file');
+          }
         });
       }
     });
-  } catch (e) {
-    console.warn('[LocalContent] Failed to fetch local reports:', e);
+  } catch (e: any) {
+    logger.error({ error: e.message }, 'Failed to fetch local reports');
   }
 
   return localReports;
