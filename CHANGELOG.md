@@ -1,3 +1,17 @@
+# [1.2.0](https://github.com/ayato-labs/ayato-studio-portal/compare/v1.1.0...v1.2.0) (2026-05-13)
+
+
+### Bug Fixes
+
+* add NaN guards to numeric inputs ([fb28798](https://github.com/ayato-labs/ayato-studio-portal/commit/fb2879832812df5d24ef4cb536499d4c33feb4b7))
+
+
+### Features
+
+* implement portfolio app features including content management, UI components, and linting workflows ([101c272](https://github.com/ayato-labs/ayato-studio-portal/commit/101c2728551bdfdcb0a97b362cb05fbe45abecec))
+* implement portfolio strategist app with real-time allocation analysis and rebalancing logic ([d76a5c4](https://github.com/ayato-labs/ayato-studio-portal/commit/d76a5c4fece08c791a63577a181b78e3cac085da))
+* implement Supabase API client, local content processing, and Ruff linting configuration ([e844fa5](https://github.com/ayato-labs/ayato-studio-portal/commit/e844fa5c330e39aed0db94fab46ca7bc12b1f8b8))
+
 # [1.1.0](https://github.com/ayato-labs/ayato-studio-portal/compare/v1.0.2...v1.1.0) (2026-05-09)
 
 
