@@ -56,7 +56,8 @@ export interface RebalanceAction {
 export interface RebalancePlan {
   currentTotal: number;
   targetTotal: number;
-  requiredInvestment: number;
+  newCapitalRequired: number;
+  fundedByCash: number;
   buyActions: RebalanceAction[];
 }
 

@@ -39,11 +39,16 @@ export default function RebalanceAdvice({ plan, portfolioTotal }: Props) {
             <div className="h-px bg-gray-100" />
             <div>
               <p className="mb-1 text-xs font-bold tracking-widest text-blue-600 uppercase">
-                Gap to Target Strategy
+                New Capital Required
               </p>
               <p className="text-4xl font-black text-blue-600">
-                ¥{plan.requiredInvestment.toLocaleString()}
+                ¥{plan.newCapitalRequired.toLocaleString()}
               </p>
+              {plan.fundedByCash > 0 && (
+                <p className="mt-2 text-[10px] font-black tracking-widest text-emerald-500 uppercase">
+                  + ¥{plan.fundedByCash.toLocaleString()} funded by existing cash
+                </p>
+              )}
               <p className="mt-2 text-[10px] font-black tracking-widest text-gray-400 uppercase">
                 Simulated new total: ¥{plan.targetTotal.toLocaleString()}
               </p>

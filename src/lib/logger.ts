@@ -49,7 +49,18 @@ const configureLogger = () => {
 export const logger = configureLogger();
 
 /**
- * Error Guard Wrapper
+ * A higher-order function that wraps an asynchronous operation with error handling.
+ *
+ * This utility centralizes error logging through the standard logger while
+ * preventing the application from crashing due to unhandled promise rejections.
+ *
+ * @param fn - The asynchronous function to execute.
+ * @param context - Additional metadata to include in the error log for debugging.
+ * @returns The result of the function if successful, or null if an error occurred.
+ *
+ * @example
+ * const data = await withErrorGuard(() => fetchUserData(id), { userId: id });
+ * if (!data) return handleFailure();
  */
 export async function withErrorGuard<T>(
   fn: () => Promise<T>,

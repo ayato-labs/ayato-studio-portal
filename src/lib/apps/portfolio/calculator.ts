@@ -93,7 +93,7 @@ export function generateRebalancePlan(
     .map((cat) => (cat.targetRatio > 0 ? cat.currentTotal / cat.targetRatio : 0));
 
   const newTotal = Math.max(...requiredTotals, portfolioTotal);
-  const requiredInvestment = Math.max(0, newTotal - portfolioTotal);
+  const newCapitalRequired = Math.max(0, newTotal - portfolioTotal);
 
   // 2. Identify buy actions for each category.
   const buyActions: RebalanceAction[] = categoryResults
@@ -108,12 +108,16 @@ export function generateRebalancePlan(
         assetBreakdown: calcBuyBreakdown(cat, buyAmount),
       };
     })
-    .filter((action) => action.amount > 0.01);
+    .filter((action) => action.amount > 0.01 && action.category !== 'CASH');
+
+  const totalBuyAmount = buyActions.reduce((sum, a) => sum + a.amount, 0);
+  const fundedByCash = Math.max(0, totalBuyAmount - newCapitalRequired);
 
   return {
     currentTotal: portfolioTotal,
     targetTotal: newTotal,
-    requiredInvestment,
+    newCapitalRequired,
+    fundedByCash,
     buyActions,
   };
 }
