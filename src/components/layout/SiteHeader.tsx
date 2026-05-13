@@ -11,32 +11,16 @@ export function SiteHeader() {
               href: '/apps',
             },
             {
-              title: 'Reports',
+              title: 'Intelligence',
               href: '/reports',
-            },
-            {
-              title: 'Academy',
-              href: '/academy',
-            },
-            {
-              title: 'Blog',
-              href: '/blog',
-            },
-            {
-              title: 'Services',
-              href: '/services',
             },
             {
               title: 'About',
               href: '/about',
             },
             {
-              title: 'Contact',
-              href: '/contact',
-            },
-            {
               title: 'Support',
-              href: '/support',
+              href: '/contact',
             },
           ]}
         />
