@@ -76,7 +76,10 @@ export default function AssetInputGroup({
                     <input
                       type="number"
                       value={asset.amount || ''}
-                      onChange={(e) => onUpdateAmount(asset.id, Number(e.target.value))}
+                      onChange={(e) => {
+                        const parsed = parseFloat(e.target.value);
+                        onUpdateAmount(asset.id, isNaN(parsed) ? 0 : parsed);
+                      }}
                       placeholder="0"
                       className="w-full rounded-xl border border-gray-200 bg-white px-4 py-2.5 font-medium text-gray-900 transition-all focus:border-blue-500 focus:ring-4 focus:ring-blue-500/5 focus:outline-none"
                     />

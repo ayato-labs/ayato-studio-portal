@@ -143,9 +143,10 @@ export default function PortfolioContainer() {
                         min="0"
                         max="100"
                         value={Math.round(categoryConfigs[key].ratio * 100)}
-                        onChange={(e) =>
-                          updateTargetRatio(key, parseInt(e.target.value || '0') / 100)
-                        }
+                        onChange={(e) => {
+                          const parsed = parseInt(e.target.value || '0');
+                          updateTargetRatio(key, (isNaN(parsed) ? 0 : parsed) / 100);
+                        }}
                         className="w-16 rounded-lg border border-gray-100 bg-gray-50 px-2 py-1.5 text-center text-sm font-black text-blue-600 transition-all focus:border-blue-500 focus:outline-none"
                       />
                       <span className="text-[10px] font-black text-gray-400">%</span>
