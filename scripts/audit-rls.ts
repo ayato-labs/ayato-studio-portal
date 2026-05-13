@@ -9,7 +9,9 @@ const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
 if (!supabaseUrl || !supabaseKey) {
-  console.error('Error: NEXT_PUBLIC_SUPABASE_URL or NEXT_PUBLIC_SUPABASE_ANON_KEY is not set in .env.local');
+  console.error(
+    'Error: NEXT_PUBLIC_SUPABASE_URL or NEXT_PUBLIC_SUPABASE_ANON_KEY is not set in .env.local',
+  );
   process.exit(1);
 }
 
@@ -55,17 +57,16 @@ async function runAudit() {
       .update({ title: 'HACKED' })
       .eq('id', targetId);
 
-    if (updateError || true) { // Supabase might return success but 0 rows affected if RLS blocks it
-       // In many cases, it returns success with 0 rows. Let's check the affected rows if possible.
-       console.log('✅ UPDATE blocked or failed as expected.');
+    if (updateError || true) {
+      // Supabase might return success but 0 rows affected if RLS blocks it
+      // In many cases, it returns success with 0 rows. Let's check the affected rows if possible.
+      console.log('✅ UPDATE blocked or failed as expected.');
     }
   }
 
   // 4. Test SELECT on organizations (Expected: FAILURE / Empty)
   console.log('\n[TEST 4] SELECT from private organizations table...');
-  const { data: orgData, error: orgError } = await supabase
-    .from('organizations')
-    .select('*');
+  const { data: orgData, error: orgError } = await supabase.from('organizations').select('*');
 
   if (orgError || (orgData && orgData.length === 0)) {
     console.log('✅ Private data access blocked as expected.');

@@ -15,8 +15,8 @@ interface PageProps {
 export async function generateMetadata(props: PageProps): Promise<Metadata> {
   const { slug } = await props.params;
   const articles = getLocalArticles('blog');
-  const article = articles.find(a => a.slug === slug);
-  
+  const article = articles.find((a) => a.slug === slug);
+
   if (!article) return { title: 'Post Not Found' };
 
   return {
@@ -28,117 +28,124 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
 export default async function BlogPostPage(props: PageProps) {
   const { slug } = await props.params;
   const articles = getLocalArticles('blog');
-  const article = articles.find(a => a.slug === slug);
+  const article = articles.find((a) => a.slug === slug);
 
   if (!article) {
     return notFound();
   }
 
-  const articleTitle = article.title || "Untitled Post";
-  const articleDescription = article.description || "";
+  const articleTitle = article.title || 'Untitled Post';
+  const articleDescription = article.description || '';
   const articleDate = article.date ? new Date(article.date) : new Date();
-  const formattedDate = isNaN(articleDate.getTime()) ? "Unknown Date" : articleDate.toLocaleDateString("ja-JP", { timeZone: "Asia/Tokyo" }).replace(/\//g, ".");
+  const formattedDate = isNaN(articleDate.getTime())
+    ? 'Unknown Date'
+    : articleDate.toLocaleDateString('ja-JP', { timeZone: 'Asia/Tokyo' }).replace(/\//g, '.');
 
   const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": articleTitle,
-    "description": articleDescription,
-    "datePublished": article.date,
-    "author": {
-      "@type": "Person",
-      "name": "Ayato Human Editor"
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: articleTitle,
+    description: articleDescription,
+    datePublished: article.date,
+    author: {
+      '@type': 'Person',
+      name: 'Ayato Human Editor',
     },
-    "publisher": {
-      "@type": "Organization",
-      "name": "Ayato Studio",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://ayato-studio.ai/favicon.ico"
-      }
-    }
+    publisher: {
+      '@type': 'Organization',
+      name: 'Ayato Studio',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://ayato-studio.ai/favicon.ico',
+      },
+    },
   };
 
   return (
-    <main className="min-h-screen bg-background text-white selection:bg-blue-500/30 overflow-x-hidden">
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
-        {/* Dynamic Background */}
-        <div className="fixed inset-0 -z-10 bg-[radial-gradient(circle_at_50%_50%,rgba(17,24,39,1)_0%,rgba(5,5,5,1)_100%)]" />
-        
-        <article className="mx-auto max-w-4xl px-6 py-12 md:py-24">
-            {/* Header */}
-            <div className="mb-12">
-                <Link href="/blog" className="inline-flex items-center text-xs font-black text-blue-500 uppercase tracking-widest mb-8 hover:opacity-70 transition-opacity">
-                    <Icons.chevronLeft className="mr-2 h-4 w-4" />
-                    Back to Blog Hub
-                </Link>
-                
-                <div className="flex items-center gap-3 text-gray-500 font-bold text-xs uppercase tracking-[0.3em] mb-6">
-                    <div className="h-px w-12 bg-gray-500/30" />
-                    Human Intelligence Insight
-                </div>
-                
-                <h1 className="text-4xl md:text-7xl font-black tracking-tighter mb-8 leading-[0.9]">
-                    {articleTitle}
-                </h1>
-                
-                <div className="flex items-center gap-6 p-6 rounded-3xl border border-white/5 bg-white/[0.02] backdrop-blur-xl">
-                    <div className="flex items-center gap-3">
-                        <div className="h-10 w-10 rounded-full bg-blue-600 flex items-center justify-center text-xs font-bold shadow-lg shadow-blue-500/20">HI</div>
-                        <div>
-                            <p className="text-[10px] text-gray-500 uppercase tracking-wider font-bold">Author</p>
-                            <p className="text-sm font-bold">Ayato Human Editor</p>
-                        </div>
-                    </div>
-                    <div className="h-10 w-px bg-white/10" />
-                    <div>
-                        <p className="text-[10px] text-gray-500 uppercase tracking-wider font-bold">Published</p>
-                        <p className="text-sm font-bold">{formattedDate}</p>
-                    </div>
-                </div>
+    <main className="bg-background min-h-screen overflow-x-hidden text-white selection:bg-blue-500/30">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      {/* Dynamic Background */}
+      <div className="fixed inset-0 -z-10 bg-[radial-gradient(circle_at_50%_50%,rgba(17,24,39,1)_0%,rgba(5,5,5,1)_100%)]" />
+
+      <article className="mx-auto max-w-4xl px-6 py-12 md:py-24">
+        {/* Header */}
+        <div className="mb-12">
+          <Link
+            href="/blog"
+            className="mb-8 inline-flex items-center text-xs font-black tracking-widest text-blue-500 uppercase transition-opacity hover:opacity-70"
+          >
+            <Icons.chevronLeft className="mr-2 h-4 w-4" />
+            Back to Blog Hub
+          </Link>
+
+          <div className="mb-6 flex items-center gap-3 text-xs font-bold tracking-[0.3em] text-gray-500 uppercase">
+            <div className="h-px w-12 bg-gray-500/30" />
+            Human Intelligence Insight
+          </div>
+
+          <h1 className="mb-8 text-4xl leading-[0.9] font-black tracking-tighter md:text-7xl">
+            {articleTitle}
+          </h1>
+
+          <div className="flex items-center gap-6 rounded-3xl border border-white/5 bg-white/[0.02] p-6 backdrop-blur-xl">
+            <div className="flex items-center gap-3">
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-600 text-xs font-bold shadow-lg shadow-blue-500/20">
+                HI
+              </div>
+              <div>
+                <p className="text-[10px] font-bold tracking-wider text-gray-500 uppercase">
+                  Author
+                </p>
+                <p className="text-sm font-bold">Ayato Human Editor</p>
+              </div>
+            </div>
+            <div className="h-10 w-px bg-white/10" />
+            <div>
+              <p className="text-[10px] font-bold tracking-wider text-gray-500 uppercase">
+                Published
+              </p>
+              <p className="text-sm font-bold">{formattedDate}</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Content */}
+        <div className="group relative">
+          <div className="absolute -inset-4 -z-10 rounded-[3rem] bg-gradient-to-b from-blue-600/5 to-transparent blur-2xl" />
+
+          <div className="rounded-[3rem] border border-white/5 bg-black/40 p-8 shadow-2xl backdrop-blur-3xl md:p-16">
+            <div className="prose prose-invert prose-blue prose-headings:font-black prose-headings:tracking-tight prose-h1:text-3xl md:prose-h1:text-4xl prose-h1:mb-8 prose-h2:text-2xl md:prose-h2:text-3xl prose-h2:mb-6 prose-h2:mt-12 prose-h3:text-xl md:prose-h3:text-2xl prose-h3:mb-4 prose-h3:mt-10 prose-p:text-gray-300 prose-p:leading-relaxed prose-p:text-lg prose-li:text-gray-300 prose-li:text-lg prose-strong:text-white prose-strong:font-bold prose-hr:border-white/10 prose-hr:my-12 max-w-none">
+              <Markdown>{article.content}</Markdown>
             </div>
 
-            {/* Content */}
-            <div className="relative group">
-                <div className="absolute -inset-4 bg-gradient-to-b from-blue-600/5 to-transparent rounded-[3rem] -z-10 blur-2xl" />
-                
-                <div className="p-8 md:p-16 rounded-[3rem] border border-white/5 bg-black/40 backdrop-blur-3xl shadow-2xl">
-                    <div className="
-                        prose prose-invert prose-blue max-w-none
-                        prose-headings:font-black prose-headings:tracking-tight
-                        prose-h1:text-3xl md:prose-h1:text-4xl prose-h1:mb-8
-                        prose-h2:text-2xl md:prose-h2:text-3xl prose-h2:mb-6 prose-h2:mt-12
-                        prose-h3:text-xl md:prose-h3:text-2xl prose-h3:mb-4 prose-h3:mt-10
-                        prose-p:text-gray-300 prose-p:leading-relaxed prose-p:text-lg
-                        prose-li:text-gray-300 prose-li:text-lg
-                        prose-strong:text-white prose-strong:font-bold
-                        prose-hr:border-white/10 prose-hr:my-12
-                    ">
-                    <Markdown>{article.content}</Markdown>
-                    </div>
-
-                    {/* Premium Asset CTA (Note) */}
-                    <div className="mt-16">
-                      <NoteCTA />
-                    </div>
-
-                    {/* Business CTA Section */}
-                    <CTASection theme="blue" />
-                </div>
+            {/* Premium Asset CTA (Note) */}
+            <div className="mt-16">
+              <NoteCTA />
             </div>
 
-            <div className="mt-20 pt-10 border-t border-white/5 flex items-center justify-between">
-                <Link href="/blog" className="text-xs font-black text-gray-500 uppercase tracking-widest hover:text-white transition-colors">
-                    ← Newer Post
-                </Link>
-                <Link href="/reports" className="text-xs font-black text-blue-500 uppercase tracking-widest hover:text-blue-400 transition-colors">
-                    Explore Latest News Reports →
-                </Link>
-            </div>
-        </article>
+            {/* Business CTA Section */}
+            <CTASection theme="blue" />
+          </div>
+        </div>
+
+        <div className="mt-20 flex items-center justify-between border-t border-white/5 pt-10">
+          <Link
+            href="/blog"
+            className="text-xs font-black tracking-widest text-gray-500 uppercase transition-colors hover:text-white"
+          >
+            ← Newer Post
+          </Link>
+          <Link
+            href="/reports"
+            className="text-xs font-black tracking-widest text-blue-500 uppercase transition-colors hover:text-blue-400"
+          >
+            Explore Latest News Reports →
+          </Link>
+        </div>
+      </article>
     </main>
   );
 }

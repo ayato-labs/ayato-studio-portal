@@ -4,6 +4,18 @@
 target-version = "py311"
 line-length = 100
 
+include = ["src/**/*.py", "tests/**/*.py"]
+exclude = [
+    ".git",
+    ".next",
+    ".ruff_cache",
+    ".venv",
+    "node_modules",
+    "public",
+    "dist",
+    "build",
+]
+
 [lint]
 # Select rules
 # E: pycodestyle errors
@@ -18,6 +30,7 @@ select = ["E", "F", "I", "B", "C90", "N", "UP", "PLE"]
 ignore = []
 
 # Allow fix for all enabled rules (when `--fix`)
+# Note: MUST NOT use --fix in CI according to user rules.
 fixable = ["ALL"]
 unfixable = []
 

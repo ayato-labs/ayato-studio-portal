@@ -9,7 +9,9 @@ const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
 if (!supabaseUrl || !supabaseKey) {
-  console.error('ERROR: NEXT_PUBLIC_SUPABASE_URL or NEXT_PUBLIC_SUPABASE_ANON_KEY is missing in .env.local');
+  console.error(
+    'ERROR: NEXT_PUBLIC_SUPABASE_URL or NEXT_PUBLIC_SUPABASE_ANON_KEY is missing in .env.local',
+  );
   process.exit(1);
 }
 
@@ -59,10 +61,7 @@ async function verify() {
 
   // 4. Test RLS (Select one row)
   console.log('\n[4] Testing RLS on generated_reports...');
-  const { error: rlsErr } = await supabase
-    .from('generated_reports')
-    .select('*')
-    .limit(1);
+  const { error: rlsErr } = await supabase.from('generated_reports').select('*').limit(1);
 
   if (rlsErr) {
     console.warn('RLS might be blocking read access:', rlsErr);

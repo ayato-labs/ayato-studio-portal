@@ -30,16 +30,17 @@ export async function fetchNoteArticles(limit = 3): Promise<NoteArticle[]> {
 
   try {
     const feed = await parser.parseURL(NOTE_RSS_URL);
-    
+
     return feed.items.slice(0, limit).map((item: Parser.Item & NoteRSSItem) => {
       // Note often puts image in media:content or media:thumbnail
       let thumbnail = item.thumbnail || '';
       if (!thumbnail && item.mediaContent && item.mediaContent.$) {
         thumbnail = item.mediaContent.$.url;
       }
-      
+
       const title = item.title || '';
-      const isPremium = title.includes('エンジン') || title.includes('極意') || title.includes('マガジン');
+      const isPremium =
+        title.includes('エンジン') || title.includes('極意') || title.includes('マガジン');
 
       return {
         title: item.title || '',
@@ -47,7 +48,7 @@ export async function fetchNoteArticles(limit = 3): Promise<NoteArticle[]> {
         pubDate: item.pubDate || '',
         contentSnippet: item.contentSnippet || '',
         thumbnail: thumbnail,
-        isPremium: isPremium
+        isPremium: isPremium,
       };
     });
   } catch (error) {

@@ -5,16 +5,13 @@ import { headers } from 'next/headers';
 
 /**
  * Creates a Stripe Checkout Session for Support/Donation
- * 
+ *
  * @param priceId - The Stripe Price ID for the selected tier (Optional for custom amount, though here we assume fixed prices)
  * @param amount - Optional amount in JPY (if priceId is not used)
  * @param tierName - Name of the support tier
  * @returns { url: string } | { error: string }
  */
-export async function createCheckoutSession(params: {
-  amount: number;
-  tierName: string;
-}) {
+export async function createCheckoutSession(params: { amount: number; tierName: string }) {
   const { amount, tierName } = params;
   const headerList = await headers();
   const origin = headerList.get('origin');
