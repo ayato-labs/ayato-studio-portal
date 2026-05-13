@@ -17,7 +17,6 @@ const configureLogger = () => {
   }
 
   // Node.js environment: Multi-stream with isolation
-  // Note: Local logs directory will be created
   const transport = pino.transport({
     targets: [
       {
@@ -48,11 +47,10 @@ export const logger = configureLogger();
 
 /**
  * Error Guard Wrapper
- * Prevents silent failures and ensures structured error logging.
  */
 export async function withErrorGuard<T>(
   fn: () => Promise<T>,
-  context: Record<string, any> = {}
+  context: Record<string, unknown> = {}
 ): Promise<T | null> {
   try {
     return await fn();

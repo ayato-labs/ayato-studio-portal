@@ -4,6 +4,7 @@
 target-version = "py311"
 line-length = 100
 
+include = ["src/**/*.py", "tests/**/*.py"]
 exclude = [
     ".git",
     ".next",
@@ -12,6 +13,7 @@ exclude = [
     "node_modules",
     "public",
     "dist",
+    "build",
 ]
 
 [lint]

@@ -39,17 +39,17 @@ export default function AssetInputGroup({
   };
 
   return (
-    <div className="glass rounded-[2rem] overflow-hidden border-white/5 transition-all duration-500 hover:border-white/10">
+    <div className="bg-white rounded-[2rem] overflow-hidden border border-gray-100 shadow-sm transition-all duration-500 hover:shadow-md hover:border-gray-200">
       <button 
         onClick={() => setIsExpanded(!isExpanded)}
-        className="w-full flex items-center justify-between p-6 bg-white/[0.02] hover:bg-white/[0.04] transition-colors"
+        className="w-full flex items-center justify-between p-6 bg-gray-50/50 hover:bg-gray-50 transition-colors"
       >
         <div className="flex items-center gap-4">
           <div className="w-1.5 h-6 rounded-full" style={{ backgroundColor: color }} />
-          <h3 className="text-sm font-black uppercase tracking-[0.2em] text-white/80">{categoryLabel}</h3>
-          <span className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">{assets.length} items</span>
+          <h3 className="text-sm font-black uppercase tracking-[0.2em] text-gray-800">{categoryLabel}</h3>
+          <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">{assets.length} items</span>
         </div>
-        {isExpanded ? <ChevronUp className="w-4 h-4 text-gray-500" /> : <ChevronDown className="w-4 h-4 text-gray-500" />}
+        {isExpanded ? <ChevronUp className="w-4 h-4 text-gray-400" /> : <ChevronDown className="w-4 h-4 text-gray-400" />}
       </button>
 
       {isExpanded && (
@@ -58,7 +58,7 @@ export default function AssetInputGroup({
             {assets.map((asset) => (
               <div key={asset.id} className="group flex items-center gap-4 animate-in fade-in slide-in-from-left-2 duration-300">
                 <div className="flex-1">
-                  <label className="block text-[10px] font-black uppercase tracking-widest text-gray-500 mb-1.5 ml-1">
+                  <label className="block text-[10px] font-black uppercase tracking-widest text-gray-400 mb-1.5 ml-1">
                     {asset.label}
                   </label>
                   <div className="relative">
@@ -67,14 +67,14 @@ export default function AssetInputGroup({
                       value={asset.amount || ''}
                       onChange={(e) => onUpdateAmount(asset.id, Number(e.target.value))}
                       placeholder="0"
-                      className="w-full bg-white/[0.03] border border-white/5 rounded-xl px-4 py-2.5 text-white font-medium focus:outline-none focus:border-blue-500/50 focus:bg-white/[0.05] transition-all"
+                      className="w-full bg-white border border-gray-200 rounded-xl px-4 py-2.5 text-gray-900 font-medium focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/5 transition-all"
                     />
-                    <span className="absolute right-4 top-1/2 -translate-y-1/2 text-[10px] font-black text-gray-600 tracking-widest">JPY</span>
+                    <span className="absolute right-4 top-1/2 -translate-y-1/2 text-[10px] font-black text-gray-300 tracking-widest">JPY</span>
                   </div>
                 </div>
                 <button 
                   onClick={() => onRemoveAsset(asset.id)}
-                  className="mt-5 p-2.5 rounded-xl bg-red-500/0 hover:bg-red-500/10 text-gray-600 hover:text-red-500 transition-all group-hover:opacity-100 md:opacity-0"
+                  className="mt-5 p-2.5 rounded-xl bg-red-50/0 hover:bg-red-50 text-gray-400 hover:text-red-500 transition-all group-hover:opacity-100 md:opacity-0"
                 >
                   <Trash2 className="w-4 h-4" />
                 </button>
@@ -87,13 +87,13 @@ export default function AssetInputGroup({
               type="text"
               value={newAssetName}
               onChange={(e) => setNewAssetName(e.target.value)}
-              placeholder="Add Ticker (e.g. VT, VOO)"
-              className="flex-1 bg-white/[0.01] border border-dashed border-white/10 rounded-xl px-4 py-2 text-xs text-white/50 focus:outline-none focus:border-blue-500/30 transition-all"
+              placeholder="Add Asset Name (e.g. BTC, Gold)"
+              className="flex-1 bg-gray-50/50 border border-dashed border-gray-200 rounded-xl px-4 py-2 text-xs text-gray-500 focus:outline-none focus:border-blue-400 transition-all"
             />
             <button 
               type="submit"
               disabled={!newAssetName.trim()}
-              className="p-2.5 rounded-xl bg-white/[0.05] hover:bg-blue-500/20 text-white/40 hover:text-blue-400 disabled:opacity-30 transition-all"
+              className="p-2.5 rounded-xl bg-gray-100 hover:bg-blue-600 text-gray-500 hover:text-white disabled:opacity-30 transition-all"
             >
               <Plus className="w-4 h-4" />
             </button>

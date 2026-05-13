@@ -5,7 +5,7 @@
 
 'use client';
 
-import { useState, useMemo, useCallback, useEffect } from 'react';
+import { useState, useMemo, useCallback, useEffect, useRef } from 'react';
 import { 
   PortfolioAsset, 
   CalculationResult, 
@@ -26,28 +26,37 @@ import {
 export function usePortfolio() {
   const [isHydrated, setIsHydrated] = useState(false);
   const [assets, setAssets] = useState<PortfolioAsset[]>([]);
-  const [categoryConfigs, setCategoryConfigs] = useState<Record<CategoryKey, CategoryConfig>>(DEFAULT_CATEGORIES);
+  const [categoryConfigs, setCategoryConfigs] = 
+    useState<Record<CategoryKey, CategoryConfig>>(DEFAULT_CATEGORIES);
   const [okThreshold, setOkThreshold] = useState(0.02);
+  
+  const hasInitialized = useRef(false);
 
   // Initial hydration from localStorage
   useEffect(() => {
+    if (hasInitialized.current) return;
+    
     const savedAssets = localStorage.getItem(STORAGE_KEYS.ASSETS);
     const savedConfig = localStorage.getItem(STORAGE_KEYS.CONFIG);
     const savedSettings = localStorage.getItem(STORAGE_KEYS.SETTINGS);
 
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     if (savedAssets) setAssets(JSON.parse(savedAssets));
     else {
-      // Initialize with presets if empty
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setAssets(PRESET_ASSETS.map(p => ({ ...p, amount: 0 })));
     }
 
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     if (savedConfig) setCategoryConfigs(JSON.parse(savedConfig));
     if (savedSettings) {
       const settings = JSON.parse(savedSettings);
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       if (settings.okThreshold) setOkThreshold(settings.okThreshold);
     }
 
     setIsHydrated(true);
+    hasInitialized.current = true;
   }, []);
 
   // Persist to localStorage
@@ -73,8 +82,9 @@ export function usePortfolio() {
     const assetResults = calcAssetResults(assets);
     const portfolioTotal = assetResults.reduce((sum, a) => sum + a.valueInBase, 0);
     
-    // Calculate even if total is 0 to show target targets
-    const categoryResults = calcCategoryResults(assetResults, portfolioTotal, okThreshold, categoryConfigs);
+    const categoryResults = calcCategoryResults(
+      assetResults, portfolioTotal, okThreshold, categoryConfigs
+    );
     const rebalancePlan = generateRebalancePlan(categoryResults, portfolioTotal);
 
     return { assetResults, categoryResults, rebalancePlan, portfolioTotal };

@@ -1,19 +1,6 @@
 /**
  * Ayato Studio Portal
  * Copyright (C) 2026 Ayato Studio <https://ayato-studio.ai>
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Affero General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Affero General Public License for more details.
- *
- * You should have received a copy of the GNU Affero General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 import fs from 'fs';
@@ -24,15 +11,13 @@ import { logger } from './logger';
 
 /**
  * Parses simple YAML-like frontmatter from Markdown content.
- * Avoids extra dependencies for basic use cases.
  */
 function parseFrontmatter(fileContents: string) {
-  // Remove BOM and leading/trailing whitespace
   const sanitized = fileContents.replace(/^\uFEFF/, '').trim();
   const match = sanitized.match(/^---\r?\n([\s\S]*?)\r?\n---/);
   
   if (!match) {
-    return { data: {}, content: sanitized };
+    return { data: {} as Record<string, string>, content: sanitized };
   }
   
   const yaml = match[1];
@@ -45,7 +30,6 @@ function parseFrontmatter(fileContents: string) {
       const key = line.slice(0, colonIndex).trim();
       const value = line.slice(colonIndex + 1).trim();
       if (key) {
-        // Remove quotes if present
         data[key] = value.replace(/^["'](.*)["']$/, '$1');
       }
     }
@@ -105,10 +89,6 @@ export function getLocalArticleBySlug(directory: string, slug: string): LocalArt
   };
 }
 
-/**
- * Fetches reports stored locally in the filesystem.
- * Moved from api.ts to keep Node.js specific code in server-only utilities.
- */
 export function getLocalReports(): Report[] {
   const localReports: Report[] = [];
   const reportsDir = path.join(process.cwd(), 'src', 'content', 'reports');
@@ -143,7 +123,7 @@ export function getLocalReports(): Report[] {
               content: textContent,
             });
           } catch (fileErr: any) {
-            logger.error({ file: fullPath, error: fileErr.message }, 'Failed to read/parse local report file');
+            logger.error({ file: fullPath, error: fileErr.message }, 'Failed to parse local report');
           }
         });
       }
@@ -155,9 +135,6 @@ export function getLocalReports(): Report[] {
   return localReports;
 }
 
-/**
- * Lists all application directories in src/content/apps.
- */
 export function getAppsList(): string[] {
   const appsPath = path.join(process.cwd(), 'src', 'content', 'apps');
   

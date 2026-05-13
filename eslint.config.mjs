@@ -5,18 +5,20 @@ import nextTs from "eslint-config-next/typescript";
 const eslintConfig = defineConfig([
   ...nextVitals,
   ...nextTs,
-  // Override default ignores of eslint-config-next.
+  // Strict ignores to target only src and tests
   globalIgnores([
-    // Default ignores of eslint-config-next:
     ".next/**",
     "out/**",
     "build/**",
+    "node_modules/**",
+    "public/**",
+    "dist/**",
+    ".venv/**",
     "next-env.d.ts",
   ]),
-  // Downgrade non-auto-fixable rules to warnings so CI passes
-  // while preserving visibility of issues for developers.
   {
     rules: {
+      "max-len": ["error", { "code": 100, "ignoreUrls": true, "ignoreStrings": true, "ignoreTemplateLiterals": true }],
       "@typescript-eslint/no-explicit-any": "warn",
       "@typescript-eslint/no-unused-vars": "warn",
       "react-hooks/exhaustive-deps": "warn",

@@ -8,7 +8,7 @@
 import React from 'react';
 import { 
   PieChart, Pie, Cell, ResponsiveContainer, 
-  BarChart, Bar, XAxis, YAxis, Tooltip, Legend,
+  BarChart, Bar, XAxis, YAxis, Tooltip,
   CartesianGrid
 } from 'recharts';
 import { CategoryResult } from '@/lib/apps/portfolio/types';
@@ -36,9 +36,9 @@ export default function AllocationCharts({ categoryResults, portfolioTotal }: Pr
 
   if (portfolioTotal === 0) {
     return (
-      <div className="h-64 flex flex-col items-center justify-center glass rounded-[2.5rem] border-white/5">
-        <p className="text-gray-500 font-bold uppercase tracking-widest text-xs">No assets entered yet.</p>
-        <p className="text-gray-700 text-[10px] uppercase tracking-widest mt-2">Charts will appear here.</p>
+      <div className="h-64 flex flex-col items-center justify-center bg-white rounded-[2.5rem] border border-gray-100 shadow-sm">
+        <p className="text-gray-400 font-bold uppercase tracking-widest text-[10px]">No assets entered yet.</p>
+        <p className="text-gray-300 text-[10px] uppercase tracking-widest mt-2">Charts will appear here.</p>
       </div>
     );
   }
@@ -46,8 +46,8 @@ export default function AllocationCharts({ categoryResults, portfolioTotal }: Pr
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
       {/* Current Allocation (Pie) */}
-      <div className="glass rounded-[2.5rem] p-8 border-white/5">
-        <h4 className="text-[10px] font-black uppercase tracking-[0.4em] text-gray-500 mb-8 text-center">Current Allocation</h4>
+      <div className="bg-white rounded-[2.5rem] p-8 border border-gray-100 shadow-sm">
+        <h4 className="text-[10px] font-black uppercase tracking-[0.4em] text-gray-400 mb-8 text-center">Current Allocation</h4>
         <div className="h-64 w-full">
           <ResponsiveContainer width="100%" height="100%">
             <PieChart>
@@ -66,8 +66,8 @@ export default function AllocationCharts({ categoryResults, portfolioTotal }: Pr
                 ))}
               </Pie>
               <Tooltip 
-                contentStyle={{ backgroundColor: 'rgba(0,0,0,0.8)', border: 'none', borderRadius: '12px', color: '#fff' }}
-                itemStyle={{ color: '#fff', fontSize: '12px', fontWeight: 'bold' }}
+                contentStyle={{ backgroundColor: '#fff', border: '1px solid #f0f0f0', borderRadius: '12px', boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1)' }}
+                itemStyle={{ color: '#111', fontSize: '12px', fontWeight: 'bold' }}
               />
             </PieChart>
           </ResponsiveContainer>
@@ -75,26 +75,26 @@ export default function AllocationCharts({ categoryResults, portfolioTotal }: Pr
       </div>
 
       {/* Target vs Current (Bar) */}
-      <div className="glass rounded-[2.5rem] p-8 border-white/5">
-        <h4 className="text-[10px] font-black uppercase tracking-[0.4em] text-gray-500 mb-8 text-center">Target vs Current (%)</h4>
+      <div className="bg-white rounded-[2.5rem] p-8 border border-gray-100 shadow-sm">
+        <h4 className="text-[10px] font-black uppercase tracking-[0.4em] text-gray-400 mb-8 text-center">Target vs Current (%)</h4>
         <div className="h-64 w-full">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={barData} layout="vertical" margin={{ left: 40 }}>
-              <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" horizontal={false} />
+              <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" horizontal={false} />
               <XAxis type="number" hide />
               <YAxis 
                 dataKey="name" 
                 type="category" 
-                tick={{ fill: '#666', fontSize: 10, fontWeight: 900 }}
+                tick={{ fill: '#999', fontSize: 10, fontWeight: 900 }}
                 axisLine={false}
                 tickLine={false}
               />
               <Tooltip 
-                cursor={{ fill: 'rgba(255,255,255,0.02)' }}
-                contentStyle={{ backgroundColor: 'rgba(0,0,0,0.8)', border: 'none', borderRadius: '12px' }}
+                cursor={{ fill: '#f9fafb' }}
+                contentStyle={{ backgroundColor: '#fff', border: '1px solid #f0f0f0', borderRadius: '12px', boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1)' }}
               />
               <Bar dataKey="current" fill="#3B82F6" radius={[0, 4, 4, 0]} name="Current %" />
-              <Bar dataKey="target" fill="rgba(255,255,255,0.1)" radius={[0, 4, 4, 0]} name="Target %" />
+              <Bar dataKey="target" fill="#e5e7eb" radius={[0, 4, 4, 0]} name="Target %" />
             </BarChart>
           </ResponsiveContainer>
         </div>
