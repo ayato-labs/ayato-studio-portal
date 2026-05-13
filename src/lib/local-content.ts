@@ -15,16 +15,16 @@ import { logger } from './logger';
 function parseFrontmatter(fileContents: string) {
   const sanitized = fileContents.replace(/^\uFEFF/, '').trim();
   const match = sanitized.match(/^---\r?\n([\s\S]*?)\r?\n---/);
-  
+
   if (!match) {
     return { data: {} as Record<string, string>, content: sanitized };
   }
-  
+
   const yaml = match[1];
   const content = sanitized.replace(match[0], '').trim();
   const data: Record<string, string> = {};
-  
-  yaml.split(/\r?\n/).forEach(line => {
+
+  yaml.split(/\r?\n/).forEach((line) => {
     const colonIndex = line.indexOf(':');
     if (colonIndex !== -1) {
       const key = line.slice(0, colonIndex).trim();
@@ -34,22 +34,22 @@ function parseFrontmatter(fileContents: string) {
       }
     }
   });
-  
+
   return { data, content };
 }
 
 export function getLocalArticles(directory: string): LocalArticle[] {
   const contentPath = path.join(process.cwd(), 'src', 'content', directory);
-  
+
   if (!fs.existsSync(contentPath)) {
     return [];
   }
 
   const files = fs.readdirSync(contentPath);
-  
+
   return files
-    .filter(file => file.endsWith('.md'))
-    .map(file => {
+    .filter((file) => file.endsWith('.md'))
+    .map((file) => {
       const slug = file.replace('.md', '');
       const fullPath = path.join(contentPath, file);
       const fileContents = fs.readFileSync(fullPath, 'utf8');
@@ -70,7 +70,7 @@ export function getLocalArticles(directory: string): LocalArticle[] {
 
 export function getLocalArticleBySlug(directory: string, slug: string): LocalArticle | null {
   const fullPath = path.join(process.cwd(), 'src', 'content', directory, `${slug}.md`);
-  
+
   if (!fs.existsSync(fullPath)) {
     return null;
   }
@@ -92,7 +92,7 @@ export function getLocalArticleBySlug(directory: string, slug: string): LocalArt
 export function getLocalReports(): Report[] {
   const localReports: Report[] = [];
   const reportsDir = path.join(process.cwd(), 'src', 'content', 'reports');
-  
+
   if (!fs.existsSync(reportsDir)) {
     logger.debug({ path: reportsDir }, 'Local reports directory not found');
     return [];
@@ -100,11 +100,11 @@ export function getLocalReports(): Report[] {
 
   try {
     const sectors = ['tech', 'finance', 'energy', 'weekly'];
-    sectors.forEach(sector => {
+    sectors.forEach((sector) => {
       const sectorDir = path.join(reportsDir, sector);
       if (fs.existsSync(sectorDir)) {
-        const files = fs.readdirSync(sectorDir).filter(f => f.endsWith('.md'));
-        files.forEach(file => {
+        const files = fs.readdirSync(sectorDir).filter((f) => f.endsWith('.md'));
+        files.forEach((file) => {
           const fullPath = path.join(sectorDir, file);
           try {
             const content = fs.readFileSync(fullPath, 'utf8');
@@ -118,12 +118,15 @@ export function getLocalReports(): Report[] {
               category: data.category || sector.toUpperCase(),
               language: data.language || 'jp',
               timestamp: data.date || new Date().toISOString(),
-              market: sector === 'tech' ? 'tech' : (sector === 'finance' ? 'finance' : 'energy'),
+              market: sector === 'tech' ? 'tech' : sector === 'finance' ? 'finance' : 'energy',
               author: 'Local Engine',
               content: textContent,
             });
           } catch (fileErr: any) {
-            logger.error({ file: fullPath, error: fileErr.message }, 'Failed to parse local report');
+            logger.error(
+              { file: fullPath, error: fileErr.message },
+              'Failed to parse local report',
+            );
           }
         });
       }
@@ -137,12 +140,13 @@ export function getLocalReports(): Report[] {
 
 export function getAppsList(): string[] {
   const appsPath = path.join(process.cwd(), 'src', 'content', 'apps');
-  
+
   if (!fs.existsSync(appsPath)) {
     return [];
   }
 
-  return fs.readdirSync(appsPath, { withFileTypes: true })
-    .filter(dirent => dirent.isDirectory())
-    .map(dirent => dirent.name);
+  return fs
+    .readdirSync(appsPath, { withFileTypes: true })
+    .filter((dirent) => dirent.isDirectory())
+    .map((dirent) => dirent.name);
 }

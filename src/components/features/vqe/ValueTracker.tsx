@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { Suspense } from "react";
-import { useVQE } from "@/hooks/use-vqe";
-import { ContentType } from "@/lib/metrics";
+import { Suspense } from 'react';
+import { useVQE } from '@/hooks/use-vqe';
+import { ContentType } from '@/lib/metrics';
 
 interface ValueTrackerProps {
   id: string;

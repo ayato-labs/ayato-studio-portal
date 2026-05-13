@@ -17,7 +17,8 @@ export const APPS: App[] = [
     id: 'site-downloader',
     name: 'Site Downloader',
     slug: 'site-downloader',
-    description: 'Web サイトを高速にダウンロード・保存するための Chrome 拡張機能。完全なドキュメント、デプロイメントガイド、実装例を提供。',
+    description:
+      'Web サイトを高速にダウンロード・保存するための Chrome 拡張機能。完全なドキュメント、デプロイメントガイド、実装例を提供。',
     icon: '⬇️',
     color: 'cyan',
     category: 'Chrome Extension',
@@ -28,7 +29,8 @@ export const APPS: App[] = [
     id: 'screenshot-tool',
     name: 'Screenshot Tool',
     slug: 'screenshot-tool',
-    description: 'Web ページのスクリーンショット取得と編集機能。複数フォーマット対応、ワンクリック保存。',
+    description:
+      'Web ページのスクリーンショット取得と編集機能。複数フォーマット対応、ワンクリック保存。',
     icon: '📸',
     color: 'purple',
     category: 'Chrome Extension',
@@ -49,21 +51,21 @@ export const APPS: App[] = [
 ];
 
 export function getAppBySlug(slug: string): App | undefined {
-  return APPS.find(app => app.slug === slug);
+  return APPS.find((app) => app.slug === slug);
 }
 
 export function getAppsByStatus(status: 'active' | 'beta' | 'coming-soon'): App[] {
-  return APPS.filter(app => app.status === status);
+  return APPS.filter((app) => app.status === status);
 }
 
 export function getActiveApps(): App[] {
-  return APPS.filter(app => app.status === 'active');
+  return APPS.filter((app) => app.status === 'active');
 }
 
 export function getBetaApps(): App[] {
-  return APPS.filter(app => app.status === 'beta');
+  return APPS.filter((app) => app.status === 'beta');
 }
 
 export function getComingSoonApps(): App[] {
-  return APPS.filter(app => app.status === 'coming-soon');
+  return APPS.filter((app) => app.status === 'coming-soon');
 }

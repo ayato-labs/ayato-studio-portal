@@ -26,7 +26,7 @@ export default function AssetInputGroup({
   color,
   onUpdateAmount,
   onAddAsset,
-  onRemoveAsset
+  onRemoveAsset,
 }: Props) {
   const [isExpanded, setIsExpanded] = useState(true);
   const [newAssetName, setNewAssetName] = useState('');
@@ -39,26 +39,37 @@ export default function AssetInputGroup({
   };
 
   return (
-    <div className="bg-white rounded-[2rem] overflow-hidden border border-gray-100 shadow-sm transition-all duration-500 hover:shadow-md hover:border-gray-200">
-      <button 
+    <div className="overflow-hidden rounded-[2rem] border border-gray-100 bg-white shadow-sm transition-all duration-500 hover:border-gray-200 hover:shadow-md">
+      <button
         onClick={() => setIsExpanded(!isExpanded)}
-        className="w-full flex items-center justify-between p-6 bg-gray-50/50 hover:bg-gray-50 transition-colors"
+        className="flex w-full items-center justify-between bg-gray-50/50 p-6 transition-colors hover:bg-gray-50"
       >
         <div className="flex items-center gap-4">
-          <div className="w-1.5 h-6 rounded-full" style={{ backgroundColor: color }} />
-          <h3 className="text-sm font-black uppercase tracking-[0.2em] text-gray-800">{categoryLabel}</h3>
-          <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">{assets.length} items</span>
+          <div className="h-6 w-1.5 rounded-full" style={{ backgroundColor: color }} />
+          <h3 className="text-sm font-black tracking-[0.2em] text-gray-800 uppercase">
+            {categoryLabel}
+          </h3>
+          <span className="text-[10px] font-bold tracking-widest text-gray-400 uppercase">
+            {assets.length} items
+          </span>
         </div>
-        {isExpanded ? <ChevronUp className="w-4 h-4 text-gray-400" /> : <ChevronDown className="w-4 h-4 text-gray-400" />}
+        {isExpanded ? (
+          <ChevronUp className="h-4 w-4 text-gray-400" />
+        ) : (
+          <ChevronDown className="h-4 w-4 text-gray-400" />
+        )}
       </button>
 
       {isExpanded && (
-        <div className="p-6 space-y-4">
+        <div className="space-y-4 p-6">
           <div className="space-y-3">
             {assets.map((asset) => (
-              <div key={asset.id} className="group flex items-center gap-4 animate-in fade-in slide-in-from-left-2 duration-300">
+              <div
+                key={asset.id}
+                className="group animate-in fade-in slide-in-from-left-2 flex items-center gap-4 duration-300"
+              >
                 <div className="flex-1">
-                  <label className="block text-[10px] font-black uppercase tracking-widest text-gray-400 mb-1.5 ml-1">
+                  <label className="mb-1.5 ml-1 block text-[10px] font-black tracking-widest text-gray-400 uppercase">
                     {asset.label}
                   </label>
                   <div className="relative">
@@ -67,16 +78,18 @@ export default function AssetInputGroup({
                       value={asset.amount || ''}
                       onChange={(e) => onUpdateAmount(asset.id, Number(e.target.value))}
                       placeholder="0"
-                      className="w-full bg-white border border-gray-200 rounded-xl px-4 py-2.5 text-gray-900 font-medium focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/5 transition-all"
+                      className="w-full rounded-xl border border-gray-200 bg-white px-4 py-2.5 font-medium text-gray-900 transition-all focus:border-blue-500 focus:ring-4 focus:ring-blue-500/5 focus:outline-none"
                     />
-                    <span className="absolute right-4 top-1/2 -translate-y-1/2 text-[10px] font-black text-gray-300 tracking-widest">JPY</span>
+                    <span className="absolute top-1/2 right-4 -translate-y-1/2 text-[10px] font-black tracking-widest text-gray-300">
+                      JPY
+                    </span>
                   </div>
                 </div>
-                <button 
+                <button
                   onClick={() => onRemoveAsset(asset.id)}
-                  className="mt-5 p-2.5 rounded-xl bg-red-50/0 hover:bg-red-50 text-gray-400 hover:text-red-500 transition-all group-hover:opacity-100 md:opacity-0"
+                  className="mt-5 rounded-xl bg-red-50/0 p-2.5 text-gray-400 transition-all group-hover:opacity-100 hover:bg-red-50 hover:text-red-500 md:opacity-0"
                 >
-                  <Trash2 className="w-4 h-4" />
+                  <Trash2 className="h-4 w-4" />
                 </button>
               </div>
             ))}
@@ -88,14 +101,14 @@ export default function AssetInputGroup({
               value={newAssetName}
               onChange={(e) => setNewAssetName(e.target.value)}
               placeholder="Add Asset Name (e.g. BTC, Gold)"
-              className="flex-1 bg-gray-50/50 border border-dashed border-gray-200 rounded-xl px-4 py-2 text-xs text-gray-500 focus:outline-none focus:border-blue-400 transition-all"
+              className="flex-1 rounded-xl border border-dashed border-gray-200 bg-gray-50/50 px-4 py-2 text-xs text-gray-500 transition-all focus:border-blue-400 focus:outline-none"
             />
-            <button 
+            <button
               type="submit"
               disabled={!newAssetName.trim()}
-              className="p-2.5 rounded-xl bg-gray-100 hover:bg-blue-600 text-gray-500 hover:text-white disabled:opacity-30 transition-all"
+              className="rounded-xl bg-gray-100 p-2.5 text-gray-500 transition-all hover:bg-blue-600 hover:text-white disabled:opacity-30"
             >
-              <Plus className="w-4 h-4" />
+              <Plus className="h-4 w-4" />
             </button>
           </form>
         </div>

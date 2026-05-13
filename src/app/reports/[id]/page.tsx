@@ -21,9 +21,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { id } = await params;
   const decodedId = decodeURIComponent(id);
   const report = await fetchReportByFilename(decodedId);
-  
-  const description = report 
-    ? report.content.replace(/[#*`>!\[\]]/g, "").slice(0, 160).trim() + "..."
+
+  const description = report
+    ? report.content
+        .replace(/[#*`>!\[\]]/g, '')
+        .slice(0, 160)
+        .trim() + '...'
     : 'Market Intelligence Deep-Dive';
 
   return {
@@ -43,26 +46,26 @@ export default async function ReportDetailPage({ params }: PageProps) {
   }
 
   const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "NewsArticle",
-    "headline": report.title,
-    "datePublished": report.timestamp,
-    "author": {
-      "@type": "Organization",
-      "name": "Ayato Intelligence Engine"
+    '@context': 'https://schema.org',
+    '@type': 'NewsArticle',
+    headline: report.title,
+    datePublished: report.timestamp,
+    author: {
+      '@type': 'Organization',
+      name: 'Ayato Intelligence Engine',
     },
-    "publisher": {
-      "@type": "Organization",
-      "name": "Ayato Studio",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://ayato-studio.ai/favicon.ico"
-      }
-    }
+    publisher: {
+      '@type': 'Organization',
+      name: 'Ayato Studio',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://ayato-studio.ai/favicon.ico',
+      },
+    },
   };
 
   return (
-    <article className="container relative max-w-3xl py-6 lg:py-10 mx-auto px-4 sm:px-8">
+    <article className="relative container mx-auto max-w-3xl px-4 py-6 sm:px-8 lg:py-10">
       <ValueTracker id={report.slug} title={report.title} contentType="Report" />
       <script
         type="application/ld+json"
@@ -71,45 +74,45 @@ export default async function ReportDetailPage({ params }: PageProps) {
       <Link
         href="/reports"
         className={cn(
-          "absolute left-[-200px] top-14 hidden xl:inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground"
+          'hover:bg-accent hover:text-accent-foreground absolute top-14 left-[-200px] hidden items-center justify-center rounded-md text-sm font-medium transition-colors xl:inline-flex',
         )}
       >
         <Icons.chevronLeft className="mr-2 h-4 w-4" />
         See all reports
       </Link>
       <div>
-        <time
-          dateTime={report.timestamp}
-          className="block text-sm text-muted-foreground"
-        >
+        <time dateTime={report.timestamp} className="text-muted-foreground block text-sm">
           Published on {formatDateTime(report.timestamp)} (JST)
         </time>
-        <h1 className="mt-2 inline-block font-heading text-4xl leading-tight lg:text-5xl font-bold">
+        <h1 className="font-heading mt-2 inline-block text-4xl leading-tight font-bold lg:text-5xl">
           {report.title}
         </h1>
         <div className="mt-4 flex items-center space-x-3">
-            <span className="rounded-md bg-muted px-2 py-1 text-sm font-medium">
-                {report.category}
-            </span>
-            <span className="text-sm text-muted-foreground">
-                Market: {report.market}
-            </span>
+          <span className="bg-muted rounded-md px-2 py-1 text-sm font-medium">
+            {report.category}
+          </span>
+          <span className="text-muted-foreground text-sm">Market: {report.market}</span>
         </div>
       </div>
       <hr className="my-8" />
-      
+
       {/* デフォルトエクスポートを正しくインポートして適用 */}
       <ReportView report={report} />
-      
+
       {/* VQE: Utility Feedback */}
       <UtilityFeedback id={report.slug} title={report.title} className="mt-12" />
-      
+
       {/* CTA Section */}
       <CTASection theme="blue" className="mt-16" />
 
       <hr className="my-8" />
       <div className="flex justify-center py-6 lg:py-10">
-        <Link href="/reports" className={cn("inline-flex items-center justify-center rounded-md border border-input bg-background px-8 h-11 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground")}>
+        <Link
+          href="/reports"
+          className={cn(
+            'border-input bg-background hover:bg-accent hover:text-accent-foreground inline-flex h-11 items-center justify-center rounded-md border px-8 text-sm font-medium transition-colors',
+          )}
+        >
           <Icons.chevronLeft className="mr-2 h-4 w-4" />
           See all reports
         </Link>
@@ -119,20 +122,20 @@ export default async function ReportDetailPage({ params }: PageProps) {
 }
 
 export async function generateStaticParams() {
-    try {
-        const reports = await fetchReports();
-        const params = reports.map((report) => ({
-            id: report.slug, // Use global safety slug
-        }));
-        
-        if (params.length === 0) {
-            console.warn('generateStaticParams: No reports found, providing fallback path.');
-            return [{ id: 'draft-initial' }];
-        }
-        
-        return params;
-    } catch (error) {
-        console.error('Failed to generate static params for reports:', error);
-        return [{ id: 'draft-error' }]; 
+  try {
+    const reports = await fetchReports();
+    const params = reports.map((report) => ({
+      id: report.slug, // Use global safety slug
+    }));
+
+    if (params.length === 0) {
+      console.warn('generateStaticParams: No reports found, providing fallback path.');
+      return [{ id: 'draft-initial' }];
     }
+
+    return params;
+  } catch (error) {
+    console.error('Failed to generate static params for reports:', error);
+    return [{ id: 'draft-error' }];
+  }
 }

@@ -3,22 +3,22 @@
  * Copyright (C) 2026 Ayato Studio <https://ayato-studio.ai>
  */
 
-import { 
-  PortfolioAsset, 
-  AssetResult, 
-  CategoryResult, 
-  RebalancePlan, 
-  CategoryKey, 
+import {
+  PortfolioAsset,
+  AssetResult,
+  CategoryResult,
+  RebalancePlan,
+  CategoryKey,
   RebalanceAction,
   AssetBreakdown,
-  CategoryConfig
+  CategoryConfig,
 } from './types';
 
 /**
  * Calculate basic results for each asset.
  */
 export function calcAssetResults(assets: PortfolioAsset[]): AssetResult[] {
-  return assets.map(asset => ({
+  return assets.map((asset) => ({
     ...asset,
     valueInBase: asset.amount,
   }));
@@ -28,16 +28,16 @@ export function calcAssetResults(assets: PortfolioAsset[]): AssetResult[] {
  * Aggregate by category and calculate deviations.
  */
 export function calcCategoryResults(
-  assetResults: AssetResult[], 
-  portfolioTotal: number, 
+  assetResults: AssetResult[],
+  portfolioTotal: number,
   okThreshold: number,
-  categoryConfigs: Record<CategoryKey, CategoryConfig>
+  categoryConfigs: Record<CategoryKey, CategoryConfig>,
 ): CategoryResult[] {
   const categories = Object.keys(categoryConfigs) as CategoryKey[];
-  
-  return categories.map(key => {
+
+  return categories.map((key) => {
     const config = categoryConfigs[key];
-    const assets = assetResults.filter(a => a.category === key);
+    const assets = assetResults.filter((a) => a.category === key);
     const currentTotal = assets.reduce((sum, a) => sum + a.valueInBase, 0);
     const targetTotal = portfolioTotal * config.ratio;
     const deviation = currentTotal - targetTotal;
@@ -45,9 +45,7 @@ export function calcCategoryResults(
     const deviationRatio = currentRatio - config.ratio;
 
     const status: 'OVER' | 'UNDER' | 'OK' =
-      Math.abs(deviationRatio) <= okThreshold ? 'OK'
-      : deviation > 0 ? 'OVER'
-      : 'UNDER';
+      Math.abs(deviationRatio) <= okThreshold ? 'OK' : deviation > 0 ? 'OVER' : 'UNDER';
 
     return {
       key,
@@ -70,11 +68,11 @@ export function calcCategoryResults(
  */
 function calcBuyBreakdown(cat: CategoryResult, totalBuy: number): AssetBreakdown[] {
   const totalCurrent = cat.assets.reduce((s, a) => s + a.valueInBase, 0);
-  return cat.assets.map(asset => {
+  return cat.assets.map((asset) => {
     const ratio = totalCurrent > 0 ? asset.valueInBase / totalCurrent : 1 / cat.assets.length;
     return {
-      id:    asset.id,
-      label:  asset.label,
+      id: asset.id,
+      label: asset.label,
       ratio,
       amount: totalBuy * ratio,
     };
@@ -86,36 +84,36 @@ function calcBuyBreakdown(cat: CategoryResult, totalBuy: number): AssetBreakdown
  */
 export function generateRebalancePlan(
   categoryResults: CategoryResult[],
-  portfolioTotal: number
+  portfolioTotal: number,
 ): RebalancePlan {
   // 1. Calculate minimum required total to reach targets without selling.
   // We exclude CASH from being a "floor" trigger because it's okay to spend it.
   const requiredTotals = categoryResults
-    .filter(cat => cat.key !== 'CASH')
-    .map(cat => 
-      cat.targetRatio > 0 ? cat.currentTotal / cat.targetRatio : 0
-    );
-  
+    .filter((cat) => cat.key !== 'CASH')
+    .map((cat) => (cat.targetRatio > 0 ? cat.currentTotal / cat.targetRatio : 0));
+
   const newTotal = Math.max(...requiredTotals, portfolioTotal);
   const requiredInvestment = Math.max(0, newTotal - portfolioTotal);
 
   // 2. Identify buy actions for each category.
-  const buyActions: RebalanceAction[] = categoryResults.map(cat => {
-    const newTargetAmount = newTotal * cat.targetRatio;
-    const buyAmount = Math.max(0, newTargetAmount - cat.currentTotal);
+  const buyActions: RebalanceAction[] = categoryResults
+    .map((cat) => {
+      const newTargetAmount = newTotal * cat.targetRatio;
+      const buyAmount = Math.max(0, newTargetAmount - cat.currentTotal);
 
-    return {
-      category: cat.key,
-      label:    cat.label,
-      amount:   buyAmount,
-      assetBreakdown: calcBuyBreakdown(cat, buyAmount),
-    };
-  }).filter(action => action.amount > 0.01);
+      return {
+        category: cat.key,
+        label: cat.label,
+        amount: buyAmount,
+        assetBreakdown: calcBuyBreakdown(cat, buyAmount),
+      };
+    })
+    .filter((action) => action.amount > 0.01);
 
-  return { 
-    currentTotal: portfolioTotal, 
-    targetTotal: newTotal, 
-    requiredInvestment, 
-    buyActions 
+  return {
+    currentTotal: portfolioTotal,
+    targetTotal: newTotal,
+    requiredInvestment,
+    buyActions,
   };
 }

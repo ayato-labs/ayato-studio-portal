@@ -26,38 +26,38 @@ export interface AssetResult extends PortfolioAsset {
 }
 
 export interface CategoryResult {
-  key:           CategoryKey;
-  label:         string;
-  color:         string;
-  currentTotal:  number;
-  targetTotal:   number;
-  targetRatio:   number;
-  currentRatio:  number;
-  deviation:     number;
+  key: CategoryKey;
+  label: string;
+  color: string;
+  currentTotal: number;
+  targetTotal: number;
+  targetRatio: number;
+  currentRatio: number;
+  deviation: number;
   deviationRatio: number;
-  status:        'OVER' | 'UNDER' | 'OK';
-  assets:        AssetResult[];
+  status: 'OVER' | 'UNDER' | 'OK';
+  assets: AssetResult[];
 }
 
 export interface AssetBreakdown {
-  id:     string;
-  label:  string;
+  id: string;
+  label: string;
   amount: number;
-  ratio:  number;
+  ratio: number;
 }
 
 export interface RebalanceAction {
-  category:       CategoryKey;
-  label:          string;
-  amount:         number;
+  category: CategoryKey;
+  label: string;
+  amount: number;
   assetBreakdown: AssetBreakdown[];
 }
 
 export interface RebalancePlan {
-  currentTotal:       number;
-  targetTotal:        number;
+  currentTotal: number;
+  targetTotal: number;
   requiredInvestment: number;
-  buyActions:         RebalanceAction[];
+  buyActions: RebalanceAction[];
 }
 
 export interface CalculationResult {

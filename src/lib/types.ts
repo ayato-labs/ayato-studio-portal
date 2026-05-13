@@ -1,6 +1,5 @@
-
 export interface Report {
-  id: string; 
+  id: string;
   filename: string; // The original URL or unique identifier (item_id in DB)
   slug: string; // Used for safe FS paths and routing
   title: string;
@@ -24,14 +23,14 @@ export interface LocalArticle {
 }
 
 export interface Organization {
-    id: string;
-    name: string;
-    api_key_hash: string;
-    user_id: string;
-    plan_type: string;
-    request_limit: number;
-    current_usage_count: number;
-    status: string;
+  id: string;
+  name: string;
+  api_key_hash: string;
+  user_id: string;
+  plan_type: string;
+  request_limit: number;
+  current_usage_count: number;
+  status: string;
 }
 
 export interface NoteArticle {

@@ -17,7 +17,7 @@ test.describe('Homepage Visibility', () => {
 
   test('should have essential navigation links', async ({ page }) => {
     await page.goto('/');
-    
+
     // Check for common navigation elements if any
     // e.g., Footer or Header links
     const footer = page.locator('footer');

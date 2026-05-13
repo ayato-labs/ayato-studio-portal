@@ -1,6 +1,6 @@
-import * as gtag from "./gtag";
+import * as gtag from './gtag';
 
-export type ContentType = "Report" | "App" | "Blog" | "Asset" | "Service";
+export type ContentType = 'Report' | 'App' | 'Blog' | 'Asset' | 'Service';
 
 /**
  * Ayato Studio Value Metrics
@@ -13,8 +13,8 @@ export const valueMetrics = {
    */
   trackInsightAcquisition: (reportId: string, title: string) => {
     gtag.event({
-      action: "insight_acquisition",
-      category: "Intelligence",
+      action: 'insight_acquisition',
+      category: 'Intelligence',
       label: `${reportId}: ${title}`,
       value: 1,
     });
@@ -25,8 +25,8 @@ export const valueMetrics = {
    */
   trackUtilityFeedback: (reportId: string, isUseful: boolean) => {
     gtag.event({
-      action: "utility_feedback",
-      category: "Value",
+      action: 'utility_feedback',
+      category: 'Value',
       label: reportId,
       value: isUseful ? 1 : 0,
     });
@@ -37,8 +37,8 @@ export const valueMetrics = {
    */
   trackResearchEfficiency: (reportId: string, minutesSaved: number) => {
     gtag.event({
-      action: "research_efficiency",
-      category: "ROI",
+      action: 'research_efficiency',
+      category: 'ROI',
       label: reportId,
       value: minutesSaved,
     });
@@ -49,8 +49,8 @@ export const valueMetrics = {
    */
   trackActionTriggered: (reportId: string, actionName: string) => {
     gtag.event({
-      action: "action_triggered",
-      category: "Decision",
+      action: 'action_triggered',
+      category: 'Decision',
       label: `${reportId}: ${actionName}`,
       value: 1,
     });

@@ -6,36 +6,32 @@
 'use client';
 
 import { useState, useMemo, useCallback, useEffect, useRef } from 'react';
-import { 
-  PortfolioAsset, 
-  CalculationResult, 
+import {
+  PortfolioAsset,
+  CalculationResult,
   CategoryKey,
-  CategoryConfig
+  CategoryConfig,
 } from '../lib/apps/portfolio/types';
-import { 
-  STORAGE_KEYS, 
-  DEFAULT_CATEGORIES, 
-  PRESET_ASSETS 
-} from '../lib/apps/portfolio/constants';
-import { 
-  calcAssetResults, 
-  calcCategoryResults, 
-  generateRebalancePlan 
+import { STORAGE_KEYS, DEFAULT_CATEGORIES, PRESET_ASSETS } from '../lib/apps/portfolio/constants';
+import {
+  calcAssetResults,
+  calcCategoryResults,
+  generateRebalancePlan,
 } from '../lib/apps/portfolio/calculator';
 
 export function usePortfolio() {
   const [isHydrated, setIsHydrated] = useState(false);
   const [assets, setAssets] = useState<PortfolioAsset[]>([]);
-  const [categoryConfigs, setCategoryConfigs] = 
+  const [categoryConfigs, setCategoryConfigs] =
     useState<Record<CategoryKey, CategoryConfig>>(DEFAULT_CATEGORIES);
   const [okThreshold, setOkThreshold] = useState(0.02);
-  
+
   const hasInitialized = useRef(false);
 
   // Initial hydration from localStorage
   useEffect(() => {
     if (hasInitialized.current) return;
-    
+
     const savedAssets = localStorage.getItem(STORAGE_KEYS.ASSETS);
     const savedConfig = localStorage.getItem(STORAGE_KEYS.CONFIG);
     const savedSettings = localStorage.getItem(STORAGE_KEYS.SETTINGS);
@@ -44,7 +40,7 @@ export function usePortfolio() {
     if (savedAssets) setAssets(JSON.parse(savedAssets));
     else {
       // eslint-disable-next-line react-hooks/set-state-in-effect
-      setAssets(PRESET_ASSETS.map(p => ({ ...p, amount: 0 })));
+      setAssets(PRESET_ASSETS.map((p) => ({ ...p, amount: 0 })));
     }
 
     // eslint-disable-next-line react-hooks/set-state-in-effect
@@ -78,12 +74,15 @@ export function usePortfolio() {
   // Main calculation
   const result = useMemo<CalculationResult | null>(() => {
     if (!isHydrated) return null;
-    
+
     const assetResults = calcAssetResults(assets);
     const portfolioTotal = assetResults.reduce((sum, a) => sum + a.valueInBase, 0);
-    
+
     const categoryResults = calcCategoryResults(
-      assetResults, portfolioTotal, okThreshold, categoryConfigs
+      assetResults,
+      portfolioTotal,
+      okThreshold,
+      categoryConfigs,
     );
     const rebalancePlan = generateRebalancePlan(categoryResults, portfolioTotal);
 
@@ -92,7 +91,7 @@ export function usePortfolio() {
 
   // Actions
   const updateAssetAmount = useCallback((id: string, amount: number) => {
-    setAssets(prev => prev.map(a => a.id === id ? { ...a, amount } : a));
+    setAssets((prev) => prev.map((a) => (a.id === id ? { ...a, amount } : a)));
   }, []);
 
   const addAsset = useCallback((label: string, category: CategoryKey) => {
@@ -102,22 +101,22 @@ export function usePortfolio() {
       amount: 0,
       category,
     };
-    setAssets(prev => [...prev, newAsset]);
+    setAssets((prev) => [...prev, newAsset]);
   }, []);
 
   const removeAsset = useCallback((id: string) => {
-    setAssets(prev => prev.filter(a => a.id !== id));
+    setAssets((prev) => prev.filter((a) => a.id !== id));
   }, []);
 
   const updateTargetRatio = useCallback((key: CategoryKey, ratio: number) => {
-    setCategoryConfigs(prev => ({
+    setCategoryConfigs((prev) => ({
       ...prev,
-      [key]: { ...prev[key], ratio }
+      [key]: { ...prev[key], ratio },
     }));
   }, []);
 
   const resetData = useCallback(() => {
-    setAssets(PRESET_ASSETS.map(p => ({ ...p, amount: 0 })));
+    setAssets(PRESET_ASSETS.map((p) => ({ ...p, amount: 0 })));
     setCategoryConfigs(DEFAULT_CATEGORIES);
     setOkThreshold(0.02);
   }, []);
