@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/ayato-labs/ayato-studio-portal/compare/v1.3.2...v1.4.0) (2026-05-14)
+
+
+### Features
+
+* add static pages for privacy policy, terms of service, and about section ([2ca72de](https://github.com/ayato-labs/ayato-studio-portal/commit/2ca72de47c696a98d230c6a7af119712e374d0d9))
+
 ## [1.3.2](https://github.com/ayato-labs/ayato-studio-portal/compare/v1.3.1...v1.3.2) (2026-05-14)
 
 
