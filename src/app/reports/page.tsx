@@ -1,33 +1,48 @@
 import { fetchReports } from '@/lib/api';
-import { PostItem } from '@/components/features/blog/PostItem';
+import { getLocalArticles } from '@/lib/local-content';
+import { IntelligenceTabs } from '@/components/features/reports/IntelligenceTabs';
+import { Report } from '@/lib/types';
 
 export const revalidate = 60;
 
 export default async function ReportsPage() {
-  const reports = await fetchReports();
+  // Stock: Manually curated insights from local files
+  const stockArticles = getLocalArticles('blog');
+  const stockReports: Report[] = stockArticles.map((a) => ({
+    id: a.slug,
+    filename: a.slug,
+    slug: a.slug,
+    title: a.title,
+    category: a.category || 'Human Insight',
+    language: 'jp',
+    timestamp: a.date,
+    market: 'Global',
+    author: 'ayato-labs',
+    content: a.content,
+  }));
+
+  // Flow: Dynamic AI-generated market intelligence from Supabase
+  const flowReports = await fetchReports();
 
   return (
-    <div className="container mx-auto max-w-4xl px-4 py-6 sm:px-8 lg:py-10">
-      <div className="flex flex-col items-start gap-4 md:flex-row md:justify-between md:gap-8">
-        <div className="flex-1 space-y-4">
-          <h1 className="font-heading inline-block text-4xl font-bold tracking-tight lg:text-5xl">
-            Intelligence Reports
-          </h1>
-          <p className="text-muted-foreground text-xl">
-            Daily synthesized market research from global tech sources.
-          </p>
-        </div>
+    <div className="container mx-auto max-w-6xl px-4 py-12 sm:px-8 lg:py-20">
+      <div className="mb-16 flex flex-col items-center space-y-6 text-center">
+        <h1 className="text-5xl font-black tracking-tighter text-white uppercase md:text-7xl">
+          Intelligence Hub
+        </h1>
+        <p className="max-w-2xl text-xl leading-relaxed text-gray-500">
+          Strategic deep dives meets real-time market news.
+          AI-curated, human-verified.
+        </p>
       </div>
-      <hr className="my-8" />
-      {reports?.length ? (
-        <div className="grid gap-10 sm:grid-cols-2">
-          {reports.map((report) => (
-            <PostItem key={report.filename} post={report} />
-          ))}
-        </div>
-      ) : (
-        <div className="flex flex-col items-center justify-center space-y-4 py-10 text-center">
-          <p className="text-muted-foreground text-xl">No reports found.</p>
+
+      <IntelligenceTabs stockReports={stockReports} flowReports={flowReports} />
+
+      {stockReports.length === 0 && flowReports.length === 0 && (
+        <div className="flex flex-col items-center justify-center space-y-4 py-20 text-center">
+          <p className="text-xl font-bold tracking-widest text-gray-700 uppercase">
+            No reports found.
+          </p>
         </div>
       )}
     </div>
