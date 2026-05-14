@@ -4,9 +4,38 @@ import { formatDate } from '@/lib/utils';
 
 interface ReportCardProps {
   report: Report;
+  variant?: 'default' | 'minimal';
 }
 
-export default function ReportCard({ report }: ReportCardProps) {
+export default function ReportCard({ report, variant = 'default' }: ReportCardProps) {
+  if (variant === 'minimal') {
+    return (
+      <Link
+        href={`/reports/${report.slug}`}
+        className="group flex items-center justify-between gap-4 rounded-2xl border border-white/5 bg-white/[0.01] p-4 transition-all duration-300 hover:border-blue-500/20 hover:bg-white/[0.03]"
+      >
+        <div className="flex flex-col gap-1 overflow-hidden">
+          <div className="flex items-center gap-2">
+            <span className="text-[8px] font-black tracking-widest text-blue-500/60 uppercase">
+              {report.category}
+            </span>
+            <span className="text-white/20 text-[8px] font-bold tracking-widest uppercase">
+              {formatDate(report.timestamp)}
+            </span>
+          </div>
+          <h3 className="truncate text-sm font-bold text-white/80 transition-colors group-hover:text-blue-400">
+            {report.title}
+          </h3>
+        </div>
+        <div className="text-blue-500/0 transition-all group-hover:text-blue-500">
+          <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
+        </div>
+      </Link>
+    );
+  }
+
   return (
     <Link
       href={`/reports/${report.slug}`}
