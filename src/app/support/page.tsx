@@ -9,34 +9,37 @@ const OFUSE_URL = 'https://ofuse.me/21cfc1d2';
 function SupportPageContent() {
   return (
     <div className="mx-auto max-w-4xl">
-      {/* Developer Note: The "Why" */}
+      {/* The Philosophy of Independence */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="mb-16 rounded-[2.5rem] border border-white/5 bg-white/[0.02] px-8 py-10 backdrop-blur-xl"
+        className="mb-16 rounded-[2.5rem] border border-white/5 bg-white/[0.02] px-8 py-12 backdrop-blur-xl"
       >
-        <div className="flex items-start gap-6">
-          <div className="rounded-2xl bg-blue-500/10 p-3 text-blue-400">
-            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <div className="flex flex-col items-center gap-8 text-center md:flex-row md:text-left">
+          <div className="rounded-2xl bg-blue-500/10 p-4 text-blue-400">
+            <svg className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                strokeWidth={2}
-                d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                strokeWidth={1.5}
+                d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
               />
             </svg>
           </div>
           <div>
             <h4 className="mb-4 text-xs font-black tracking-[0.4em] text-blue-500 uppercase">
-              Architect&apos;s Note // Mission & Privacy
+              The Philosophy // Independence of Intelligence
             </h4>
-            <p className="text-sm leading-relaxed font-bold tracking-tight text-gray-400">
-              Ayato Studio
-              のポートラル構築にあたり、当初は独自の決済システム（Stripe）の実装を試みました。しかし、個人開発者としてのプライバシー保護と、法的な情報の透明性を両立させる最適な解として、現在はあえて「特定の価格設定」を持たない自由な支援の形を選択しています。
-              <br />
-              <br />
-              新卒エンジニアとしての挑戦を、より健全で安全な形で継続するため、現在は外部プラットフォーム（OFUSE）を唯一の支援窓口としています。
+            <p className="text-base leading-relaxed font-bold tracking-tight text-gray-300">
+              Ayato Studio は、既存の金融資本や広告モデルから完全に独立した存在です。
+              私たちが大手決済プラットフォームによるユーザー追跡や、画一的な定期購読モデルをあえて採用しないのは、
+              情報の「受け手」を管理・分析する従来のデータビジネス構造から決別するためです。
+            </p>
+            <p className="mt-4 text-sm leading-relaxed text-gray-500">
+              私たちの知性は、広告主ではなく、あなたに向いています。
+              ここでの支援は、単なる寄付ではありません。それは、マーケットの深層にある「バイアスのない真実」を維持し、
+              プライバシーが究極まで守られた新しい情報の形を共に作り上げるための、共同投資です。
             </p>
           </div>
         </div>
@@ -49,24 +52,23 @@ function SupportPageContent() {
         transition={{ duration: 0.8, delay: 0.2 }}
         className="group relative mb-12"
       >
-        <div className="absolute -inset-1 rounded-[3rem] bg-gradient-to-r from-blue-600 via-purple-600 to-amber-600 opacity-25 blur transition duration-1000 group-hover:opacity-60 group-hover:duration-200"></div>
+        <div className="absolute -inset-1 rounded-[3rem] bg-gradient-to-r from-blue-600 via-purple-600 to-amber-600 opacity-20 blur transition duration-1000 group-hover:opacity-50 group-hover:duration-200"></div>
         <div className="relative overflow-hidden rounded-[3rem] border border-white/10 bg-black/40 p-12 text-center backdrop-blur-3xl md:p-20">
           <div className="mx-auto mb-12 max-w-xl">
             <h3 className="mb-6 text-[10px] font-black tracking-[0.5em] text-blue-500 uppercase">
-              Support Interface
+              Patronage Gateway
             </h3>
             <h2 className="mb-8 text-5xl leading-[0.9] font-black tracking-tighter text-white uppercase md:text-7xl">
-              BACK THE
+              PROTECT THE
               <br />
               <span className="bg-gradient-to-r from-blue-500 to-indigo-500 bg-clip-text text-transparent">
-                MISSION
+                UNBIASED
               </span>
             </h2>
             <p className="text-lg leading-relaxed font-medium tracking-tight text-gray-400">
-              OFUSEを通じて、金額に縛られない自由な形でのご支援が可能です。
+              OFUSE を通じて、独立系リサーチの継続をご支援いただけます。
               <br />
-              一文字1円からのメッセージが、Ayato Studio
-              の継続的なリサーチと開発を支える大きな力となります。
+              一文字 1 円からのメッセージが、Ayato Studio の「独立性」を維持する最も純粋なエネルギーとなります。
             </p>
           </div>
 
@@ -76,7 +78,7 @@ function SupportPageContent() {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-6 rounded-full bg-white px-12 py-7 text-xs font-black tracking-[0.3em] text-black uppercase shadow-2xl shadow-blue-500/20 transition-all duration-300 hover:scale-105 active:scale-95"
           >
-            Support via OFUSE
+            Become a Patron via OFUSE
             <svg
               className="h-5 w-5 transition-transform group-hover:translate-x-1"
               fill="none"
@@ -95,7 +97,7 @@ function SupportPageContent() {
           <div className="mt-12 flex items-center justify-center gap-8 opacity-20 transition-opacity duration-700 group-hover:opacity-40">
             <div className="h-px w-24 bg-white/50" />
             <div className="text-[10px] font-black tracking-widest text-white uppercase">
-              Secure Platform Gateway
+              Privacy-First Platform
             </div>
             <div className="h-px w-24 bg-white/50" />
           </div>
@@ -108,8 +110,11 @@ function SupportPageContent() {
         transition={{ delay: 1 }}
         className="text-center text-[8px] font-black tracking-[0.5em] text-gray-500 uppercase"
       >
-        Archived Prototype: Stripe v1.0 Engine // Suspended for Privacy Protection
+        Independent Intelligence Engine // Powered by your trust
       </motion.p>
+    </div>
+  );
+}
     </div>
   );
 }
