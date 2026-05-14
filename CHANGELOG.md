@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/ayato-labs/ayato-studio-portal/compare/v1.3.0...v1.3.1) (2026-05-14)
+
+
+### Bug Fixes
+
+* **redesign:** fix TypeScript error by importing correct Report type in Home page ([d153020](https://github.com/ayato-labs/ayato-studio-portal/commit/d153020e1b2c84309334e98a4a172a1a2b5f4020))
+
 # [1.3.0](https://github.com/ayato-labs/ayato-studio-portal/compare/v1.2.0...v1.3.0) (2026-05-14)
 
 
