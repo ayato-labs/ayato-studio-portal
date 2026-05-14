@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/ayato-labs/ayato-studio-portal/compare/v1.2.0...v1.3.0) (2026-05-14)
+
+
+### Features
+
+* merge minimalist redesign to main ([af1502d](https://github.com/ayato-labs/ayato-studio-portal/commit/af1502d4f832198e13f796fee873b87abe405c55))
+
 # [1.2.0](https://github.com/ayato-labs/ayato-studio-portal/compare/v1.1.0...v1.2.0) (2026-05-13)
 
 
