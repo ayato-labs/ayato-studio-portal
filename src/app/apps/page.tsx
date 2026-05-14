@@ -5,7 +5,7 @@ import Link from 'next/link';
 export const metadata = {
   title: 'Applications - Ayato Studio',
   description:
-    'エージェント型AI（Agentic AI）開発の専門家が運営する AI アプリケーション・エコシステム。最前線の知見を活用したニッチなツールを提供します。',
+    'AIハーネス・エンジニアリング（AI Harness Engineering）の専門家が運営する AI アプリケーション・エコシステム。最前線の知見を活用したニッチなツールを提供します。',
 };
 
 async function AppsList() {

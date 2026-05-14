@@ -31,7 +31,7 @@ const inter = Inter({ subsets: ['latin'] });
 export const metadata: Metadata = {
   title: 'Ayato Studio Portal | Market Intelligence AI',
   description:
-    'エージェント型AI（Agentic AI）開発の専門家が運営する、AIを駆使したインテリジェンス・プラットフォーム。AI開発の最前線から得られる知見とAIを活用してニッチな情報を配信します。',
+    'AIハーネス・エンジニアリング（AI Harness Engineering）の専門家が運営する、AIを駆使したインテリジェンス・プラットフォーム。AI開発の最前線から得られる知見とAIを活用してニッチな情報を配信します。',
   keywords: ['AI', 'Tech', 'Intelligence', 'Market Analysis', 'Research'],
   authors: [{ name: 'Ayato Studio' }],
 };
