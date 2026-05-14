@@ -21,6 +21,7 @@ import { fetchReports } from '@/lib/api';
 import { getLocalArticles, getAppsList } from '@/lib/local-content';
 import { LocalArticle } from '@/lib/types';
 import ReportCard from '@/components/features/reports/ReportCard';
+import { IntelligenceTabs } from '@/components/features/reports/IntelligenceTabs';
 import { NoteFeedSection } from '@/components/features/blog/NoteFeedSection';
 import Link from 'next/link';
 
@@ -87,40 +88,8 @@ async function IntelligenceSection() {
   const flowReports = allReports.filter((r) => r.category !== 'Weekly').slice(0, 6);
 
   return (
-    <div className="space-y-24">
-      {/* Strategic Stock */}
-      {stockReports.length > 0 && (
-        <div className="space-y-12">
-          <div className="flex items-center gap-4">
-            <span className="h-px w-8 bg-blue-500/30"></span>
-            <h4 className="text-[10px] font-black tracking-[0.4em] text-blue-500 uppercase">
-              Strategic Insights
-            </h4>
-          </div>
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-            {stockReports.map((report) => (
-              <ReportCard key={report.id} report={report} />
-            ))}
-          </div>
-        </div>
-      )}
-
-      {/* Market Flow */}
-      {flowReports.length > 0 && (
-        <div className="space-y-12">
-          <div className="flex items-center gap-4">
-            <span className="h-px w-8 bg-gray-500/30"></span>
-            <h4 className="text-[10px] font-black tracking-[0.4em] text-gray-500 uppercase">
-              Market Flow (News)
-            </h4>
-          </div>
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-            {flowReports.map((report) => (
-              <ReportCard key={report.id} report={report} variant="minimal" />
-            ))}
-          </div>
-        </div>
-      )}
+    <div className="space-y-12">
+      <IntelligenceTabs stockReports={stockReports} flowReports={flowReports} />
 
       <div className="flex justify-center pt-8">
         <Link
