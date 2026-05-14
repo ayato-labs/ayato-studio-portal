@@ -115,9 +115,6 @@ function SupportPageContent() {
     </div>
   );
 }
-    </div>
-  );
-}
 
 export default function SupportPage() {
   return (
