@@ -12,23 +12,22 @@ export default function ReportCard({ report, variant = 'default' }: ReportCardPr
     return (
       <Link
         href={`/reports/${report.slug}`}
-        className="group flex items-center justify-between gap-4 rounded-2xl border border-white/5 bg-white/[0.01] p-4 transition-all duration-300 hover:border-blue-500/20 hover:bg-white/[0.03]"
+        className="group relative flex flex-col gap-2 rounded-xl border border-white/5 bg-white/[0.01] p-4 transition-all duration-300 hover:border-blue-500/20 hover:bg-white/[0.04]"
       >
-        <div className="flex flex-col gap-1 overflow-hidden">
-          <div className="flex items-center gap-2">
-            <span className="text-[8px] font-black tracking-widest text-blue-500/60 uppercase">
-              {report.category}
-            </span>
-            <span className="text-white/20 text-[8px] font-bold tracking-widest uppercase">
-              {formatDate(report.timestamp)}
-            </span>
-          </div>
-          <h3 className="truncate text-sm font-bold text-white/80 transition-colors group-hover:text-blue-400">
-            {report.title}
-          </h3>
+        <div className="flex items-center gap-3">
+          <span className="text-[10px] font-black tracking-widest text-blue-500/60 uppercase">
+            {report.category}
+          </span>
+          <span className="h-px w-4 bg-white/10"></span>
+          <span className="text-white/30 text-[10px] font-bold tracking-widest uppercase">
+            {formatDate(report.timestamp)}
+          </span>
         </div>
-        <div className="text-blue-500/0 transition-all group-hover:text-blue-500">
-          <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <h3 className="line-clamp-1 text-base font-bold text-white/90 transition-colors group-hover:text-blue-400">
+          {report.title}
+        </h3>
+        <div className="absolute top-1/2 right-4 -translate-y-1/2 opacity-0 transition-all group-hover:translate-x-1 group-hover:opacity-100">
+          <svg className="h-4 w-4 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg>
         </div>

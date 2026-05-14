@@ -56,12 +56,12 @@ export function IntelligenceTabs({ stockReports, flowReports }: IntelligenceTabs
             )}
           </div>
         ) : (
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+          <div className="mx-auto max-w-3xl space-y-3">
             {flowReports.map((report) => (
               <ReportCard key={report.id} report={report} variant="minimal" />
             ))}
             {flowReports.length === 0 && (
-              <div className="col-span-2 py-20 text-center text-xs font-bold tracking-widest text-gray-700 uppercase">
+              <div className="py-20 text-center text-xs font-bold tracking-widest text-gray-700 uppercase">
                 No news flow found.
               </div>
             )}
