@@ -4,7 +4,7 @@ import Link from 'next/link';
 export const metadata = {
   title: 'About Ayato Studio | Independent Market Intelligence',
   description:
-    'AIハーネス・エンジニアリング（AI Harness Engineering）を駆使し、磨き上げられた知性だけを抽出するインテリジェンス・プラットフォーム。Deep-Techやクリーンエネルギーの深層を解き明かします。',
+    'AIハーネス・エンジニアリング（AI Harness Engineering）を駆使し、磨き上げられた知性だけを抽出するインテリジェンス・プラットフォーム。情報の深層を解き明かします。',
 };
 
 export default function AboutPage() {
@@ -50,12 +50,12 @@ export default function AboutPage() {
               </h2>
               <p>
                 私たちは単に AI を使って記事を書いているのではありません。
-                AI の「暴走」を抑え、文脈を正確に捉えさせるための独自の品質管理機構——
+                AI の「暴走」を抑え、文脈を正確に捉えさせるための品質管理機構——
                 <strong>AI Harness Engineering</strong> を基盤としています。
               </p>
               <p className="mt-4">
                 この技術により、膨大なデータから「何が起きているか」だけでなく、
-                「なぜそれが重要なのか」という深層のインサイトを、極めて高い信頼性で抽出します。
+                「なぜそれが重要なのか」という深層のインサイトを、抽出します。
               </p>
             </section>
 
@@ -99,7 +99,7 @@ export default function AboutPage() {
                 <div>
                   <p className="mb-2 text-xs font-black text-white uppercase tracking-tighter">Human-Centric Design</p>
                   <p className="text-xs leading-relaxed text-gray-500">
-                    AI はあくまで手段。最終的な価値は、読者の意思決定をいかに加速させるかにあります。
+                    AI はあくまで手段。最終的な価値は、高い質の意思決定をいかに加速させ多く可能にすることにあります。
                   </p>
                 </div>
               </div>

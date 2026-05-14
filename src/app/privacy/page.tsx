@@ -79,39 +79,31 @@ export default function PrivacyPage() {
               <p>
                 本サービスでは、ユーザー体験の向上および広告配信のために Cookie を使用しています。
               </p>
-              <div className="grid gap-4 md:grid-cols-2">
+              <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                 <div className="rounded-xl border border-white/5 bg-white/[0.03] p-5">
-                  <p className="mb-2 font-bold text-white">Google Analytics</p>
+                  <p className="mb-2 font-bold text-white">Google Analytics 4</p>
                   <p className="text-sm text-gray-400">
-                    Google LLC が提供するアクセス解析ツールです。 Cookie
-                    を使用してトラフィックデータを収集しますが、個人を特定する情報は含まれません。
-                    詳細は{' '}
-                    <a
-                      href="https://policies.google.com/privacy"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-blue-400 hover:text-blue-300"
-                    >
-                      Google プライバシーポリシー
-                    </a>{' '}
+                    アクセス解析ツールです。Cookieを使用してデータを収集します。詳細は
+                    <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline ml-1">
+                      プライバシーポリシー
+                    </a>
                     をご確認ください。
                   </p>
                 </div>
                 <div className="rounded-xl border border-white/5 bg-white/[0.03] p-5">
                   <p className="mb-2 font-bold text-white">Google AdSense</p>
                   <p className="text-sm text-gray-400">
-                    Cookie を使用してユーザーの過去のアクセス情報に基づき、
-                    関連性の高い広告を表示します。ユーザーは
-                    <a
-                      href="https://adssettings.google.com/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-blue-400 hover:text-blue-300"
-                    >
-                      {' '}
-                      広告設定{' '}
+                    広告配信サービスです。
+                    <a href="https://adssettings.google.com/" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline ml-1">
+                      広告設定
                     </a>
                     からパーソナライズ広告を無効にできます。
+                  </p>
+                </div>
+                <div className="rounded-xl border border-white/5 bg-white/[0.03] p-5">
+                  <p className="mb-2 font-bold text-white">Google Ads</p>
+                  <p className="text-sm text-gray-400">
+                    広告効果測定ツールです。コンバージョン測定等のためにCookieを使用します。
                   </p>
                 </div>
               </div>

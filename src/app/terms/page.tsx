@@ -89,29 +89,26 @@ export default function TermsPage() {
               <p>
                 本サービスでは、運営費の一部を捻出するために、以下の第三者配信の広告サービスを利用しています。
               </p>
-              <div className="grid gap-4 md:grid-cols-2">
+              <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                 <div className="rounded-xl border border-white/5 bg-white/[0.03] p-5">
-                  <p className="mb-2 font-bold text-white">Google AdSense</p>
+                  <p className="mb-2 font-bold text-white">Google Analytics 4 (GA4)</p>
                   <p className="text-sm text-gray-400">
-                    Google LLC が提供する広告配信サービスです。 Cookie
-                    を使用してユーザーの興味に基づいた広告を表示する場合があります。 詳細は{' '}
-                    <a
-                      href="https://policies.google.com/technologies/ads"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-blue-400 hover:text-blue-300"
-                    >
-                      Google 広告ポリシー
-                    </a>{' '}
-                    をご確認ください。
+                    Google LLC が提供するアクセス解析ツールです。
+                    ユーザーのサイト利用状況を分析し、コンテンツの改善に役立てます。
+                  </p>
+                </div>
+                <div className="rounded-xl border border-white/5 bg-white/[0.03] p-5">
+                  <p className="mb-2 font-bold text-white">Google AdSense / Ads</p>
+                  <p className="text-sm text-gray-400">
+                    Google LLC が提供する広告配信・効果測定サービスです。 Cookie
+                    を使用して、ユーザーに最適な広告の表示やコンバージョン測定を行います。
                   </p>
                 </div>
                 <div className="rounded-xl border border-white/5 bg-white/[0.03] p-5">
                   <p className="mb-2 font-bold text-white">A8.net</p>
                   <p className="text-sm text-gray-400">
                     株式会社ファンコミュニケーションズが運営するアフィリエイトサービスです。
-                    本サービス内に掲載されるアフィリエイトリンクを経由して商品やサービスを購入された場合、
-                    運営者に広告報酬が支払われます。
+                    リンクを経由した購入により、運営者に報酬が支払われる場合があります。
                   </p>
                 </div>
               </div>
