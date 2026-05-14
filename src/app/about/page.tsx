@@ -4,7 +4,7 @@ import Link from 'next/link';
 export const metadata = {
   title: 'About Ayato Studio | Privacy-First Market Intelligence',
   description:
-    'AI駆動開発の専門家が運営する、AIを駆使したインテリジェンス・プラットフォーム。AI開発の最前線から得られる知見とAIを活用してニッチな情報を配信します。',
+    'エージェント型AI（Agentic AI）開発の専門家が運営する、AIを駆使したインテリジェンス・プラットフォーム。AI開発の最前線から得られる知見とAIを活用してニッチな情報を配信します。',
 };
 
 export default function AboutPage() {
@@ -31,7 +31,7 @@ export default function AboutPage() {
           <div className="space-y-8 text-lg leading-relaxed font-medium text-gray-400 md:col-span-2">
             <p>
               Ayato Studio
-              は、AI駆動開発の専門家が運営する、AIを駆使したインテリジェンス・プラットフォームです。
+              は、エージェント型AI（Agentic AI）開発の専門家が運営する、AIを駆使したインテリジェンス・プラットフォームです。
               AI開発の最前線から得られる知見とAIを活用して、マーケットの深層にあるニッチな情報を配信します。
             </p>
 
