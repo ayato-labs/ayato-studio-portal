@@ -19,7 +19,7 @@
 import { Suspense } from 'react';
 import { fetchReports } from '@/lib/api';
 import { getLocalArticles, getAppsList } from '@/lib/local-content';
-import { LocalArticle } from '@/lib/types';
+import { LocalArticle, Report } from '@/lib/types';
 import ReportCard from '@/components/features/reports/ReportCard';
 import { IntelligenceTabs } from '@/components/features/reports/IntelligenceTabs';
 import { NoteFeedSection } from '@/components/features/blog/NoteFeedSection';
