@@ -79,17 +79,30 @@ async function ToolsSection() {
 }
 
 async function IntelligenceSection() {
-  const allReports = await fetchReports();
+  // Stock: Manually curated human-written insights from local files
+  const stockArticles = getLocalArticles('blog');
+  const stockReports: Report[] = stockArticles.map((a) => ({
+    id: a.slug,
+    filename: a.slug,
+    slug: a.slug,
+    title: a.title,
+    category: a.category || 'Human Insight',
+    language: 'jp',
+    timestamp: a.date,
+    market: 'Global',
+    author: 'ayato-labs',
+    content: a.content,
+  }));
 
-  // Stock: Strategic deep dives (e.g., Weekly category)
-  const stockReports = allReports.filter((r) => r.category === 'Weekly').slice(0, 3);
-
-  // Flow: High-frequency market news (everything else)
-  const flowReports = allReports.filter((r) => r.category !== 'Weekly').slice(0, 6);
+  // Flow: Dynamic AI-generated market intelligence from Supabase
+  const flowReports = await fetchReports();
 
   return (
     <div className="space-y-12">
-      <IntelligenceTabs stockReports={stockReports} flowReports={flowReports} />
+      <IntelligenceTabs
+        stockReports={stockReports.slice(0, 3)}
+        flowReports={flowReports.slice(0, 6)}
+      />
 
       <div className="flex justify-center pt-8">
         <Link
