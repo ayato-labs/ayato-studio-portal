@@ -1,3 +1,10 @@
+## [1.3.2](https://github.com/ayato-labs/ayato-studio-portal/compare/v1.3.1...v1.3.2) (2026-05-14)
+
+
+### Bug Fixes
+
+* **redesign:** resolve syntax error in Support page due to duplicate closing tags ([80edfc9](https://github.com/ayato-labs/ayato-studio-portal/commit/80edfc931c48d001de30e28afa8f3b845342c291))
+
 ## [1.3.1](https://github.com/ayato-labs/ayato-studio-portal/compare/v1.3.0...v1.3.1) (2026-05-14)
 
 
