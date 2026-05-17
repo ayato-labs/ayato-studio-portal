@@ -1,3 +1,12 @@
+# [1.7.0](https://github.com/ayato-labs/ayato-studio-portal/compare/v1.6.0...v1.7.0) (2026-05-17)
+
+
+### Features
+
+* implement Zen Matrix game engine and UI components along with meeting burn rate and nisa strategist app scaffolds ([4380442](https://github.com/ayato-labs/ayato-studio-portal/commit/4380442ca2632c67046404172aac00696c12f468))
+* implement ZenMatrix game engine components including board, palette, and map editor ([1e43465](https://github.com/ayato-labs/ayato-studio-portal/commit/1e43465853c2abc62b4903390d9e0dc5748a5c6c))
+* **zen-matrix:** improve UI/UX and add preview ([be23575](https://github.com/ayato-labs/ayato-studio-portal/commit/be23575f101c1051e8bb20fc623dec11d0febc04))
+
 # [1.6.0](https://github.com/ayato-labs/ayato-studio-portal/compare/v1.5.0...v1.6.0) (2026-05-17)
 
 
