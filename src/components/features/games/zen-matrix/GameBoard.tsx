@@ -16,26 +16,33 @@ export default function GameBoard({ board, onPlace }: GameBoardProps) {
   useEffect(() => {
     const handleDrop = (e: any) => {
       if (!boardRef.current) return;
-      const { block, point } = e.detail;
+      const { block, rect: blockRect } = e.detail;
       
-      const rect = boardRef.current.getBoundingClientRect();
-      const x = point.x - rect.left;
-      const y = point.y - rect.top;
+      const boardRect = boardRef.current.getBoundingClientRect();
+      const cellSize = boardRect.width / board[0].length;
 
-      // Check if drop is within board bounds
-      if (x < 0 || x > rect.width || y < 0 || y > rect.height) return;
+      // Determine scale based on window width (rough mobile check matching our CSS breakpoint)
+      const isMobile = window.innerWidth < 1024;
+      
+      // Base cell sizes in the palette
+      const baseCellSize = isMobile ? 16 : 24;
+      const dragScale = isMobile ? 2.0 : 1.5;
+      
+      const scaledCellSize = baseCellSize * dragScale;
 
-      const cellSize = rect.width / board[0].length;
+      const anchorX = blockRect.left + (scaledCellSize / 2);
+      const anchorY = blockRect.top + (scaledCellSize / 2);
+
+      const x = anchorX - boardRect.left;
+      const y = anchorY - boardRect.top;
+
+      // Check if the top-left anchor is within the board bounds
+      if (x < 0 || x > boardRect.width || y < 0 || y > boardRect.height) return;
+
       const col = Math.floor(x / cellSize);
       const row = Math.floor(y / cellSize);
 
-      // Call placement logic (adjustment might be needed based on block center/origin)
-      // For now, assume drop point is the top-left of the block for simplicity
-      // or adjust by half block size
-      const adjRow = row - Math.floor(block.shape.length / 2);
-      const adjCol = col - Math.floor(block.shape[0].length / 2);
-
-      onPlace(block, adjRow, adjCol);
+      onPlace(block, row, col);
     };
 
     window.addEventListener('blockDrop', handleDrop);
@@ -49,7 +56,6 @@ export default function GameBoard({ board, onPlace }: GameBoardProps) {
       style={{ 
         gridTemplateColumns: `repeat(${board[0]?.length || 0}, minmax(0, 1fr))`,
         width: '100%',
-        maxWidth: '500px',
         aspectRatio: '1 / 1'
       }}
     >

@@ -159,12 +159,12 @@ export default function ZenMatrixContainer() {
       </div>
 
       {/* Play Area */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
-        <div className="lg:col-span-2 flex justify-center">
+      <div className="flex flex-col lg:grid lg:grid-cols-3 gap-12 items-start relative">
+        <div className="lg:col-span-2 flex justify-center w-full pb-32 lg:pb-0">
           {mode === 'edit' ? (
             <MapEditor board={board} onToggle={toggleCell} />
           ) : (
-            <div className="relative">
+            <div className="relative w-full">
               <GameBoard 
                 board={board} 
                 onPlace={handlePlaceBlock} 
@@ -188,8 +188,8 @@ export default function ZenMatrixContainer() {
           )}
         </div>
         
-        <div className="space-y-8">
-          <div className="rounded-[2rem] border border-blue-100 bg-white p-8 shadow-sm">
+        <div className="space-y-8 w-full">
+          <div className="hidden lg:block rounded-[2rem] border border-blue-100 bg-white p-8 shadow-sm">
             <h3 className="text-xs font-black tracking-[0.4em] text-slate-400 uppercase mb-8">
               {mode === 'edit' ? 'Editor Instructions' : 'Next Blocks'}
             </h3>
@@ -206,8 +206,15 @@ export default function ZenMatrixContainer() {
               <BlockPalette blocks={availableBlocks} />
             )}
           </div>
+
+          {/* Mobile Sticky Palette */}
+          {mode === 'play' && (
+            <div className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/90 backdrop-blur-md border-t border-slate-200 p-4 shadow-[0_-10px_40px_rgba(0,0,0,0.1)]">
+              <BlockPalette blocks={availableBlocks} isMobile={true} />
+            </div>
+          )}
           
-          <div className="pt-12">
+          <div className="pt-12 hidden lg:block">
             <UtilityFeedback id="zen-matrix-v1" title="Zen Matrix" contentType="App" />
           </div>
         </div>

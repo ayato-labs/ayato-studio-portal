@@ -16,7 +16,6 @@ export default function MapEditor({ board, onToggle }: MapEditorProps) {
       style={{ 
         gridTemplateColumns: `repeat(${board[0]?.length || 0}, minmax(0, 1fr))`,
         width: '100%',
-        maxWidth: '500px',
         aspectRatio: '1 / 1'
       }}
     >
