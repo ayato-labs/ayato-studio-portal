@@ -11,6 +11,10 @@ export function SiteHeader() {
               href: '/apps',
             },
             {
+              title: 'Games',
+              href: '/games',
+            },
+            {
               title: 'Intelligence',
               href: '/reports',
             },
