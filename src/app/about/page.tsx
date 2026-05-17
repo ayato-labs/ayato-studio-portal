@@ -105,6 +105,29 @@ export default function AboutPage() {
               </div>
             </div>
 
+            <div className="rounded-3xl border border-white/5 bg-black/40 p-8 backdrop-blur-xl">
+              <h4 className="mb-6 text-[10px] font-black tracking-widest text-blue-500 uppercase">
+                Operator Profile
+              </h4>
+              <div className="space-y-4">
+                <div>
+                  <p className="text-sm font-bold text-white">運営者: ayato-labs (Ayato)</p>
+                  <p className="text-xs text-gray-400">AI Harness Engineer / Full-Stack Developer</p>
+                </div>
+                <div className="h-px bg-white/5" />
+                <div>
+                  <p className="text-xs text-gray-500">
+                    AIとWeb技術を組み合わせた「Operative Domain（動的なデジタル領土）」の構築を研究しています。
+                  </p>
+                </div>
+                <div className="h-px bg-white/5" />
+                <div>
+                  <p className="text-xs font-bold text-white">連絡先</p>
+                  <p className="text-xs text-blue-400">Cwblog69@gmail.com</p>
+                </div>
+              </div>
+            </div>
+
             <Link
               href="/reports"
               className="group relative block overflow-hidden rounded-3xl p-8"

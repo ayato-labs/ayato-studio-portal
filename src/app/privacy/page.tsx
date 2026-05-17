@@ -93,8 +93,9 @@ export default function PrivacyPage() {
                 <div className="rounded-xl border border-white/5 bg-white/[0.03] p-5">
                   <p className="mb-2 font-bold text-white">Google AdSense</p>
                   <p className="text-sm text-gray-400">
-                    広告配信サービスです。
-                    <a href="https://adssettings.google.com/" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline ml-1">
+                    Google などの第三者配信事業者が Cookie を使用して、ユーザーが当サイトや他のサイトに過去にアクセスした際の情報に基づいて広告を配信します。
+                    ユーザーは、
+                    <a href="https://adssettings.google.com/" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline mx-1">
                       広告設定
                     </a>
                     からパーソナライズ広告を無効にできます。
