@@ -48,6 +48,17 @@ function DraggableBlock({ block, isMobile }: { block: Block, isMobile: boolean }
         // Lift the block up slightly on mobile when dragging
         y: isMobile ? -50 : 0 
       }}
+      onDrag={(event, info) => {
+        if (!blockRef.current) return;
+        const rect = blockRef.current.getBoundingClientRect();
+        const dragEvent = new CustomEvent('blockDragMove', { 
+          detail: { 
+            block, 
+            rect 
+          } 
+        });
+        window.dispatchEvent(dragEvent);
+      }}
       onDragEnd={(event, info) => {
         if (!blockRef.current) return;
         const rect = blockRef.current.getBoundingClientRect();

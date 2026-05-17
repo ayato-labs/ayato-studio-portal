@@ -27,12 +27,12 @@ export default function MapEditor({ board, onToggle }: MapEditorProps) {
             className={cn(
               "w-full h-full rounded-sm transition-all duration-200",
               cell === 'empty' 
-                ? "bg-slate-50 hover:bg-blue-50 border border-slate-200" 
-                : "bg-white border-none shadow-[inset_0_0_10px_rgba(0,0,0,0.05)]"
+                ? "bg-slate-800 hover:bg-slate-700 border border-slate-700" 
+                : "bg-slate-950 border-none shadow-[inset_0_0_10px_rgba(0,0,0,0.5)]"
             )}
           >
             {cell === 'void' && (
-              <div className="w-full h-full flex items-center justify-center text-[8px] text-slate-300">
+              <div className="w-full h-full flex items-center justify-center text-[8px] text-slate-600">
                 ✕
               </div>
             )}

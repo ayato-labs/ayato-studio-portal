@@ -103,12 +103,12 @@ export default function ZenMatrixContainer() {
   };
 
   return (
-    <div className="space-y-12">
+    <div className="space-y-12 text-slate-100">
       {/* Game Header / Controls */}
-      <div className="flex flex-col md:flex-row items-center justify-between gap-8 rounded-[2rem] border border-blue-100 bg-white p-8 shadow-sm">
+      <div className="flex flex-col md:flex-row items-center justify-between gap-8 rounded-[2rem] border border-slate-800 bg-slate-900/50 backdrop-blur-md p-8 shadow-2xl">
         <div className="flex items-center gap-8">
           <div>
-            <p className="text-[10px] font-black text-blue-600 uppercase tracking-widest mb-1">Canvas Size</p>
+            <p className="text-[10px] font-black text-blue-400 uppercase tracking-widest mb-1">Canvas Size</p>
             <div className="flex items-center gap-4">
               <input 
                 type="range" min="6" max="15" value={gridSize} 
@@ -116,20 +116,20 @@ export default function ZenMatrixContainer() {
                 disabled={mode === 'play'}
                 className="accent-blue-500 w-32"
               />
-              <span className="text-xl font-black text-slate-900 w-16 tabular-nums">{gridSize}x{gridSize}</span>
+              <span className="text-xl font-black text-white w-16 tabular-nums">{gridSize}x{gridSize}</span>
             </div>
           </div>
           
-          <div className="h-12 w-px bg-slate-100 hidden md:block" />
+          <div className="h-12 w-px bg-slate-800 hidden md:block" />
           
           <div>
-            <p className="text-[10px] font-black text-indigo-600 uppercase tracking-widest mb-1">Score</p>
-            <p className="text-2xl font-black text-slate-900 tabular-nums">{score.toLocaleString()}</p>
+            <p className="text-[10px] font-black text-indigo-400 uppercase tracking-widest mb-1">Score</p>
+            <p className="text-2xl font-black text-white tabular-nums">{score.toLocaleString()}</p>
           </div>
           
           <div>
-            <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Best</p>
-            <p className="text-2xl font-black text-slate-400 tabular-nums">{highScore.toLocaleString()}</p>
+            <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-1">Best</p>
+            <p className="text-2xl font-black text-slate-300 tabular-nums">{highScore.toLocaleString()}</p>
           </div>
         </div>
 
@@ -144,14 +144,14 @@ export default function ZenMatrixContainer() {
           ) : (
             <button 
               onClick={() => setMode('edit')}
-              className="rounded-full border border-slate-200 bg-white px-10 py-3 font-black text-slate-900 uppercase transition-all hover:bg-slate-50"
+              className="rounded-full border border-slate-700 bg-slate-800 px-10 py-3 font-black text-white uppercase transition-all hover:bg-slate-700"
             >
               Back to Editor
             </button>
           )}
           <button 
             onClick={() => initBoard(gridSize)}
-            className="rounded-full border border-slate-200 bg-white px-6 py-3 text-xs font-black text-slate-400 uppercase transition-all hover:text-slate-900 hover:border-slate-300"
+            className="rounded-full border border-slate-700 bg-slate-800 px-6 py-3 text-xs font-black text-slate-400 uppercase transition-all hover:text-white hover:border-slate-600"
           >
             Reset
           </button>
@@ -171,13 +171,13 @@ export default function ZenMatrixContainer() {
                 activeBlocks={availableBlocks}
               />
               {isGameOverState && (
-                <div className="absolute inset-0 z-50 flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-xl border border-red-100 animate-in fade-in zoom-in duration-500">
+                <div className="absolute inset-0 z-50 flex items-center justify-center bg-slate-900/90 backdrop-blur-sm rounded-xl border border-red-900/50 animate-in fade-in zoom-in duration-500">
                   <div className="text-center">
-                    <h2 className="text-6xl font-black text-red-600 tracking-tighter mb-4">GAME OVER</h2>
-                    <p className="text-xl font-bold text-slate-900 mb-8">Score: {score.toLocaleString()}</p>
+                    <h2 className="text-6xl font-black text-red-500 tracking-tighter mb-4">GAME OVER</h2>
+                    <p className="text-xl font-bold text-white mb-8">Score: {score.toLocaleString()}</p>
                     <button 
                       onClick={() => startPlay()}
-                      className="rounded-full bg-slate-900 text-white px-12 py-4 font-black uppercase tracking-widest hover:bg-slate-800 transition-all shadow-xl"
+                      className="rounded-full bg-blue-600 text-white px-12 py-4 font-black uppercase tracking-widest hover:bg-blue-700 transition-all shadow-xl shadow-blue-500/20"
                     >
                       Try Again
                     </button>
@@ -189,16 +189,25 @@ export default function ZenMatrixContainer() {
         </div>
         
         <div className="space-y-8 w-full">
-          <div className="hidden lg:block rounded-[2rem] border border-blue-100 bg-white p-8 shadow-sm">
-            <h3 className="text-xs font-black tracking-[0.4em] text-slate-400 uppercase mb-8">
+          <div className="hidden lg:block rounded-[2rem] border border-slate-800 bg-slate-900/50 backdrop-blur-md p-8 shadow-sm">
+            <h3 className="text-xs font-black tracking-[0.4em] text-slate-500 uppercase mb-8">
               {mode === 'edit' ? 'Editor Instructions' : 'Next Blocks'}
             </h3>
             {mode === 'edit' ? (
-              <div className="space-y-4 text-sm font-medium text-slate-500 leading-relaxed">
-                <p>1. スライダーでベースの盤面サイズを決定。</p>
-                <p>2. マスをクリックして「穴（Void）」を作成。</p>
-                <p>3. 独自のマップが完成したら Start を押す。</p>
-                <div className="pt-4 border-t border-slate-100 text-[10px] uppercase tracking-wider">
+              <div className="space-y-4 text-sm font-medium text-slate-400 leading-relaxed">
+                <div className="flex items-start gap-3">
+                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-slate-800 text-blue-400 flex items-center justify-center text-xs font-black">1</span>
+                  <p>スライダーでベースの盤面サイズを決定。</p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-slate-800 text-blue-400 flex items-center justify-center text-xs font-black">2</span>
+                  <p>マスをクリックして「穴（Void）」を作成。</p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-slate-800 text-blue-400 flex items-center justify-center text-xs font-black">3</span>
+                  <p>独自のマップが完成したら Start を押す。</p>
+                </div>
+                <div className="pt-4 border-t border-slate-800 text-[10px] uppercase tracking-wider text-slate-500">
                   Tip: 穴を増やすほどライン消去が難しくなります。
                 </div>
               </div>
@@ -209,7 +218,7 @@ export default function ZenMatrixContainer() {
 
           {/* Mobile Sticky Palette */}
           {mode === 'play' && (
-            <div className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/90 backdrop-blur-md border-t border-slate-200 p-4 shadow-[0_-10px_40px_rgba(0,0,0,0.1)]">
+            <div className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-slate-900/90 backdrop-blur-md border-t border-slate-800 p-4 shadow-[0_-10px_40px_rgba(0,0,0,0.5)]">
               <BlockPalette blocks={availableBlocks} isMobile={true} />
             </div>
           )}
