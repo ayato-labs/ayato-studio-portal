@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/ayato-labs/ayato-studio-portal/compare/v1.4.0...v1.5.0) (2026-05-17)
+
+
+### Features
+
+* implement NISA Strategist simulation tool with calculator engine, persistent state hook, and visualization components ([76d04b0](https://github.com/ayato-labs/ayato-studio-portal/commit/76d04b04b417e904091589f827ec9a01950aede9))
+
 # [1.4.0](https://github.com/ayato-labs/ayato-studio-portal/compare/v1.3.2...v1.4.0) (2026-05-14)
 
 
