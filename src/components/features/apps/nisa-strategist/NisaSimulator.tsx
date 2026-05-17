@@ -94,7 +94,7 @@ export default function NisaSimulator() {
             <div className="mb-12 grid grid-cols-2 gap-6">
               <div className="rounded-3xl border border-blue-500/10 bg-blue-500/5 p-8 backdrop-blur-sm">
                 <p className="mb-2 text-[10px] font-black tracking-[0.3em] text-blue-500 uppercase">
-                  最終元本
+                  最終投資元本
                 </p>
                 <p className="text-4xl font-black text-white">
                   {Math.round(finalResult.principal / 10000).toLocaleString()}
@@ -103,7 +103,7 @@ export default function NisaSimulator() {
               </div>
               <div className="rounded-3xl border border-indigo-500/10 bg-indigo-500/5 p-8 backdrop-blur-sm">
                 <p className="mb-2 text-[10px] font-black tracking-[0.3em] text-indigo-400 uppercase">
-                  最終資産額
+                  最終運用資産額
                 </p>
                 <p className="text-4xl font-black text-white">
                   {Math.round(finalResult.total / 10000).toLocaleString()}
@@ -132,7 +132,7 @@ export default function NisaSimulator() {
             <p className="text-lg font-medium text-gray-400">
               その小さな支出を、もし NISA で運用していたら。
               <br />
-              あなたが失っている「真の代償」を可視化します。
+              あなたが失っている「将来の資産」を可視化します。
             </p>
           </div>
 
@@ -161,7 +161,7 @@ export default function NisaSimulator() {
                   <span className="ml-2 text-xl text-gray-500">万円</span>
                 </p>
                 <p className="mt-4 text-sm font-bold leading-relaxed text-red-400/80">
-                  そのサブスクを放置することは、将来の
+                  そのサブスクを放置することは、将来手にするはずだった
                   {Math.round(opportunityCost / 10000).toLocaleString()}
                   万円をドブに捨てているのと同義です。
                 </p>
@@ -206,7 +206,7 @@ export default function NisaSimulator() {
             {survivalMonths > 0 && (
               <div className="animate-in fade-in slide-in-from-top-4 duration-700">
                 <p className="mb-1 text-[10px] font-black tracking-[0.2em] text-emerald-500 uppercase">
-                  Survival Duration (逃切り可能期間)
+                  Survival Duration (労働からの解放期間)
                 </p>
                 <p className="text-5xl font-black text-white">
                   {survivalYears > 0 && (

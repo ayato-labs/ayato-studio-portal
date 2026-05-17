@@ -19,7 +19,7 @@ export default function NisaStrategistPage() {
             </span>
           </div>
 
-          <h1 className="mb-8 text-6xl leading-none font-black tracking-tighter text-white md:text-8xl">
+          <h1 className="mb-8 text-6xl leading-none font-black tracking-tighter text-white md:text-[8rem]">
             NISA
             <br />
             <span className="bg-gradient-to-r from-blue-500 to-indigo-500 bg-clip-text text-transparent">
