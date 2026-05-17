@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/ayato-labs/ayato-studio-portal/compare/v1.5.0...v1.6.0) (2026-05-17)
+
+
+### Features
+
+* implement NisaSimulator component and storage hook with concept documentation ([82cd425](https://github.com/ayato-labs/ayato-studio-portal/commit/82cd4257a1c3d84266c508a5f21945a7807abaad))
+
 # [1.5.0](https://github.com/ayato-labs/ayato-studio-portal/compare/v1.4.0...v1.5.0) (2026-05-17)
 
 
