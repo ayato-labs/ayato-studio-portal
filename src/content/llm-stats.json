@@ -1,0 +1,90 @@
+[
+  {
+    "id": "claude-3-5-sonnet",
+    "name": "Claude 3.5 Sonnet",
+    "developer": "Anthropic",
+    "japaneseScore": 92,
+    "codingScore": 95,
+    "reasoningScore": 90,
+    "speed": 85,
+    "costPer1MInput": 3.0,
+    "costPer1MOutput": 15.0
+  },
+  {
+    "id": "gpt-4o",
+    "name": "GPT-4o",
+    "developer": "OpenAI",
+    "japaneseScore": 90,
+    "codingScore": 92,
+    "reasoningScore": 88,
+    "speed": 90,
+    "costPer1MInput": 2.5,
+    "costPer1MOutput": 10.0
+  },
+  {
+    "id": "gemini-1-5-pro",
+    "name": "Gemini 1.5 Pro",
+    "developer": "Google",
+    "japaneseScore": 89,
+    "codingScore": 88,
+    "reasoningScore": 91,
+    "speed": 65,
+    "costPer1MInput": 1.25,
+    "costPer1MOutput": 5.0
+  },
+  {
+    "id": "gemini-1-5-flash",
+    "name": "Gemini 1.5 Flash",
+    "developer": "Google",
+    "japaneseScore": 82,
+    "codingScore": 78,
+    "reasoningScore": 75,
+    "speed": 150,
+    "costPer1MInput": 0.075,
+    "costPer1MOutput": 0.3
+  },
+  {
+    "id": "gpt-4o-mini",
+    "name": "GPT-4o-mini",
+    "developer": "OpenAI",
+    "japaneseScore": 81,
+    "codingScore": 76,
+    "reasoningScore": 72,
+    "speed": 120,
+    "costPer1MInput": 0.15,
+    "costPer1MOutput": 0.6
+  },
+  {
+    "id": "claude-3-5-haiku",
+    "name": "Claude 3.5 Haiku",
+    "developer": "Anthropic",
+    "japaneseScore": 83,
+    "codingScore": 80,
+    "reasoningScore": 78,
+    "speed": 110,
+    "costPer1MInput": 0.8,
+    "costPer1MOutput": 4.0
+  },
+  {
+    "id": "llama-3-1-70b",
+    "name": "Llama 3.1 70B",
+    "developer": "Meta",
+    "japaneseScore": 79,
+    "codingScore": 81,
+    "reasoningScore": 79,
+    "speed": 60,
+    "costPer1MInput": 0.7,
+    "costPer1MOutput": 0.9
+  },
+  {
+    "id": "qwen-2-5-72b",
+    "name": "Qwen 2.5 72B",
+    "developer": "Alibaba",
+    "japaneseScore": 88,
+    "codingScore": 85,
+    "reasoningScore": 83,
+    "speed": 55,
+    "costPer1MInput": 0.4,
+    "costPer1MOutput": 0.4
+  }
+]
