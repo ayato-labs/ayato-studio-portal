@@ -28,11 +28,11 @@ export default async function ReportsPage() {
     <div className="container mx-auto max-w-6xl px-4 py-12 sm:px-8 lg:py-20">
       <div className="mb-16 flex flex-col items-center space-y-6 text-center">
         <h1 className="text-5xl font-black tracking-tighter text-white uppercase md:text-7xl">
-          Intelligence Hub
+          AI Intelligence Hub
         </h1>
-        <p className="max-w-2xl text-xl leading-relaxed text-gray-500">
-          Strategic deep dives meets real-time market news.
-          AI-curated, human-verified.
+        <p className="max-w-2xl text-xl leading-relaxed text-gray-400">
+          海外の最新AI関連論文（arXiv）やテックフィードを、AIで分析・日本語要約したデイリーレポート。
+          AIが分析し、人間が検証した確度の高い情報を提供します。
         </p>
       </div>
 

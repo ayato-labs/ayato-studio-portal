@@ -74,6 +74,8 @@ export async function fetchReports(): Promise<Report[]> {
     const { data, error } = await supabase
       .from('generated_reports')
       .select('id, item_id, title, category, generated_at, market, language, content_md')
+      .eq('language', 'jp')
+      .eq('market', 'tech')
       .order('generated_at', { ascending: false })
       .limit(100);
 
@@ -83,6 +85,8 @@ export async function fetchReports(): Promise<Report[]> {
       const { data: fallbackData, error: fallbackError } = await supabase
         .from('generated_reports')
         .select('id, item_id, title, category, generated_at, market, language, content_md')
+        .eq('language', 'jp')
+        .eq('market', 'tech')
         .order('generated_at', { ascending: false })
         .limit(100);
 
