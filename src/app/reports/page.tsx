@@ -24,6 +24,7 @@ export default async function ReportsPage() {
   // Flow: Dynamic AI-generated market intelligence from Supabase
   const flowReports = await fetchReports();
 
+
   return (
     <div className="container mx-auto max-w-6xl px-4 py-12 sm:px-8 lg:py-20">
       <div className="mb-16 flex flex-col items-center space-y-6 text-center">
