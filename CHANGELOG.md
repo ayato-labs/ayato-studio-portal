@@ -1,3 +1,10 @@
+## [1.7.1](https://github.com/ayato-labs/ayato-studio-portal/compare/v1.7.0...v1.7.1) (2026-05-22)
+
+
+### Bug Fixes
+
+* resolve news flow edge runtime compatibility and display ([eb0d71d](https://github.com/ayato-labs/ayato-studio-portal/commit/eb0d71d76731b3d5faa1932d0e6518ee43654b5a))
+
 # [1.7.0](https://github.com/ayato-labs/ayato-studio-portal/compare/v1.6.0...v1.7.0) (2026-05-17)
 
 
