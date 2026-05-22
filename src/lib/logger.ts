@@ -16,6 +16,17 @@ const configureLogger = () => {
     });
   }
 
+  // Check if running on Edge runtime (Cloudflare Workers/Pages)
+  const isEdge = process.env.NEXT_RUNTIME === 'edge' || process.env.CF_PAGES === '1';
+
+  if (isEdge) {
+    // Cloudflare / Edge environment: console logging only, no worker_threads or files
+    return pino({
+      level: process.env.LOG_LEVEL || 'info',
+      timestamp: pino.stdTimeFunctions.isoTime,
+    });
+  }
+
   // Node.js environment: Multi-stream with isolation
   const transport = pino.transport({
     targets: [
