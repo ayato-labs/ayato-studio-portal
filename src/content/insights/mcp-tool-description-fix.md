@@ -2,7 +2,7 @@
 title: "MCPツールの説明（Description）が表示されない問題の特定と解決方法 (2026-05-09)"
 description: "AIエージェントがMCPツールの用途を正しく理解できない、説明欄が空になる問題。docstringパースの不安定性とWindows特有のゾンビプロセスの影響を解決する決定版ガイド。"
 date: 2026-05-09
-category: blog
+category: insights
 image: "/images/blog/mcp-description-fix-hero.png"
 ---
 

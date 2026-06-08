@@ -2,7 +2,7 @@
 title: Ayato Studio のミッション - 有限の時間で、創造の糧を選ぶ
 description: 「知ること」と「創ること」の間に横たわる、情報のトリアージという課題に対する Ayato Studio の解答。
 date: 2026-04-09
-category: blog
+category: insights
 ---
 
 # The Mission of Ayato Studio: "Selection for Creativity"

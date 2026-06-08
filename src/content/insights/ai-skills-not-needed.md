@@ -2,7 +2,7 @@
 title: "AIにSkillsを作らせたら「Skillsは要らない」という結論になった話"
 description: "個人開発の分析・意思決定を自動化しようとして、Claude Skillsを設計した。途中で「そもそもこれはSkillsにすべきか?」という問いが生まれ、最終的にプロンプト2文に収束した思考プロセスを記録する。"
 date: 2026-04-11
-category: blog
+category: insights
 ---
 
 # AIにSkillsを作らせたら「Skillsは要らない」という結論になった話

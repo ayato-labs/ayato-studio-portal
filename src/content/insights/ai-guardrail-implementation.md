@@ -2,7 +2,7 @@
 title: 実践・プロンプトインジェクション対策:APIと「番犬AI」で作る最強のガードレール実装
 description: Gmailセキュリティ拡張機能で実際に稼働しているプロンプトインジェクション検知機能のコードを公開。Detection LLMパターンと指数バックオフを備えた実運用レベルの防御策を解説します。
 date: 2026-04-09
-category: Technology
+category: insights
 ---
 
 # 実践・プロンプトインジェクション対策:APIと「番犬AI」で作る最強のガードレール実装

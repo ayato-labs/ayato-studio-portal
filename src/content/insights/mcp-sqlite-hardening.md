@@ -2,7 +2,7 @@
 title: "MCPサーバー開発で「DB Lock」と「存在しないテーブル」に3時間溶かした話:SQLite非同期初期化の完全防壁"
 description: "AIエージェント向けのMCPサーバー開発で遭遇しがちな、SQLiteの非同期初期化における競合問題。asyncio環境でのDB Lockやテーブル消失を防ぎ、GitHub ActionsでのCIを完全に安定させる技術的アプローチを解説します。"
 date: 2026-04-13
-category: blog
+category: insights
 ---
 
 # MCPサーバー開発で「DB Lock」と「存在しないテーブル」に3時間溶かした話:SQLite非同期初期化の完全防壁

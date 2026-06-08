@@ -16,7 +16,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 1,
     },
     {
-      url: `${baseUrl}/blog`,
+      url: `${baseUrl}/insights`,
       lastModified: new Date(),
       changeFrequency: 'daily',
       priority: 0.9,
@@ -28,21 +28,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.9,
     },
     {
+      url: `${baseUrl}/stats`,
+      lastModified: new Date(),
+      changeFrequency: 'daily',
+      priority: 0.8,
+    },
+    {
       url: `${baseUrl}/services`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/academy`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/apps/site-downloader`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
@@ -88,39 +82,23 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     console.error('[Sitemap] Failed to fetch reports:', e);
   }
 
-  // 3. ローカルブログ記事
+  // 3. ローカルインサイト記事 (旧ブログ)
   try {
-    const blogArticles = getLocalArticles('blog');
-    const blogPages: MetadataRoute.Sitemap = blogArticles
+    const insightArticles = getLocalArticles('insights');
+    const insightPages: MetadataRoute.Sitemap = insightArticles
       .filter((article) => article.date)
       .map((article) => ({
-        url: `${baseUrl}/blog/${article.slug}`,
+        url: `${baseUrl}/insights/${article.slug}`,
         lastModified: isValidDate(article.date) ? new Date(article.date) : new Date(),
         changeFrequency: 'monthly',
         priority: 0.8,
       }));
-    allPages = [...allPages, ...blogPages];
+    allPages = [...allPages, ...insightPages];
   } catch (e) {
-    console.error('[Sitemap] Failed to fetch blog articles:', e);
+    console.error('[Sitemap] Failed to fetch insight articles:', e);
   }
 
-  // 4. アカデミー (学習シリーズ)
-  try {
-    const academyArticles = getLocalArticles('academy');
-    const academyPages: MetadataRoute.Sitemap = academyArticles
-      .filter((article) => article.date)
-      .map((article) => ({
-        url: `${baseUrl}/academy/${article.slug}`,
-        lastModified: isValidDate(article.date) ? new Date(article.date) : new Date(),
-        changeFrequency: 'monthly',
-        priority: 0.8,
-      }));
-    allPages = [...allPages, ...academyPages];
-  } catch (e) {
-    console.error('[Sitemap] Failed to fetch academy articles:', e);
-  }
-
-  // 5. ローカルサービス紹介
+  // 4. ローカルサービス紹介 (内製ツール紹介も含む)
   try {
     const serviceArticles = getLocalArticles('services');
     const servicePages: MetadataRoute.Sitemap = serviceArticles
@@ -134,22 +112,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     allPages = [...allPages, ...servicePages];
   } catch (e) {
     console.error('[Sitemap] Failed to fetch service articles:', e);
-  }
-
-  // 6. Site Downloader ドキュメント
-  try {
-    const siteDownloaderDocs = getLocalArticles('apps/site-downloader');
-    const siteDownloaderPages: MetadataRoute.Sitemap = siteDownloaderDocs
-      .filter((article) => article.date)
-      .map((article) => ({
-        url: `${baseUrl}/apps/site-downloader/${article.slug}`,
-        lastModified: isValidDate(article.date) ? new Date(article.date) : new Date(),
-        changeFrequency: 'monthly',
-        priority: 0.8,
-      }));
-    allPages = [...allPages, ...siteDownloaderPages];
-  } catch (e) {
-    console.error('[Sitemap] Failed to fetch site-downloader docs:', e);
   }
 
   return allPages;

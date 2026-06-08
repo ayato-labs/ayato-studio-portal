@@ -29,10 +29,10 @@ import Analytics from '@/components/features/analytics/Analytics';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Ayato Studio Portal | Market Intelligence AI',
+  title: 'Ayato Studio | AI Native Systems Engineering',
   description:
-    'AIハーネス・エンジニアリング（AI Harness Engineering）の専門家が運営する、AIを駆使したインテリジェンス・プラットフォーム。AI開発の最前線から得られる知見とAIを活用してニッチな情報を配信します。',
-  keywords: ['AI', 'Tech', 'Intelligence', 'Market Analysis', 'Research'],
+    'AIが存在することを前提とした、自律的エージェント・MCP（Model Context Protocol）連携・エッジファーストなAIネイティブシステム構築とインテグレーションの専門技術スタジオ「Ayato Studio」のポータルサイト。',
+  keywords: ['AIエージェント', 'MCP', 'Model Context Protocol', 'AIネイティブ', 'システム構築', 'ハーネスエンジニアリング', 'Cloudflare Pages', 'Supabase'],
   authors: [{ name: 'Ayato Studio' }],
 };
 

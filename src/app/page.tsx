@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
 import { fetchReports } from '@/lib/api';
-import { getLocalArticles, getAppsList } from '@/lib/local-content';
+import { getLocalArticles } from '@/lib/local-content';
 import { Report } from '@/lib/types';
 import LLMStatsDashboard from '@/components/features/stats/LLMStatsDashboard';
 import Link from 'next/link';
@@ -114,7 +114,7 @@ function ArxivPapersSection({ reports }: { reports: Report[] }) {
 
 async function MainAIContent() {
   const flowReports = await fetchReports();
-  const stockArticles = getLocalArticles('blog');
+  const stockArticles = getLocalArticles('insights');
 
   return (
     <div className="space-y-32">
@@ -177,17 +177,17 @@ async function MainAIContent() {
       <section>
         <div className="mb-12">
           <h2 className="text-xs font-black tracking-[0.5em] text-blue-500 uppercase mb-2">
-            Section 04 // Human Stock
+            Section 04 // Technical Stock
           </h2>
           <h3 className="text-4xl font-black tracking-tighter text-white uppercase md:text-5xl">
-            Strategic Insights
+            Technical Insights
           </h3>
         </div>
         <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
           {stockArticles.slice(0, 3).map((article) => (
             <Link
               key={article.slug}
-              href={`/blog/${article.slug}`}
+              href={`/insights/${article.slug}`}
               className="group flex flex-col justify-between rounded-3xl border border-white/5 bg-white/[0.01] p-8 transition-all duration-300 hover:border-blue-500/20 hover:bg-white/[0.03]"
             >
               <div>
@@ -226,20 +226,22 @@ export default function Home() {
           <div className="mb-12 inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-4 py-2">
             <span className="flex h-2 w-2 rounded-full bg-blue-500 animate-pulse"></span>
             <span className="text-[10px] font-black tracking-[0.3em] text-blue-400 uppercase">
-              Ayato Studio Intelligence Hub
+              Ayato Studio / AI Native Engineering
             </span>
           </div>
 
           <h1 className="mb-16 text-6xl leading-[0.85] font-black tracking-tighter text-white md:text-[8rem] uppercase">
-            AI INTELLIGENCE
+            AI NATIVE
             <br />
-            <span className="text-blue-600">SYNERGY</span>
+            <span className="text-blue-600">SYSTEMS</span>
           </h1>
 
           <div className="max-w-2xl">
             <p className="mb-12 text-xl leading-snug font-medium text-gray-400 md:text-2xl">
-              AIの最新論文・業界動向・統計データを日本語で瞬時に把握する、
-              日本のビジネスパーソンとエンジニアのためのAI特化型インテリジェンス・ハブ。
+              AIが存在することを前提とした、
+              自律的エージェント・MCP（Model Context Protocol）連携・
+              エッジファーストなAIネイティブシステム構築と
+              インテグレーションの専門技術スタジオ。
             </p>
             <div className="flex gap-6">
               <Link

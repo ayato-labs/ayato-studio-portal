@@ -2,7 +2,7 @@
 title: 個人開発の「現実」と向き合う:Stripe 実装を捨てて OFUSE を選んだ理由
 description: Stripe 決済を技術的に完遂した後に、なぜあえて「停止」と「他社プラットフォームへのピボット」を決断したのか。個人開発者が直面する特商法とプライバシーの壁について。
 date: 2026-04-09
-category: Life & Tech
+category: insights
 ---
 
 # 個人開発の「現実」と向き合う:Stripe 実装を捨てて OFUSE を選んだ理由

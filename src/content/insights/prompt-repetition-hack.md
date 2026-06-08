@@ -2,7 +2,7 @@
 title: "【論文解説】プロンプトを2回繰り返すだけ?CoTのジレンマを打ち破るLLMのハック手法"
 description: 「ステップ・バイ・ステップで考えて」はもう古い?追加コストほぼゼロ・遅延ゼロでLLMの精度を劇的に向上させる『Prompt Repetition』のからくり(arXiv:2512.14982)を解説します。
 date: 2025-12-27
-category: blog
+category: insights
 ---
 
 # 【論文解説】プロンプトを2回繰り返すだけ?CoTのジレンマを打ち破るLLMのハック手法
