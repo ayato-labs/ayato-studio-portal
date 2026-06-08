@@ -1,3 +1,10 @@
+# [1.8.0](https://github.com/ayato-labs/ayato-studio-portal/compare/v1.7.1...v1.8.0) (2026-06-08)
+
+
+### Features
+
+* rebranding portal to AI native systems engineering and implement live stats ([011d727](https://github.com/ayato-labs/ayato-studio-portal/commit/011d727edab7b209b3b0529a7e8ab95dc2416b8a))
+
 ## [1.7.1](https://github.com/ayato-labs/ayato-studio-portal/compare/v1.7.0...v1.7.1) (2026-05-22)
 
 
