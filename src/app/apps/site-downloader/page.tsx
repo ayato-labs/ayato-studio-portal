@@ -12,13 +12,13 @@ export default function SiteDownloaderPage() {
   const mainArticle = articles.length > 0 ? articles[0] : null;
 
   return (
-    <main className="bg-background min-h-screen py-20 md:py-32 text-white">
+    <main className="bg-background min-h-screen py-20 text-white md:py-32">
       {/* Background Elements */}
       <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
         <div className="absolute top-[-10%] left-[-10%] h-[40%] w-[40%] animate-pulse rounded-full bg-cyan-600/10 blur-[120px]" />
       </div>
 
-      <div className="container mx-auto px-6 max-w-4xl">
+      <div className="container mx-auto max-w-4xl px-6">
         <div className="mb-12">
           <div className="glass mb-8 inline-flex items-center gap-2 rounded-full border-white/10 px-4 py-1.5">
             <span className="relative flex h-2 w-2">
@@ -34,7 +34,9 @@ export default function SiteDownloaderPage() {
             SITE DOWNLOADER
           </h1>
           <p className="mb-8 text-xl leading-relaxed font-medium text-gray-500">
-            Web サイトを高速にダウンロード・保存し、ローカルやエッジで動作可能なアセットとして切り出す Chrome 拡張機能。
+            Web
+            サイトを高速にダウンロード・保存し、ローカルやエッジで動作可能なアセットとして切り出す
+            Chrome 拡張機能。
           </p>
           <div className="flex flex-wrap gap-4">
             <a
@@ -62,7 +64,7 @@ export default function SiteDownloaderPage() {
             </div>
           </div>
         ) : (
-          <div className="py-12 text-center text-xs font-bold tracking-widest text-gray-600 uppercase border border-dashed border-white/10 rounded-3xl">
+          <div className="rounded-3xl border border-dashed border-white/10 py-12 text-center text-xs font-bold tracking-widest text-gray-600 uppercase">
             ドキュメントファイルがありません。
           </div>
         )}

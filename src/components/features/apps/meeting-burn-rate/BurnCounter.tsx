@@ -58,20 +58,20 @@ export default function BurnCounter() {
     <div className="flex flex-col items-center justify-center space-y-12">
       {/* Input Section */}
       {!isActive && burnedAmount === 0 && (
-        <div className="w-full max-w-sm space-y-8 animate-in fade-in zoom-in duration-500">
+        <div className="animate-in fade-in zoom-in w-full max-w-sm space-y-8 duration-500">
           <div className="text-center">
-            <h2 className="text-xs font-black tracking-[0.4em] text-red-500 uppercase mb-4">
+            <h2 className="mb-4 text-xs font-black tracking-[0.4em] text-red-500 uppercase">
               Enter Participants
             </h2>
             <div className="flex items-center justify-center gap-8">
-              <button 
+              <button
                 onClick={() => setParticipants(Math.max(1, participants - 1))}
                 className="h-12 w-12 rounded-full border border-white/10 bg-white/5 text-2xl font-black text-white hover:bg-white/10"
               >
                 -
               </button>
               <span className="text-7xl font-black text-white">{participants}</span>
-              <button 
+              <button
                 onClick={() => setParticipants(participants + 1)}
                 className="h-12 w-12 rounded-full border border-white/10 bg-white/5 text-2xl font-black text-white hover:bg-white/10"
               >
@@ -98,29 +98,34 @@ export default function BurnCounter() {
         <div className="w-full space-y-12 text-center">
           <div className="relative inline-block">
             {/* Fire Glow Effect */}
-            <div className={cn(
-              "absolute inset-0 -z-10 blur-[100px] transition-all duration-1000",
-              isActive ? "bg-orange-600/30 scale-150" : "bg-red-600/10"
-            )} />
-            
-            <p className="text-[10px] font-black tracking-[0.5em] text-red-500 uppercase mb-4">
+            <div
+              className={cn(
+                'absolute inset-0 -z-10 blur-[100px] transition-all duration-1000',
+                isActive ? 'scale-150 bg-orange-600/30' : 'bg-red-600/10',
+              )}
+            />
+
+            <p className="mb-4 text-[10px] font-black tracking-[0.5em] text-red-500 uppercase">
               Current Loss // 現在の損失額
             </p>
             <div className="flex items-baseline justify-center gap-4">
               <span className="text-sm font-black text-gray-600">¥</span>
-              <span className="text-[12rem] font-black leading-none tracking-tighter text-white tabular-nums">
+              <span className="text-[12rem] leading-none font-black tracking-tighter text-white tabular-nums">
                 {Math.floor(burnedAmount).toLocaleString()}
               </span>
-              <span className="text-4xl font-black text-red-600 animate-pulse">
-                .{Math.floor((burnedAmount % 1) * 100).toString().padStart(2, '0')}
+              <span className="animate-pulse text-4xl font-black text-red-600">
+                .
+                {Math.floor((burnedAmount % 1) * 100)
+                  .toString()
+                  .padStart(2, '0')}
               </span>
             </div>
           </div>
 
           {comparison && (
             <div className="animate-in slide-in-from-bottom-4 fade-in duration-700">
-              <span className="text-4xl mb-4 block">{comparison.icon}</span>
-              <p className="text-2xl font-black text-white uppercase tracking-tight">
+              <span className="mb-4 block text-4xl">{comparison.icon}</span>
+              <p className="text-2xl font-black tracking-tight text-white uppercase">
                 {comparison.label}
               </p>
             </div>
@@ -130,7 +135,7 @@ export default function BurnCounter() {
             {isActive ? (
               <button
                 onClick={stopMeeting}
-                className="rounded-full border border-white/10 bg-white/5 px-12 py-4 text-xs font-black tracking-widest text-white uppercase hover:bg-red-600/20 hover:border-red-500/30"
+                className="rounded-full border border-white/10 bg-white/5 px-12 py-4 text-xs font-black tracking-widest text-white uppercase hover:border-red-500/30 hover:bg-red-600/20"
               >
                 会議を終了する
               </button>
@@ -147,10 +152,12 @@ export default function BurnCounter() {
       )}
 
       {/* VQE Section */}
-      <div className={cn(
-        "w-full max-w-2xl pt-24 border-t border-white/5 transition-opacity duration-1000",
-        isActive ? "opacity-20" : "opacity-100"
-      )}>
+      <div
+        className={cn(
+          'w-full max-w-2xl border-t border-white/5 pt-24 transition-opacity duration-1000',
+          isActive ? 'opacity-20' : 'opacity-100',
+        )}
+      >
         <UtilityFeedback id="meeting-burn-rate-v1" title="Meeting Burn Rate" contentType="App" />
       </div>
     </div>

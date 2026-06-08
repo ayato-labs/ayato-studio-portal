@@ -36,7 +36,7 @@ function NewsBulletinBoard({ reports }: { reports: Report[] }) {
             <span className="rounded-full bg-blue-500/10 px-3 py-1 text-[9px] font-black tracking-widest text-blue-400 uppercase">
               AI NEWS BRIEF
             </span>
-            <span className="text-[10px] font-bold text-gray-500 tracking-wider">
+            <span className="text-[10px] font-bold tracking-wider text-gray-500">
               {new Date(report.timestamp).toLocaleDateString('ja-JP', {
                 year: 'numeric',
                 month: 'long',
@@ -44,17 +44,17 @@ function NewsBulletinBoard({ reports }: { reports: Report[] }) {
               })}
             </span>
           </div>
-          <h4 className="mb-4 text-xl font-black text-white group-hover:text-blue-400 transition-colors">
+          <h4 className="mb-4 text-xl font-black text-white transition-colors group-hover:text-blue-400">
             {report.title}
           </h4>
-          <div className="prose prose-invert max-w-none text-sm text-gray-400 leading-relaxed line-clamp-4">
+          <div className="prose prose-invert line-clamp-4 max-w-none text-sm leading-relaxed text-gray-400">
             {/* Displaying raw text summary */}
             {report.content.replace(/#+\s+.*?\n/g, '').replace(/\[.*?\]\(.*?\)/g, '')}
           </div>
           <div className="mt-6 flex justify-end">
             <Link
               href={`/reports/${report.slug}`}
-              className="text-[10px] font-black tracking-widest text-blue-500 uppercase hover:text-blue-400 transition-colors"
+              className="text-[10px] font-black tracking-widest text-blue-500 uppercase transition-colors hover:text-blue-400"
             >
               Read full report →
             </Link>
@@ -62,7 +62,7 @@ function NewsBulletinBoard({ reports }: { reports: Report[] }) {
         </div>
       ))}
       {newsReports.length === 0 && (
-        <div className="py-12 text-center text-xs font-bold tracking-widest text-gray-600 uppercase border border-dashed border-white/10 rounded-3xl">
+        <div className="rounded-3xl border border-dashed border-white/10 py-12 text-center text-xs font-bold tracking-widest text-gray-600 uppercase">
           本日のAIニュース速報はありません。
         </div>
       )}
@@ -91,20 +91,21 @@ function ArxivPapersSection({ reports }: { reports: Report[] }) {
                 {new Date(report.timestamp).toLocaleDateString('ja-JP')}
               </span>
             </div>
-            <h4 className="mb-4 text-lg font-black text-white group-hover:text-blue-400 transition-colors line-clamp-2">
+            <h4 className="mb-4 line-clamp-2 text-lg font-black text-white transition-colors group-hover:text-blue-400">
               {report.title}
             </h4>
             <p className="line-clamp-3 text-xs leading-relaxed text-gray-400">
               {report.content.replace(/#+\s+.*?\n/g, '').substring(0, 180)}...
             </p>
           </div>
-          <div className="mt-8 flex items-center text-[10px] font-black tracking-widest text-gray-500 uppercase group-hover:text-blue-500 transition-colors">
-            論文要約・解説を読む <span className="ml-2 transition-transform group-hover:translate-x-1">→</span>
+          <div className="mt-8 flex items-center text-[10px] font-black tracking-widest text-gray-500 uppercase transition-colors group-hover:text-blue-500">
+            論文要約・解説を読む{' '}
+            <span className="ml-2 transition-transform group-hover:translate-x-1">→</span>
           </div>
         </Link>
       ))}
       {paperReports.length === 0 && (
-        <div className="col-span-2 py-12 text-center text-xs font-bold tracking-widest text-gray-600 uppercase border border-dashed border-white/10 rounded-3xl">
+        <div className="col-span-2 rounded-3xl border border-dashed border-white/10 py-12 text-center text-xs font-bold tracking-widest text-gray-600 uppercase">
           新着論文データがありません。
         </div>
       )}
@@ -120,9 +121,9 @@ async function MainAIContent() {
     <div className="space-y-32">
       {/* 1. radicaldatascience風の簡潔な箇条書きニュースボード */}
       <section>
-        <div className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div className="mb-12 flex flex-col justify-between gap-4 md:flex-row md:items-end">
           <div>
-            <h2 className="text-xs font-black tracking-[0.5em] text-blue-500 uppercase mb-2">
+            <h2 className="mb-2 text-xs font-black tracking-[0.5em] text-blue-500 uppercase">
               Section 01 // Daily Bulletin
             </h2>
             <h3 className="text-4xl font-black tracking-tighter text-white uppercase md:text-5xl">
@@ -131,7 +132,7 @@ async function MainAIContent() {
           </div>
           <Link
             href="/reports"
-            className="text-[10px] font-black tracking-widest text-gray-500 uppercase hover:text-white transition-colors"
+            className="text-[10px] font-black tracking-widest text-gray-500 uppercase transition-colors hover:text-white"
           >
             All Briefs →
           </Link>
@@ -142,7 +143,7 @@ async function MainAIContent() {
       {/* 2. llm-stats風の統計比較ダッシュボード */}
       <section>
         <div className="mb-12">
-          <h2 className="text-xs font-black tracking-[0.5em] text-blue-500 uppercase mb-2">
+          <h2 className="mb-2 text-xs font-black tracking-[0.5em] text-blue-500 uppercase">
             Section 02 // Stats & Costs
           </h2>
           <h3 className="text-4xl font-black tracking-tighter text-white uppercase md:text-5xl">
@@ -154,9 +155,9 @@ async function MainAIContent() {
 
       {/* 3. arxiv.org風の日本語要約付き論文リスト */}
       <section>
-        <div className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div className="mb-12 flex flex-col justify-between gap-4 md:flex-row md:items-end">
           <div>
-            <h2 className="text-xs font-black tracking-[0.5em] text-blue-500 uppercase mb-2">
+            <h2 className="mb-2 text-xs font-black tracking-[0.5em] text-blue-500 uppercase">
               Section 03 // arXiv Papers
             </h2>
             <h3 className="text-4xl font-black tracking-tighter text-white uppercase md:text-5xl">
@@ -165,7 +166,7 @@ async function MainAIContent() {
           </div>
           <Link
             href="/reports"
-            className="text-[10px] font-black tracking-widest text-gray-500 uppercase hover:text-white transition-colors"
+            className="text-[10px] font-black tracking-widest text-gray-500 uppercase transition-colors hover:text-white"
           >
             All Papers →
           </Link>
@@ -176,7 +177,7 @@ async function MainAIContent() {
       {/* 4. Human Written deep articles */}
       <section>
         <div className="mb-12">
-          <h2 className="text-xs font-black tracking-[0.5em] text-blue-500 uppercase mb-2">
+          <h2 className="mb-2 text-xs font-black tracking-[0.5em] text-blue-500 uppercase">
             Section 04 // Technical Stock
           </h2>
           <h3 className="text-4xl font-black tracking-tighter text-white uppercase md:text-5xl">
@@ -194,15 +195,16 @@ async function MainAIContent() {
                 <span className="mb-4 inline-block text-[9px] font-black tracking-widest text-indigo-400 uppercase">
                   {article.category || 'Opinion'}
                 </span>
-                <h4 className="mb-4 text-xl font-black text-white group-hover:text-blue-400 transition-colors line-clamp-2">
+                <h4 className="mb-4 line-clamp-2 text-xl font-black text-white transition-colors group-hover:text-blue-400">
                   {article.title}
                 </h4>
-                <p className="text-xs leading-relaxed text-gray-500 line-clamp-3">
+                <p className="line-clamp-3 text-xs leading-relaxed text-gray-500">
                   {article.description}
                 </p>
               </div>
-              <div className="mt-8 flex items-center text-[10px] font-black tracking-widest text-gray-500 uppercase group-hover:text-blue-500 transition-colors">
-                Read Article <span className="ml-2 transition-transform group-hover:translate-x-1">→</span>
+              <div className="mt-8 flex items-center text-[10px] font-black tracking-widest text-gray-500 uppercase transition-colors group-hover:text-blue-500">
+                Read Article{' '}
+                <span className="ml-2 transition-transform group-hover:translate-x-1">→</span>
               </div>
             </Link>
           ))}
@@ -220,17 +222,17 @@ export default function Home() {
         <div className="absolute top-[-10%] left-[-10%] h-[40%] w-[40%] rounded-full bg-blue-600/5 blur-[120px]" />
       </div>
 
-      <div className="container mx-auto px-6 pt-32 pb-40 md:pt-48 max-w-6xl">
+      <div className="container mx-auto max-w-6xl px-6 pt-32 pb-40 md:pt-48">
         {/* --- Hero Section --- */}
         <section className="mb-48">
           <div className="mb-12 inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-4 py-2">
-            <span className="flex h-2 w-2 rounded-full bg-blue-500 animate-pulse"></span>
+            <span className="flex h-2 w-2 animate-pulse rounded-full bg-blue-500"></span>
             <span className="text-[10px] font-black tracking-[0.3em] text-blue-400 uppercase">
               Ayato Studio / AI Native Engineering
             </span>
           </div>
 
-          <h1 className="mb-16 text-6xl leading-[0.85] font-black tracking-tighter text-white md:text-[8rem] uppercase">
+          <h1 className="mb-16 text-6xl leading-[0.85] font-black tracking-tighter text-white uppercase md:text-[8rem]">
             AI NATIVE
             <br />
             <span className="text-blue-600">SYSTEMS</span>
@@ -238,10 +240,8 @@ export default function Home() {
 
           <div className="max-w-2xl">
             <p className="mb-12 text-xl leading-snug font-medium text-gray-400 md:text-2xl">
-              AIが存在することを前提とした、
-              自律的エージェント・MCP（Model Context Protocol）連携・
-              エッジファーストなAIネイティブシステム構築と
-              インテグレーションの専門技術スタジオ。
+              AIが存在することを前提とした、 自律的エージェント・MCP（Model Context Protocol）連携・
+              エッジファーストなAIネイティブシステム構築と インテグレーションの専門技術スタジオ。
             </p>
             <div className="flex gap-6">
               <Link

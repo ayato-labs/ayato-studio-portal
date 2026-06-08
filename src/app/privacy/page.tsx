@@ -84,7 +84,12 @@ export default function PrivacyPage() {
                   <p className="mb-2 font-bold text-white">Google Analytics 4</p>
                   <p className="text-sm text-gray-400">
                     アクセス解析ツールです。Cookieを使用してデータを収集します。詳細は
-                    <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline ml-1">
+                    <a
+                      href="https://policies.google.com/privacy"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="ml-1 text-blue-400 hover:underline"
+                    >
                       プライバシーポリシー
                     </a>
                     をご確認ください。
@@ -93,9 +98,15 @@ export default function PrivacyPage() {
                 <div className="rounded-xl border border-white/5 bg-white/[0.03] p-5">
                   <p className="mb-2 font-bold text-white">Google AdSense</p>
                   <p className="text-sm text-gray-400">
-                    Google などの第三者配信事業者が Cookie を使用して、ユーザーが当サイトや他のサイトに過去にアクセスした際の情報に基づいて広告を配信します。
+                    Google などの第三者配信事業者が Cookie
+                    を使用して、ユーザーが当サイトや他のサイトに過去にアクセスした際の情報に基づいて広告を配信します。
                     ユーザーは、
-                    <a href="https://adssettings.google.com/" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline mx-1">
+                    <a
+                      href="https://adssettings.google.com/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mx-1 text-blue-400 hover:underline"
+                    >
                       広告設定
                     </a>
                     からパーソナライズ広告を無効にできます。

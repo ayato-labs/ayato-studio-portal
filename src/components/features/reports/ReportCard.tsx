@@ -19,7 +19,7 @@ export default function ReportCard({ report, variant = 'default' }: ReportCardPr
             {report.category}
           </span>
           <span className="h-px w-4 bg-white/10"></span>
-          <span className="text-white/30 text-[10px] font-bold tracking-widest uppercase">
+          <span className="text-[10px] font-bold tracking-widest text-white/30 uppercase">
             {formatDate(report.timestamp)}
           </span>
         </div>
@@ -27,7 +27,12 @@ export default function ReportCard({ report, variant = 'default' }: ReportCardPr
           {report.title}
         </h3>
         <div className="absolute top-1/2 right-4 -translate-y-1/2 opacity-0 transition-all group-hover:translate-x-1 group-hover:opacity-100">
-          <svg className="h-4 w-4 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg
+            className="h-4 w-4 text-blue-500"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg>
         </div>

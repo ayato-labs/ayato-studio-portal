@@ -26,7 +26,8 @@ export default function AboutPage() {
             </span>
           </h1>
           <p className="max-w-2xl text-xl leading-relaxed font-bold tracking-tight text-gray-300">
-            Ayato Studio は、AIが存在することを前提とした「AIネイティブ」なシステム・ワークフロー構築の専門技術スタジオです。
+            Ayato Studio
+            は、AIが存在することを前提とした「AIネイティブ」なシステム・ワークフロー構築の専門技術スタジオです。
           </p>
         </div>
 
@@ -51,7 +52,8 @@ export default function AboutPage() {
               <p>
                 私たちは単にAIモデルをAPI経由で呼び出すだけのシステムは作りません。
                 AIエージェントが自律的にタスクをこなし、人間や既存システムと協調するための
-                メモリ管理、セキュアな認証、カスタムMCP（Model Context Protocol）サーバーの開発を行います。
+                メモリ管理、セキュアな認証、カスタムMCP（Model Context
+                Protocol）サーバーの開発を行います。
               </p>
               <p className="mt-4">
                 エッジ環境（Cloudflare Pages/Workers + Supabase RLS等）をフル活用することで、
@@ -61,23 +63,42 @@ export default function AboutPage() {
             </section>
 
             <div className="rounded-[2.5rem] border border-white/5 bg-white/[0.02] p-8 md:p-12">
-              <h3 className="mb-8 text-xl font-black text-white uppercase tracking-widest">Core Capabilities</h3>
+              <h3 className="mb-8 text-xl font-black tracking-widest text-white uppercase">
+                Core Capabilities
+              </h3>
               <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
                 <div className="space-y-2">
-                  <h4 className="text-blue-500 font-black text-xs uppercase tracking-widest">01 / Custom MCP Server</h4>
-                  <p className="text-sm text-gray-400">既存DBや社内APIをAIエージェントに安全に接続する、標準仕様に準拠したカスタムMCPサーバーの設計・開発。</p>
+                  <h4 className="text-xs font-black tracking-widest text-blue-500 uppercase">
+                    01 / Custom MCP Server
+                  </h4>
+                  <p className="text-sm text-gray-400">
+                    既存DBや社内APIをAIエージェントに安全に接続する、標準仕様に準拠したカスタムMCPサーバーの設計・開発。
+                  </p>
                 </div>
                 <div className="space-y-2">
-                  <h4 className="text-blue-500 font-black text-xs uppercase tracking-widest">02 / Agentic Orchestration</h4>
-                  <p className="text-sm text-gray-400">LangGraphや自律型エージェントを活用した、複雑なビジネスプロセスの自動化・ワークフロー構築。</p>
+                  <h4 className="text-xs font-black tracking-widest text-blue-500 uppercase">
+                    02 / Agentic Orchestration
+                  </h4>
+                  <p className="text-sm text-gray-400">
+                    LangGraphや自律型エージェントを活用した、複雑なビジネスプロセスの自動化・ワークフロー構築。
+                  </p>
                 </div>
                 <div className="space-y-2">
-                  <h4 className="text-blue-500 font-black text-xs uppercase tracking-widest">03 / Edge First Architecture</h4>
-                  <p className="text-sm text-gray-400">Cloudflare Pages/WorkersとSupabaseを組み合わせた、サーバーレスかつ低遅延・高セキュリティなインフラ構築。</p>
+                  <h4 className="text-xs font-black tracking-widest text-blue-500 uppercase">
+                    03 / Edge First Architecture
+                  </h4>
+                  <p className="text-sm text-gray-400">
+                    Cloudflare
+                    Pages/WorkersとSupabaseを組み合わせた、サーバーレスかつ低遅延・高セキュリティなインフラ構築。
+                  </p>
                 </div>
                 <div className="space-y-2">
-                  <h4 className="text-blue-500 font-black text-xs uppercase tracking-widest">04 / Fine-Tuning & Evaluation</h4>
-                  <p className="text-sm text-gray-400">ビジネス要件に特化したLLMのファインチューニングおよび、エージェント出力の精度・安全性の継続的評価。</p>
+                  <h4 className="text-xs font-black tracking-widest text-blue-500 uppercase">
+                    04 / Fine-Tuning & Evaluation
+                  </h4>
+                  <p className="text-sm text-gray-400">
+                    ビジネス要件に特化したLLMのファインチューニングおよび、エージェント出力の精度・安全性の継続的評価。
+                  </p>
                 </div>
               </div>
             </div>
@@ -90,7 +111,9 @@ export default function AboutPage() {
               </h4>
               <div className="space-y-6">
                 <div>
-                  <p className="mb-2 text-xs font-black text-white uppercase tracking-tighter">Intellectual Integrity</p>
+                  <p className="mb-2 text-xs font-black tracking-tighter text-white uppercase">
+                    Intellectual Integrity
+                  </p>
                   <p className="text-xs leading-relaxed text-gray-500">
                     プライバシー保護は単なる機能ではありません。
                     ユーザーの興味関心を追跡しないことは、私たちの「知的誠実さ」の証明です。
@@ -98,9 +121,12 @@ export default function AboutPage() {
                 </div>
                 <div className="h-px bg-white/5" />
                 <div>
-                  <p className="mb-2 text-xs font-black text-white uppercase tracking-tighter">Human-Centric Design</p>
+                  <p className="mb-2 text-xs font-black tracking-tighter text-white uppercase">
+                    Human-Centric Design
+                  </p>
                   <p className="text-xs leading-relaxed text-gray-500">
-                    AI はあくまで手段。最終的な価値は、高い質の意思決定をいかに加速させ多く可能にすることにあります。
+                    AI
+                    はあくまで手段。最終的な価値は、高い質の意思決定をいかに加速させ多く可能にすることにあります。
                   </p>
                 </div>
               </div>
@@ -113,12 +139,15 @@ export default function AboutPage() {
               <div className="space-y-4">
                 <div>
                   <p className="text-sm font-bold text-white">運営者: ayato-labs (Ayato)</p>
-                  <p className="text-xs text-gray-400">AI Harness Engineer / Full-Stack Developer</p>
+                  <p className="text-xs text-gray-400">
+                    AI Harness Engineer / Full-Stack Developer
+                  </p>
                 </div>
                 <div className="h-px bg-white/5" />
                 <div>
                   <p className="text-xs text-gray-500">
-                    AIとWeb技術を組み合わせた「Operative Domain（動的なデジタル領土）」の構築を研究しています。
+                    AIとWeb技術を組み合わせた「Operative
+                    Domain（動的なデジタル領土）」の構築を研究しています。
                   </p>
                 </div>
                 <div className="h-px bg-white/5" />
@@ -129,10 +158,7 @@ export default function AboutPage() {
               </div>
             </div>
 
-            <Link
-              href="/reports"
-              className="group relative block overflow-hidden rounded-3xl p-8"
-            >
+            <Link href="/reports" className="group relative block overflow-hidden rounded-3xl p-8">
               <div className="absolute inset-0 bg-blue-600 transition-transform duration-500 group-hover:scale-105" />
               <div className="relative">
                 <h4 className="mb-2 text-lg font-black text-white">Explore Reports</h4>
