@@ -2,7 +2,7 @@
 title: "ローカルMCPサーバー構築入門(Python) ― FastMCPはなぜFastAPIやFlaskでは代替できないのか"
 description: "LLMエージェント開発に必須となる「Model Context Protocol (MCP)」。PythonでMCPサーバーを構築する際に、なぜ既存のWebフレームワーク(FastAPI/Flask)ではなく「FastMCP」を使うべきなのか、そのアーキテクチャの違いと本質を解説します。"
 date: 2026-04-09
-category: blog
+category: insights
 ---
 
 # ローカルMCPサーバー構築入門(Python) ― FastMCPはなぜFastAPIやFlaskでは代替できないのか

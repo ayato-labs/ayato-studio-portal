@@ -3,24 +3,24 @@ import { fetchReports } from '@/lib/api';
 import { getLocalArticles } from '@/lib/local-content';
 import Link from 'next/link';
 
-// blog/page.tsx - Combines Weekly AI reviews and Human local articles
-async function BlogList() {
+// insights/page.tsx - Combines Weekly AI reviews and Human local articles
+async function InsightsList() {
   // 1. Fetch AI reports and filter for "Weekly" category
   const aiReports = await fetchReports();
   const weeklyReviews = aiReports.filter((r) => r.category === 'Weekly');
 
   // 2. Fetch Local Markdown articles
-  const localArticles = getLocalArticles('blog');
+  const localArticles = getLocalArticles('insights');
 
   // 3. Map local articles to a similar structure for display
   const mappedLocal = localArticles.map((a) => ({
     id: a.slug,
     title: a.title,
-    category: 'Human Insight',
+    category: 'Technical Insight',
     timestamp: a.date,
     market: 'Editorial',
     content: a.description,
-    slug: `/blog/${a.slug}`,
+    slug: `/insights/${a.slug}`,
     isLocal: true,
   }));
 
@@ -32,7 +32,7 @@ async function BlogList() {
   if (allPosts.length === 0) {
     return (
       <div className="py-20 text-center">
-        <p className="text-gray-500">No blog posts found yet.</p>
+        <p className="text-gray-500">No technical insights found yet.</p>
       </div>
     );
   }
@@ -41,7 +41,7 @@ async function BlogList() {
     <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
       {allPosts.map((post) => (
         <div key={post.id} className="group relative">
-          {/* Custom Card for Blog */}
+          {/* Custom Card for Insights */}
           <Link
             href={post.slug}
             className="group block rounded-[2.5rem] border border-white/5 bg-white/[0.02] p-8 transition-all duration-500 hover:border-blue-500/30"
@@ -73,20 +73,20 @@ async function BlogList() {
   );
 }
 
-export default function BlogPage() {
+export default function InsightsPage() {
   return (
     <main className="bg-background min-h-screen py-20 md:py-32">
       <div className="container mx-auto px-6">
         <div className="mb-20 max-w-4xl">
           <h1 className="mb-8 text-5xl leading-none font-black tracking-tighter text-white md:text-7xl">
-            INTELLIGENCE
+            TECHNICAL
             <br />
-            <span className="text-blue-500">BLOG</span>
+            <span className="text-blue-500">INSIGHTS</span>
           </h1>
           <p className="text-xl leading-relaxed font-medium text-gray-500">
-            AI が生成する週刊インテリジェンス・レビューと、
+            AIエージェントの自律化・ワークフロー統合や、MCP(Model Context Protocol)等のコンテキスト管理に焦点を当てた、
             <br className="hidden md:block" />
-            人間による最新の技術考察やマーケット・インサイトを統合した情報ハブ。
+            実践的なインフラ・ハーネスエンジニアリングに関する技術考察と分析。
           </p>
         </div>
 
@@ -95,7 +95,7 @@ export default function BlogPage() {
             <div className="animate-pulse font-black text-gray-700">Decrypting insights...</div>
           }
         >
-          <BlogList />
+          <InsightsList />
         </Suspense>
       </div>
     </main>

@@ -7,19 +7,27 @@ export function SiteHeader() {
         <MainNav
           items={[
             {
-              title: 'Apps',
-              href: '/apps',
+              title: 'News',
+              href: '/reports',
             },
             {
-              title: 'Intelligence',
-              href: '/reports',
+              title: 'Insights',
+              href: '/insights',
+            },
+            {
+              title: 'LLM Stats',
+              href: '/stats',
+            },
+            {
+              title: 'Services',
+              href: '/services',
             },
             {
               title: 'About',
               href: '/about',
             },
             {
-              title: 'Support',
+              title: 'Contact',
               href: '/contact',
             },
           ]}

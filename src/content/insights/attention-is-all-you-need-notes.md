@@ -2,7 +2,7 @@
 title: 【論文読解】『Attention Is All You Need』ー 大規模言語モデル(LLM)の心臓部を読み解く
 description: 現在のLLMの基盤であるTransformerアーキテクチャ。Attention機構の「辞書引き」モデルから、GPTがDecoderだけで構成される理由まで、直感的に解き明かします。
 date: 2026-04-09
-category: blog
+category: insights
 ---
 
 # 【論文読解】『Attention Is All You Need』ー 大規模言語モデル(LLM)の心臓部を読み解く

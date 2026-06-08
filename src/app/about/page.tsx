@@ -2,9 +2,9 @@ import React from 'react';
 import Link from 'next/link';
 
 export const metadata = {
-  title: 'About Ayato Studio | Independent Market Intelligence',
+  title: 'About Ayato Studio | AI Native Systems Engineering',
   description:
-    'AIハーネス・エンジニアリング（AI Harness Engineering）を駆使し、磨き上げられた知性だけを抽出するインテリジェンス・プラットフォーム。情報の深層を解き明かします。',
+    'AIが存在することを前提とした、自律的エージェント・MCP（Model Context Protocol）連携・エッジファーストなAIネイティブシステム構築とインテグレーションの専門技術スタジオ。',
 };
 
 export default function AboutPage() {
@@ -22,12 +22,11 @@ export default function AboutPage() {
             HARNESSING AI.
             <br />
             <span className="inline-block bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 bg-clip-text py-2 text-transparent">
-              DEFINING TRUTH.
+              BUILDING NATIVE.
             </span>
           </h1>
           <p className="max-w-2xl text-xl leading-relaxed font-bold tracking-tight text-gray-300">
-            Ayato Studio は、AI 生成のノイズが溢れる時代において、
-            「磨き上げられた知性」だけを抽出するためのインテリジェンス・レイヤーです。
+            Ayato Studio は、AIが存在することを前提とした「AIネイティブ」なシステム・ワークフロー構築の専門技術スタジオです。
           </p>
         </div>
 
@@ -35,48 +34,50 @@ export default function AboutPage() {
           <div className="space-y-12 text-lg leading-relaxed font-medium text-gray-400 lg:col-span-2">
             <section>
               <h2 className="mb-6 text-2xl font-black tracking-tight text-white uppercase">
-                The Core Problem // 情報の氾濫と劣化
+                The Core Problem // 既存システムとAIの「壁」
               </h2>
               <p>
-                現在、世界はかつてない速度で AI 生成コンテンツに埋め尽くされています。
-                しかし、その多くは表面的な要約や、事実に基づかないハルシネーション（嘘）を孕んでいます。
-                真に価値のある「知性」は、速度ではなく、その「密度」と「正確性」に宿ります。
+                企業が保有する既存システム、固有のデータベース、レガシーAPIは、
+                最新のLLMやAIエージェントにとってそのままではアクセスしづらい「壁」となっています。
+                AIの能力をビジネスに最大限組み込むには、AIエージェントが心地よく稼働するための
+                システムインフラと、安全な接続プロトコル（MCP等）が不可欠です。
               </p>
             </section>
 
             <section>
               <h2 className="mb-6 text-2xl font-black tracking-tight text-white uppercase">
-                AI Harness Engineering // AI に手綱を、思考に深淵を
+                AI Native Systems // AIに手綱を、システムに協調を
               </h2>
               <p>
-                私たちは単に AI を使って記事を書いているのではありません。
-                AI の「暴走」を抑え、文脈を正確に捉えさせるための品質管理機構——
-                <strong>AI Harness Engineering</strong> を基盤としています。
+                私たちは単にAIモデルをAPI経由で呼び出すだけのシステムは作りません。
+                AIエージェントが自律的にタスクをこなし、人間や既存システムと協調するための
+                メモリ管理、セキュアな認証、カスタムMCP（Model Context Protocol）サーバーの開発を行います。
               </p>
               <p className="mt-4">
-                この技術により、膨大なデータから「何が起きているか」だけでなく、
-                「なぜそれが重要なのか」という深層のインサイトを、抽出します。
+                エッジ環境（Cloudflare Pages/Workers + Supabase RLS等）をフル活用することで、
+                初期投資を抑えつつ爆速でPoC（概念実証）からプロダクション運用までを
+                立ち上げる「超高機動型エッジファースト」を実装します。
               </p>
             </section>
 
             <div className="rounded-[2.5rem] border border-white/5 bg-white/[0.02] p-8 md:p-12">
-              <h3 className="mb-8 text-xl font-black text-white uppercase tracking-widest">Target Domains</h3>
+              <h3 className="mb-8 text-xl font-black text-white uppercase tracking-widest">Core Capabilities</h3>
               <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
                 <div className="space-y-2">
-                  <h4 className="text-blue-500 font-black text-xs uppercase tracking-widest">01 / Deep-Tech</h4>
-                  <p className="text-sm text-gray-400">量子計算、バイオ、半導体——産業構造を根底から変える技術の深層。</p>
+                  <h4 className="text-blue-500 font-black text-xs uppercase tracking-widest">01 / Custom MCP Server</h4>
+                  <p className="text-sm text-gray-400">既存DBや社内APIをAIエージェントに安全に接続する、標準仕様に準拠したカスタムMCPサーバーの設計・開発。</p>
                 </div>
                 <div className="space-y-2">
-                  <h4 className="text-blue-500 font-black text-xs uppercase tracking-widest">02 / Clean-Energy</h4>
-                  <p className="text-sm text-gray-400">エネルギーの転換点に潜む、地政学的かつ経済的なリアリティ。</p>
+                  <h4 className="text-blue-500 font-black text-xs uppercase tracking-widest">02 / Agentic Orchestration</h4>
+                  <p className="text-sm text-gray-400">LangGraphや自律型エージェントを活用した、複雑なビジネスプロセスの自動化・ワークフロー構築。</p>
                 </div>
                 <div className="space-y-2">
-                  <h4 className="text-blue-500 font-black text-xs uppercase tracking-widest">03 / Market Anomalies</h4>
-                  <p className="text-sm text-gray-400">マクロ統計には現れない、市場の裂け目にあるニッチな兆候。</p>
+                  <h4 className="text-blue-500 font-black text-xs uppercase tracking-widest">03 / Edge First Architecture</h4>
+                  <p className="text-sm text-gray-400">Cloudflare Pages/WorkersとSupabaseを組み合わせた、サーバーレスかつ低遅延・高セキュリティなインフラ構築。</p>
                 </div>
                 <div className="space-y-2">
-                  <h4 className="text-blue-500 font-black text-xs uppercase tracking-widest">04 / Agentic AI</h4>
-                  <p className="text-sm text-gray-400">AI が自律的に行動する未来——その「手綱」となる技術の最前線。</p>
+                  <h4 className="text-blue-500 font-black text-xs uppercase tracking-widest">04 / Fine-Tuning & Evaluation</h4>
+                  <p className="text-sm text-gray-400">ビジネス要件に特化したLLMのファインチューニングおよび、エージェント出力の精度・安全性の継続的評価。</p>
                 </div>
               </div>
             </div>

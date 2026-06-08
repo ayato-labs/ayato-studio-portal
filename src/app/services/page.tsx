@@ -5,7 +5,7 @@ import { Icons } from '@/components/ui/Icons';
 export const metadata = {
   title: 'Services - Ayato Studio',
   description:
-    'AI駆動型のエージェントとインテリジェンス基盤。私たちが提供するコア・テクノロジーの紹介。',
+    'AIが存在することを前提とした、AIネイティブなシステム構築・ワークフロー自動化・カスタムMCPサーバー開発のプロフェッショナルサービス。',
 };
 
 export default async function ServicesPage() {
@@ -18,8 +18,7 @@ export default async function ServicesPage() {
           Services & Products
         </h1>
         <p className="text-muted-foreground text-xl">
-          AIエージェント、共有メモリ、マルチモーダル解析。Ayato Studio
-          が構築したインテリジェンスの基盤実績。
+          自律型AIエージェント、カスタムMCP連携、エッジファーストアーキテクチャ。Ayato Studio が提供するAIネイティブシステム構築ソリューション。
         </p>
       </div>
 
@@ -61,9 +60,9 @@ export default async function ServicesPage() {
       </div>
 
       <div className="mt-20 rounded-3xl border border-dashed border-white/10 p-12 text-center">
-        <h2 className="mb-4 text-2xl font-bold">Custom AI Agent Development</h2>
+        <h2 className="mb-4 text-2xl font-bold">AI Native Integration Consulting</h2>
         <p className="text-muted-foreground mx-auto mb-8 max-w-2xl">
-          特定のビジネスロジックに基づいた自律型エージェントの構築や、データの資産化（RAG）の導入を支援します。
+          御社独自の業務システムとLLMを安全に繋ぐカスタムMCPサーバーの設計や、エッジ環境を活用した維持費ゼロのAIシステム構築を支援します。
         </p>
         <Link
           href="/contact"

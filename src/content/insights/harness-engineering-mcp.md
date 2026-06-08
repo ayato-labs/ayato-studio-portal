@@ -2,7 +2,7 @@
 title: ハーネスエンジニアリング入門:AIシステムを"制御可能"にする技術
 description: LLMを組み込んだシステムを本番環境で安定運用するための「ハーネスエンジニアリング」と、多層防御、そしてMCP(Model Context Protocol)との関係性を解説します。
 date: 2026-04-09
-category: Technology
+category: insights
 ---
 
 # ハーネスエンジニアリング入門:AIシステムを"制御可能"にする技術
