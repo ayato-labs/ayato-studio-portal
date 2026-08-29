@@ -5,6 +5,8 @@ import Link from 'next/link';
 
 import { getLocalArticleBySlug, getLocalArticles } from '@/lib/local-content';
 import { Icons } from '@/components/ui/Icons';
+import { PRICING_PLANS } from '@/lib/stripe/plans';
+import { CheckoutButton } from '@/components/features/checkout/CheckoutButton';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -121,6 +123,84 @@ export default async function ServiceDetailPage({ params }: PageProps) {
             </div>
           </div>
         </section>
+
+        {/* Pricing / Access Plans Section */}
+        {(() => {
+          const relevantPlans = PRICING_PLANS.filter((p) => p.productId === slug);
+          if (relevantPlans.length === 0) return null;
+
+          return (
+            <section className="border-t border-white/5 bg-white/[0.02] py-24">
+              <div className="container mx-auto max-w-5xl px-6">
+                <div className="mb-16 text-center">
+                  <h3 className="mb-4 text-xs font-black tracking-[0.4em] text-blue-400 uppercase">
+                    Pricing & License Options
+                  </h3>
+                  <h2 className="text-4xl font-black tracking-tight text-white md:text-5xl">
+                    プランを選択して即座に導入
+                  </h2>
+                </div>
+
+                <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                  {relevantPlans.map((plan) => (
+                    <div
+                      key={plan.id}
+                      className={`relative flex flex-col justify-between rounded-3xl border p-8 backdrop-blur-xl ${
+                        plan.recommended
+                          ? 'border-blue-500/50 bg-blue-500/[0.08] shadow-2xl shadow-blue-500/10'
+                          : 'border-white/10 bg-white/[0.03]'
+                      }`}
+                    >
+                      {plan.recommended && (
+                        <div className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-gradient-to-r from-blue-500 to-indigo-500 px-4 py-1 text-[10px] font-black tracking-widest text-white uppercase">
+                          Recommended
+                        </div>
+                      )}
+
+                      <div>
+                        <h4 className="mb-2 text-xl font-black text-white">{plan.name}</h4>
+                        <p className="mb-6 text-sm text-gray-400">{plan.description}</p>
+                        <div className="mb-8 flex items-baseline gap-2">
+                          <span className="text-4xl font-black text-white">
+                            {plan.price === 0 ? '無料' : `¥${plan.price.toLocaleString()}`}
+                          </span>
+                          {plan.price > 0 && (
+                            <span className="text-xs font-bold text-gray-400">
+                              {plan.interval === 'month' ? '/ 月' : '（買い切り）'}
+                            </span>
+                          )}
+                        </div>
+
+                        <ul className="mb-8 space-y-3 text-sm text-gray-300">
+                          {plan.features.map((feat, idx) => (
+                            <li key={idx} className="flex items-start gap-2">
+                              <span className="text-blue-400 font-bold">✓</span>
+                              <span>{feat}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      <CheckoutButton
+                        productId={slug}
+                        planId={plan.id}
+                        tierName={`${service.title.split(' - ')[0]} (${plan.name})`}
+                        amount={plan.price}
+                        mode={plan.interval === 'month' ? 'subscription' : 'payment'}
+                        buttonText={plan.price === 0 ? 'GitHubで無料取得' : '今すぐ申し込む'}
+                        className={`w-full py-4 px-6 rounded-full font-black tracking-wider text-xs uppercase transition-all duration-300 ${
+                          plan.recommended
+                            ? 'bg-blue-500 text-white hover:bg-blue-400 shadow-lg shadow-blue-500/20'
+                            : 'bg-white text-black hover:bg-gray-200'
+                        }`}
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </section>
+          );
+        })()}
       </article>
 
       {/* CTA Footer */}

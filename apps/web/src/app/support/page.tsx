@@ -3,12 +3,176 @@
 import { Suspense } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
 
 const OFUSE_URL = 'https://ofuse.me/21cfc1d2';
 
+// Product Download & Setup Catalog
+const DOWNLOAD_RESOURCES: Record<
+  string,
+  {
+    title: string;
+    description: string;
+    version: string;
+    downloads: { label: string; url: string; badge: string; isPrimary?: boolean }[];
+    setupGuide: string[];
+  }
+> = {
+  'movie-to-text': {
+    title: 'Transform_MovieToText (Pro / Lifetime Edition)',
+    description: '完全オフライン・エアギャップ保証のAI文字起こし＆話者分離エンジン',
+    version: 'v1.1.0 (Windows 64bit)',
+    downloads: [
+      {
+        label: 'Windows インストーラー (ZIP / 64-bit)',
+        url: 'https://github.com/ayato-labs/ayato-studio/releases',
+        badge: 'Recommended',
+        isPrimary: true,
+      },
+      {
+        label: 'ソースコード & 手動ビルド手順',
+        url: 'https://github.com/ayato-labs/ayato-studio',
+        badge: 'GitHub',
+      },
+    ],
+    setupGuide: [
+      'ダウンロードした ZIP ファイルを展開します。',
+      '展開先フォルダ内の setup.bat または 実行ファイル を起動します。',
+      '音声・動画ファイルをドラッグ＆ドロップすると、0バイト外部送信の安全なローカル文字起こしが開始されます。',
+    ],
+  },
+  'project-code-map': {
+    title: 'ProjectCodeMap (Pro Edition)',
+    description: 'ASTベースのコードベース・コンテキスト圧縮＆最適化エンジン',
+    version: 'v1.4.0 (Multi-platform CLI & Web)',
+    downloads: [
+      {
+        label: 'CLI ワンライナー実行 (uvx)',
+        url: 'https://github.com/ayato-labs/ayato-studio',
+        badge: 'Instant CLI',
+        isPrimary: true,
+      },
+    ],
+    setupGuide: [
+      'ターミナルで `uvx project-code-map --format xml > context.xml` を実行します。',
+      '生成された XML シグネチャを Cursor や Claude のプロンプトに添付することで、85%のトークン削減が完了します。',
+    ],
+  },
+  'tenk-orbit': {
+    title: 'TenKOrbit (Pro / Lifetime Edition)',
+    description: '1万時間の法則 × 手書きノートOCR＆ローカルAI伴走指導アプリ',
+    version: 'v1.0.0 (Desktop & Android APK)',
+    downloads: [
+      {
+        label: 'Android ネイティブアプリ (APK)',
+        url: 'https://github.com/ayato-labs/TenKOrbit/releases',
+        badge: 'Android APK',
+        isPrimary: true,
+      },
+      {
+        label: 'Windows / Mac デスクトップ版 (ZIP)',
+        url: 'https://github.com/ayato-labs/TenKOrbit/releases',
+        badge: 'Desktop App',
+      },
+    ],
+    setupGuide: [
+      'Android端末で APK をダウンロードし、インストールします（「提供元不明のアプリ」を許可）。',
+      'アプリを起動し、目標とする夢（1万時間）と資格マイルストーンを設定します。',
+      '日々の学習終了後にノートの写真を撮影すると、AIが即座に理解度と質の評価アドバイスを出力します。',
+    ],
+  },
+};
+
+function PurchaseSuccessHub({ productId }: { productId: string }) {
+  const resource = DOWNLOAD_RESOURCES[productId] || DOWNLOAD_RESOURCES['movie-to-text'];
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      className="mb-16 rounded-[2.5rem] border border-emerald-500/20 bg-emerald-950/20 p-8 backdrop-blur-2xl md:p-12"
+    >
+      <div className="mb-8 inline-flex items-center gap-3 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-5 py-2 text-emerald-400">
+        <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+        </svg>
+        <span className="text-xs font-black tracking-widest uppercase">Payment Verified // License Active</span>
+      </div>
+
+      <h2 className="mb-4 text-3xl font-black text-white md:text-4xl">{resource.title}</h2>
+      <p className="mb-8 text-base text-gray-300">{resource.description}</p>
+
+      {/* Download Action Cards */}
+      <div className="mb-10 grid gap-4 md:grid-cols-2">
+        {resource.downloads.map((dl, idx) => (
+          <Link
+            key={idx}
+            href={dl.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`group flex items-center justify-between rounded-2xl p-6 transition-all duration-300 ${
+              dl.isPrimary
+                ? 'bg-emerald-500 text-black shadow-lg shadow-emerald-500/20 hover:bg-emerald-400 hover:scale-[1.02]'
+                : 'border border-white/10 bg-white/5 text-white hover:bg-white/10'
+            }`}
+          >
+            <div>
+              <span className="text-[10px] font-black tracking-widest uppercase opacity-75">{dl.badge}</span>
+              <h4 className="mt-1 text-base font-bold">{dl.label}</h4>
+            </div>
+            <svg
+              className="h-6 w-6 transition-transform group-hover:translate-x-1"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+            </svg>
+          </Link>
+        ))}
+      </div>
+
+      {/* Setup Guide */}
+      <div className="rounded-2xl border border-white/5 bg-black/40 p-6">
+        <h4 className="mb-4 text-xs font-black tracking-widest text-emerald-400 uppercase">
+          Quick Setup Guide // 初期設定手順
+        </h4>
+        <ol className="space-y-3 text-sm text-gray-300">
+          {resource.setupGuide.map((step, idx) => (
+            <li key={idx} className="flex gap-3">
+              <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-emerald-500/20 text-xs font-bold text-emerald-400">
+                {idx + 1}
+              </span>
+              <span>{step}</span>
+            </li>
+          ))}
+        </ol>
+      </div>
+
+      <div className="mt-8 text-center">
+        <p className="text-xs text-gray-400">
+          ご不明点やサポートが必要な場合は、お気軽に{' '}
+          <a href="mailto:cwblog69@gmail.com" className="text-emerald-400 underline underline-offset-4">
+            cwblog69@gmail.com
+          </a>{' '}
+          までご連絡ください。
+        </p>
+      </div>
+    </motion.div>
+  );
+}
+
 function SupportPageContent() {
+  const searchParams = useSearchParams();
+  const isSuccess = searchParams.get('success') === 'true';
+  const productId = searchParams.get('product') || '';
+
   return (
     <div className="mx-auto max-w-4xl">
+      {/* If purchase success, render Download Hub */}
+      {isSuccess && <PurchaseSuccessHub productId={productId} />}
+
       {/* The Philosophy of Independence */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -33,13 +197,11 @@ function SupportPageContent() {
             </h4>
             <p className="text-base leading-relaxed font-bold tracking-tight text-gray-300">
               Ayato Studio は、既存の金融資本や広告モデルから完全に独立した存在です。
-              私たちが大手決済プラットフォームによるユーザー追跡や、画一的な定期購読モデルをあえて採用しないのは、
-              情報の「受け手」を管理・分析する従来のデータビジネス構造から決別するためです。
+              ユーザー追跡や過剰な中間マージンを排除し、完全なプライバシーと減算の美学に基づいたAIツールを直接お届けします。
             </p>
             <p className="mt-4 text-sm leading-relaxed text-gray-500">
               私たちの知性は、広告主ではなく、あなたに向いています。
-              ここでの支援は、単なる寄付ではありません。それは、マーケットの深層にある「バイアスのない真実」を維持し、
-              プライバシーが究極まで守られた新しい情報の形を共に作り上げるための、共同投資です。
+              ここでの支援やご購入は、プライバシーが究極まで守られた新しいソフトウェアの形を共に作り上げるための共同投資です。
             </p>
           </div>
         </div>
@@ -66,10 +228,7 @@ function SupportPageContent() {
               </span>
             </h2>
             <p className="text-lg leading-relaxed font-medium tracking-tight text-gray-400">
-              OFUSE を通じて、独立系リサーチの継続をご支援いただけます。
-              <br />
-              一文字 1 円からのメッセージが、Ayato Studio
-              の「独立性」を維持する最も純粋なエネルギーとなります。
+              OFUSE を通じて、独立系リサーチおよびオープンソース開発の継続をご支援いただけます。
             </p>
           </div>
 
@@ -94,25 +253,8 @@ function SupportPageContent() {
               />
             </svg>
           </Link>
-
-          <div className="mt-12 flex items-center justify-center gap-8 opacity-20 transition-opacity duration-700 group-hover:opacity-40">
-            <div className="h-px w-24 bg-white/50" />
-            <div className="text-[10px] font-black tracking-widest text-white uppercase">
-              Privacy-First Platform
-            </div>
-            <div className="h-px w-24 bg-white/50" />
-          </div>
         </div>
       </motion.div>
-
-      <motion.p
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 0.3 }}
-        transition={{ delay: 1 }}
-        className="text-center text-[8px] font-black tracking-[0.5em] text-gray-500 uppercase"
-      >
-        Independent Intelligence Engine // Powered by your trust
-      </motion.p>
     </div>
   );
 }
@@ -138,15 +280,15 @@ export default function SupportPage() {
               <span className="relative inline-flex h-2 w-2 rounded-full bg-blue-500"></span>
             </span>
             <span className="text-[10px] font-black tracking-[0.2em] text-blue-400 uppercase">
-              Support // Mission Progress
+              Support & Downloads
             </span>
           </div>
 
           <h1 className="mb-8 text-5xl leading-[0.9] font-black tracking-tighter text-white uppercase md:text-8xl">
-            FUEL THE
+            TOOL ACCESS //
             <br />
             <span className="bg-gradient-to-r from-blue-500 via-purple-500 to-amber-500 bg-clip-text text-transparent">
-              INTELLIGENCE
+              DISTRIBUTION
             </span>
           </h1>
         </motion.div>
