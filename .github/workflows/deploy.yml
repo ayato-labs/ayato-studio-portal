@@ -35,6 +35,7 @@ jobs:
       - name: Build Next.js app for Cloudflare Pages
         working-directory: apps/web
         env:
+          STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY }}
           NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: ${{ secrets.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || 'pk_test_51SoSqbPCeWLY3R8VHIfpVlMVQjS3jhBIeIooEQ7cYGlOWhMYp67RSsRi0UYfchCis6eGtFLbQVmXdvraQUcjcFOW004xrG1mjx' }}
           NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL || 'https://cvfegqjfqbmsqjeypghc.supabase.co' }}
           NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN2ZmVncWpmcWJtc3FqZXlwZ2hjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDAzNTQ5ODAsImV4cCI6MjA1NTkzMDk4MH0.Q6XzY6X9_Z5g7_3Z8_0Z8_0Z8_0Z8_0Z8_0Z8_0Z8_0' }}
