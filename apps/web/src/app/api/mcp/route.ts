@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { fetchReports } from '@/lib/api';
 import { getLocalArticles } from '@/lib/local-content';
 
+export const runtime = 'edge';
+
 // Standard MCP Protocol Tools Definition
 const MCP_TOOLS = [
   {
