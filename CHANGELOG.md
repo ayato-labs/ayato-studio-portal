@@ -1,3 +1,10 @@
+## [1.9.1](https://github.com/ayato-labs/ayato-studio-portal/compare/v1.9.0...v1.9.1) (2026-08-29)
+
+
+### Bug Fixes
+
+* deploy latest Edge Runtime and pricing plans to Cloudflare Pages ([726b0d8](https://github.com/ayato-labs/ayato-studio-portal/commit/726b0d8dcf90008c6d9f4744d658ab28aa7356fb))
+
 # [1.9.0](https://github.com/ayato-labs/ayato-studio-portal/compare/v1.8.0...v1.9.0) (2026-08-29)
 
 
