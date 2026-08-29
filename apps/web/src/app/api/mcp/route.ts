@@ -84,6 +84,20 @@ const PRODUCTS_DATA = [
     },
   },
   {
+    name: 'TenKOrbit',
+    slug: 'tenk-orbit',
+    url: 'https://ayato-studio.ai/services/tenk-orbit',
+    category: 'Productivity & 10,000-Hour Rule AI Coaching',
+    headline: '10,000-Hour Rule Progress Tracker & Local AI Handwriting Coaching for Windows/Mac/Android',
+    architecture:
+      'Seconds-precise calculation + Handwriting OCR + Dual-axis Local AI Rubric Evaluation. 100% private SQLite storage.',
+    pricing: {
+      community: 'Free & Open Source',
+      pro_monthly: '980 JPY / month',
+      lifetime: '4,980 JPY (One-time payment)',
+    },
+  },
+  {
     name: 'Ripen MCP',
     slug: 'ripen',
     url: 'https://ayato-studio.ai/services/ripen',

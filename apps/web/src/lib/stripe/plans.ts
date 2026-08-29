@@ -106,6 +106,20 @@ export const PRICING_PLANS: PricingPlan[] = [
       '難関資格別 合格マイルストーンテンプレート',
     ],
   },
+  {
+    id: 'tenk-lifetime',
+    productId: PRODUCTS_CATALOG.TENK_ORBIT,
+    name: 'TenKOrbit Lifetime License',
+    description: 'デスクトップ＆Android版 永久ライセンス（買い切り）',
+    price: 4980,
+    interval: 'one_time',
+    features: [
+      'Windows / macOS / Android APK 永久利用ライセンス',
+      '完全ローカル・オフライン動作（外部送信ゼロ）',
+      '手書きノートOCR & ローカルAI伴走機能',
+      '将来の全アップデート無制限',
+    ],
+  },
 
   // 5. Intrinsic Value Radar (AI適正株価・バリュエーション)
   {
