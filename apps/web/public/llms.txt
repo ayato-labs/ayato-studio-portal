@@ -17,6 +17,12 @@ Ayato Studio builds lightweight, high-performance software based on the philosop
 - [Compressing Codebase Context with tree-sitter AST](https://ayato-studio.ai/insights/llm-context-compression-with-ast): Preventing LLM hallucinations and reducing token costs by passing structured signatures instead of raw source code.
 - [MCP Security Hardening & SQL Injection Mitigation](https://ayato-studio.ai/insights/mcp-sqlite-hardening): Practical security protocols for autonomous agent tool execution.
 
+## AI Agent Data Licensing & Monetization Policy
+
+- Direct Attribution & Citation: Free for user-facing answer citation (Perplexity, ChatGPT Search, Claude).
+- Commercial Model Training & Bulk Ingestion: Subject to Cloudflare Pay Per Crawl (PPC) and Monetization Gateway (x402 / HTTP 402 Payment Required) protocols.
+- Licensing Inquiries: Contact cwblog69@gmail.com.
+
 ## Developer & Operator
 
 - Name: Ayato
