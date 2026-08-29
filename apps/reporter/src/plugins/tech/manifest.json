@@ -1,0 +1,8 @@
+{
+    "id": "tech",
+    "name": "Tech & arXiv Intelligence Engine",
+    "version": "1.0.0",
+    "description": "Autonomous discovery and analysis of global AI news and research papers.",
+    "author": "Ayato Studio",
+    "main": "main.py"
+}

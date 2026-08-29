@@ -1,0 +1,8 @@
+{
+    "id": "global_news",
+    "name": "Global AI News Curation Engine",
+    "version": "1.0.0",
+    "description": "Collects global AI news feeds, filters them via Gemma AI for high-signal curation, and stores original links without translation.",
+    "author": "Ayato Studio",
+    "main": "main.py"
+}

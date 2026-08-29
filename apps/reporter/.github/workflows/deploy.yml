@@ -1,0 +1,104 @@
+name: Deploy Ayato Reporter (Lite)
+
+on:
+  push:
+    branches: [ main ]
+
+env:
+  PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
+  SERVICE_NAME: ayato-reporter
+  REGION: asia-northeast1
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+
+      - name: Install dependencies
+        run: |
+          uv sync
+          uv pip install -e .
+
+      - name: Run unit tests and linting
+        run: |
+          uv run ruff check .
+          uv run ruff format . --check
+          uv run pytest tests/unit/test_service_container.py tests/unit/test_category_boundaries.py
+
+      - name: Canary Fetch (Connectivity Check)
+        run: |
+          uv run python tools/canary_fetch.py
+
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Google Auth
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
+
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+
+      - name: Configure Docker
+        run: gcloud auth configure-docker asia-northeast1-docker.pkg.dev
+
+      - name: Build and Push
+        run: |
+          docker build -t asia-northeast1-docker.pkg.dev/$PROJECT_ID/ayato-registry/$SERVICE_NAME:${{ github.sha }} .
+          docker push asia-northeast1-docker.pkg.dev/$PROJECT_ID/ayato-registry/$SERVICE_NAME:${{ github.sha }}
+
+      - name: Deploy Cloud Run Job
+        run: |
+          gcloud run jobs deploy ${{ env.SERVICE_NAME }} \
+            --image asia-northeast1-docker.pkg.dev/${{ env.PROJECT_ID }}/ayato-registry/${{ env.SERVICE_NAME }}:${{ github.sha }} \
+            --region ${{ env.REGION }} \
+            --task-timeout=3600 \
+            --cpu=1 \
+            --memory=1Gi \
+            --set-env-vars "RUN_MODE=CLOUD,FRESHNESS_WINDOW_HOURS=28,GOOGLE_API_KEY=${{ secrets.GOOGLE_API_KEY }},SUPABASE_URL=${{ secrets.SUPABASE_URL }},SUPABASE_KEY=${{ secrets.SUPABASE_KEY }},GH_PAT=${{ secrets.GH_PAT }},X_API_KEY=${{ secrets.X_API_KEY }},X_API_SECRET=${{ secrets.X_API_SECRET }},X_ACCESS_TOKEN=${{ secrets.X_ACCESS_TOKEN }},X_ACCESS_TOKEN_SECRET=${{ secrets.X_ACCESS_TOKEN_SECRET }},EDINET_API_KEY=${{ secrets.EDINET_API_KEY }},BLUESKY_HANDLE=${{ secrets.BLUESKY_HANDLE }},BLUESKY_APP_PASSWORD=${{ secrets.BLUESKY_APP_PASSWORD }},HATENA_BLOG_ID=${{ secrets.HATENA_BLOG_ID }},HATENA_BLOG_API_KEY=${{ secrets.HATENA_BLOG_API_KEY }}"
+
+      - name: Create or Update Cloud Scheduler Trigger
+        run: |
+          # Use the REST API execution endpoint of the Cloud Run Job.
+          PROJECT_ID=$(gcloud config get-value project)
+          TRIGGER_URL="https://${{ env.REGION }}-run.googleapis.com/apis/run.googleapis.com/v1/namespaces/${PROJECT_ID}/jobs/${{ env.SERVICE_NAME }}:run"
+          
+          gcloud scheduler jobs update http ayato-reporter-trigger \
+            --location=${{ env.REGION }} \
+            --schedule="0 5,17 * * *" \
+            --time-zone="Asia/Tokyo" \
+            --uri="${TRIGGER_URL}" \
+            --http-method=POST \
+            --message-body="{}" \
+            --update-headers="Content-Type=application/json" \
+            --oauth-service-account-email=${{ secrets.GCP_SA_EMAIL }} \
+            --oauth-token-scope="https://www.googleapis.com/auth/cloud-platform" || \
+          gcloud scheduler jobs create http ayato-reporter-trigger \
+            --location=${{ env.REGION }} \
+            --schedule="0 5,17 * * *" \
+            --time-zone="Asia/Tokyo" \
+            --uri="${TRIGGER_URL}" \
+            --http-method=POST \
+            --message-body="{}" \
+            --headers="Content-Type=application/json" \
+            --oauth-service-account-email=${{ secrets.GCP_SA_EMAIL }} \
+            --oauth-token-scope="https://www.googleapis.com/auth/cloud-platform"
+
+
+
+

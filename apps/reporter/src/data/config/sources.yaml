@@ -1,0 +1,82 @@
+# RSS Source Metadata Mapping
+# Maps feed URLs to human-readable labels for source attribution.
+
+source_metadata:
+  # --- 日本 (Japan) ---
+  "https://zenn.dev/topics/ai/feed": "Zenn (日本)"
+  "https://qiita.com/tags/ai/feed": "Qiita (日本)"
+  "https://rss.itmedia.co.jp/rss/2.0/aiplus.xml": "ITmedia AI+ (日本)"
+  "https://note.com/t/ai/rss": "Note (日本)"
+  "https://note.com/t/llm/rss": "Note (日本)"
+  "https://b.hatena.ne.jp/hotentry/it.rss": "はてなブックマーク (日本)"
+
+  # --- グローバル・AI研究 (Research / Global) ---
+  "http://export.arxiv.org/rss/cs.AI": "arXiv (AI研究)"
+  "http://export.arxiv.org/rss/cs.CL": "arXiv (言語モデル)"
+  "http://export.arxiv.org/rss/cs.LG": "arXiv (機械学習)"
+  "https://hf.co/blog/feed.xml": "Hugging Face (AIラボ)"
+  "https://deepmind.com/blog/feed/basic": "DeepMind (AIラボ)"
+  "https://openai.com/news/rss.xml": "OpenAI (企業)"
+  "https://research.google/blog/rss": "Google Research (企業)"
+  "https://www.amazon.science/index.rss": "Amazon Science (企業)"
+  "https://developer.nvidia.com/blog/feed/": "NVIDIA (企業)"
+  "https://blog.langchain.dev/rss/": "LangChain (開発エコシステム)"
+  "https://ollama.com/blog/rss.xml": "Ollama (開発エコシステム)"
+
+  # --- 欧州 (EU / UK) ---
+  "https://www.heise.de/newsticker/heise-atom.xml": "Heise Online (ドイツ)"
+  "https://www.lemonde.fr/pixels/rss_full.xml": "Le Monde (フランス)"
+  "https://www.theregister.com/headlines.rss": "The Register (イギリス)"
+  "https://www.technologyreview.com/topic/artificial-intelligence/feed/": "MIT Tech Review (米国/グローバル)"
+
+  # --- アジア・新興市場 (Asia / India) ---
+  "https://www.jiqizhixin.com/rss": "機器之心 (中国)"
+  "http://www.etnews.com/etnews_rss.xml": "ETNews (韓国)"
+  "https://soyacincau.com/category/tech/feed/": "SoyaCincau (マレーシア)"
+  "https://www.techinasia.com/feed": "Tech in Asia (東南アジア)"
+  "https://economictimes.indiatimes.com/tech/rssfeeds/13357.cms": "Economic Times (インド)"
+
+  # --- ロシア・独立系 (Russia / CIS) ---
+  "https://habr.com/ru/rss/hub/artificial_intelligence/all/": "Habr (ロシア)"
+
+  # --- 北朝鮮 (DPRK Intelligence) ---
+  "https://www.northkoreatech.org/feed/": "North Korea Tech (北朝鮮監視)"
+  "https://www.38north.org/feed/": "38 North (北朝鮮監視)"
+  "https://www.dailynk.com/feed/": "Daily NK (北朝鮮)"
+  "https://www.nknews.org/feed/": "NK News (北朝鮮監視)"
+
+  # --- 米国テックメディア (US / Strategy) ---
+  "https://techcrunch.com/category/artificial-intelligence/feed/": "TechCrunch (米国)"
+  "https://venturebeat.com/category/ai/feed/": "VentureBeat (米国)"
+  "https://www.theverge.com/ai-artificial-intelligence/rss/index.xml": "The Verge (米国)"
+  "https://tomtunguz.com/index.xml": "Tom Tunguz (米国ベンチャー分析)"
+  "https://medium.com/feed/boost-vc": "Boost VC (米国ベンチャー)"
+
+  # --- 政策・科学 (Policy & Science) ---
+  "https://www.whitehouse.gov/feed/": "ホワイトハウス (米国政府)"
+  "https://www.nist.gov/news-events/news/rss.xml": "NIST (米国規格協会)"
+  "https://www.ftc.gov/feeds/press-release-list.xml": "FTC (米連邦取引委員会)"
+  "https://www.sciencedaily.com/rss/computers_math/artificial_intelligence.xml": "Science Daily (科学誌)"
+  "https://spectrum.ieee.org/feeds/topic/artificial-intelligence.rss": "IEEE Spectrum (工学研究)"
+
+  # --- 経済・金融 (Finance / Macro) ---
+  "https://www.kommersant.ru/RSS/section-economics.xml": "Kommersant (ロシア・経済)"
+  "https://rssexport.rbc.ru/rbcnews/generic/index.rss": "RBC News (ロシア・金融)"
+  "https://www.caixinglobal.com/rss/politics_economy.xml": "Caixin Global (中国・経済)"
+  "https://www.scmp.com/rss/92/feed": "SCMP (香港・ビジネス)"
+  "https://search.mk.co.kr/main/rss.php?s_keyword=&s_id=30100041": "Maeil Business (韓国・経済)"
+  "https://rss.dw.com/rdf/rss-en-bus": "DW Business (ドイツ・欧州)"
+  "https://www.handelsblatt.com/contentexport/feed/wirtschaft": "Handelsblatt (ドイツ・経済)"
+  "https://www.federalreserve.gov/feeds/press_all.xml": "FRB (米国中央銀行)"
+  "https://www.bis.org/publ/rss_publications.xml": "BIS (国際決済銀行)"
+  "https://www.ecb.europa.eu/rss/press.html": "ECB (欧州中央銀行)"
+  "https://www.boj.or.jp/rss/whatsnew.xml": "日本銀行 (日本)"
+  "https://www.cnbc.com/id/100003114/device/rss/rss.html": "CNBC (グローバル・金融)"
+  
+  # --- エネルギー・地政学 (Energy / Oil & Gas) ---
+  "https://oilprice.com/rss/main": "OilPrice.com (エネルギー)"
+  "https://www.rigzone.com/news/rss/rigzone_latest.xml": "Rigzone (エネルギー・石油)"
+  "https://www.arabnews.com/taxonomy/term/5/feed": "Arab News (サウジアラビア・中東)"
+  "https://www.interfax.ru/rss.asp": "Interfax (ロシア・総合)"
+  "https://www.offshore-energy.biz/feed/": "Offshore Energy (欧州・北海)"
+  "https://www.eia.gov/rss/press_rss.xml": "EIA (米国エネルギー情報局)"

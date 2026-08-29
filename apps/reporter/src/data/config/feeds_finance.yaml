@@ -1,0 +1,30 @@
+# FINANCE RSS FEEDS (Markets & Macros)
+finance_feeds:
+    # --- Global Markets (Finance/Economic) ---
+    - "https://www.cnbc.com/id/100003114/device/rss/rss.html" # CNBC Top News
+    - "https://www.cnbc.com/id/10000664/device/rss/rss.html"  # CNBC Finance
+    - "https://news.google.com/rss/search?q=source:seekingalpha.com&hl=en-US&gl=US&ceid=US:en" # Seeking Alpha (via Proxy)
+    - "https://feeds.content.dowjones.io/public/rss/mw_topstories" # MarketWatch
+    
+    # --- JP Markets ---
+    - "https://mof-gov.note.jp/rss" # Ministry of Finance (MOF) Official Note
+    - "https://www.boj.or.jp/rss/whatsnew.xml"             # Bank of Japan (What's New)
+
+    # --- 欧州・ドイツ (EU / DE) ---
+    - "https://rss.dw.com/rdf/rss-en-bus"                  # DW Business (Germany)
+    - "https://www.handelsblatt.com/contentexport/feed/wirtschaft" # Handelsblatt (DE)
+    - "https://www.ecb.europa.eu/rss/press.html"           # ECB Press Releases (Already added above, but grouped here)
+
+    # --- ロシア・新興市場 (RU / CIS) ---
+    - "https://www.kommersant.ru/RSS/section-economics.xml" # Kommersant Economics (Russia)
+    - "https://rssexport.rbc.ru/rbcnews/generic/index.rss"  # RBC Finance (RU)
+
+    # --- アジア・中国・韓国 (CN / KR / Asia) ---
+    - "https://www.caixinglobal.com/rss/politics_economy.xml" # Caixin Global (China)
+    - "https://www.scmp.com/rss/92/feed"                    # SCMP Business (Hong Kong)
+    - "https://search.mk.co.kr/main/rss.php?s_keyword=&s_id=30100041" # Maeil Business (Korea)
+    
+    # --- Macro & Money Supply (Expert Recommended) ---
+    - "https://www.federalreserve.gov/feeds/press_all.xml" # FRB Press Releases
+    - "https://www.bis.org/publ/rss_publications.xml"      # BIS Publications
+    - "https://fred.stlouisfed.org/graph/fredgraph.rss?g=1nvlU" # FRED M2SL (Proxy)

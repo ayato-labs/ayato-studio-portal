@@ -1,0 +1,16 @@
+# ENERGY RSS FEEDS (Oil, Gas, and Middle East Geopolitics)
+energy_feeds:
+    # --- Global Intelligence & Markets ---
+    - "https://oilprice.com/rss/main"                      # OilPrice.com (Leading Energy News)
+    - "https://www.rigzone.com/news/rss.asp" # Rigzone (Offshore/Upstream)
+    - "https://www.eia.gov/rss/press_rss.xml"              # US EIA Press Releases
+    - "https://news.google.com/rss/search?q=source:iea.org&hl=en-US&gl=US&ceid=US:en" # IEA (via Proxy)
+    - "https://www.cnbc.com/id/19832390/device/rss/rss.html" # CNBC Energy
+
+    # --- Regional Strategic Energy (ME / RU / EU) ---
+    - "https://www.arabnews.com/rss.xml"                  # Arab News (Main Feed)
+    - "https://www.interfax.ru/rss.asp"                    # Interfax (RU Economy/Energy/General)
+    - "https://news.google.com/rss/search?q=energy+source:english.alarabiya.net&hl=en-US&gl=US&ceid=US:en"
+    - "https://news.google.com/rss/search?q=energy+source:gulfnews.com&hl=en-US&gl=US&ceid=US:en"
+    - "https://news.google.com/rss/search?q=energy+source:thenationalnews.com&hl=en-US&gl=US&ceid=US:en"
+    - "https://www.offshore-energy.biz/feed/"              # EU / North Sea (Norway Focus)

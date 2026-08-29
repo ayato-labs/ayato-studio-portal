@@ -1,0 +1,33 @@
+# Strict whitelist for gcloud upload
+# Ignore everything by default
+*
+
+# Whitelist files and essential directories
+!main_cloud.py
+!config.py
+!pyproject.toml
+!uv.lock
+!.env
+!deployment/**
+
+# Whitelist directories
+!core/**
+!engines/**
+!plugins/**
+!data/config/**
+!core/prompts/**
+
+# Explicitly ignore heavy local folders
+.venv/
+node_modules/
+.git/
+.gemini/
+data/db/
+data/raw/
+data/history/
+data/processed/
+ayato_intelligence.db
+*.log
+*.bak
+*.tmp
+tests/

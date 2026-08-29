@@ -1,0 +1,8 @@
+{
+  "id": "weekly",
+  "name": "Weekly Intelligence Review",
+  "description": "Synthesizes last 7 days of high-score reports into a long-form strategic column.",
+  "version": "1.0.0",
+  "entry_point": "main.py",
+  "category": "Weekly"
+}

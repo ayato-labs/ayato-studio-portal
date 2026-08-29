@@ -1,0 +1,95 @@
+# NO-GO KEYWORDS (Blacklist)
+# These terms usually indicate low-signal affiliate, SEO spam, or non-technical content.
+
+# --- JP: アフィリエイト・まとめ・ポエム ---
+jp_keywords:
+    - "おすすめ"
+    - "ランキング"
+    - "厳選"
+    - "〇〇選"
+    - "まとめ"
+    - "ポエム"
+    - "日記"
+    - "感想"
+    - "お買い得"
+    - "セール"
+    - "クーポン"
+    - "初心者向け"
+    - "誰でもできる"
+    - "簡単"
+    - "徹底解説"
+    - "使ってみた"
+    - "比較"
+    - "最強"
+    - "神"
+    - "爆速"
+    - "ついに登場"
+
+# --- EN: Affiliate, Listicles, Clickbait ---
+en_keywords:
+    - "Best Alternatives"
+    - "Top 10"
+    - "Deals"
+    - "Coupon"
+    - "Discount"
+    - "For Beginners"
+    - "How to use"
+    - "Review"
+    - "My experience"
+    - "Must-have"
+    - "Gift guide"
+    - "Cheap"
+    - "Shocking"
+    - "Everything you need to know"
+    - "Comparison"
+
+# --- CN: SEO Spam, Clickbait ---
+cn_keywords:
+    - "推荐"
+    - "排行榜"
+    - "精选"
+    - "总结"
+    - "心得"
+    - "优惠"
+    - "打折"
+    - "入门"
+    - "简单"
+    - "教程"
+    - "深度解析"
+    - "全网最全"
+    - "测评"
+
+# --- Compliance: Investment Advice Prevention ---
+compliance_keywords:
+    - "Buy"
+    - "Sell"
+    - "Strong Buy"
+    - "Recommended"
+    - "Investment Advice"
+    - "Target Price"
+    - "ROI"
+    - "Guarantee"
+    - "Winner"
+    - "Loser"
+    - "買い"
+    - "売り"
+    - "推奨"
+    - "投資助言"
+    - "目標株価"
+    - "割安"
+    - "期待"
+    - "絶対"
+    - "確実"
+    - "稼げる"
+    - "機密"
+    - "格付け"
+    - "独占"
+    - "公式"
+    - "Confidential"
+    - "Classified"
+    - "Official"
+    - "Exclusive"
+
+# --- Other Technical Filters ---
+# (Can be extended)
+other_keywords: []

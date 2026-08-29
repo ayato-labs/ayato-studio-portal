@@ -1,0 +1,29 @@
+__pycache__/
+*.py[cod]
+*$py.class
+.env
+.venv
+venv/
+ENV/
+build/
+dist/
+*.log
+*.txt
+data/db/*.sqlite
+data/history/
+data/raw/
+data/processed/
+content/
+logs/
+test_reports/
+.vscode/
+.idea/
+
+# Python metadata
+*.egg-info/
+
+# Caches
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+.ipynb_checkpoints/

@@ -1,0 +1,8 @@
+{
+    "id": "energy",
+    "name": "Energy & Geopolitics Engine",
+    "version": "1.0.0",
+    "description": "Deep situation analysis of energy markets and Middle East geopolitical shifts.",
+    "author": "Ayato Studio",
+    "main": "main.py"
+}

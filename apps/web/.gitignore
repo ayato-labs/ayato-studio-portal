@@ -1,0 +1,27 @@
+node_modules/
+.next/
+out/
+build/
+.env*
+!.env.example
+# Temporary files
+*.log
+*_master.txt
+result.txt
+lint_output*.txt
+build_error*.txt
+.ruff_cache/
+
+# IDEs
+.vscode/
+.idea/
+.DS_Store
+
+# Playwright
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/
+
+# Vitest
+coverage/

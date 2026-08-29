@@ -1,0 +1,44 @@
+# Ruff configuration
+# For more info, see: https://docs.astral.sh/ruff/settings/
+
+target-version = "py311"
+line-length = 100
+
+include = ["src/**/*.py", "tests/**/*.py"]
+exclude = [
+    ".git",
+    ".next",
+    ".ruff_cache",
+    ".venv",
+    "node_modules",
+    "public",
+    "dist",
+    "build",
+]
+
+[lint]
+# Select rules
+# E: pycodestyle errors
+# F: Pyflakes
+# I: isort
+# B: flake8-bugbear
+# C90: mccabe complexity
+# N: pep8-naming
+# UPR: pyupgrade
+# PLE: pylint errors
+select = ["E", "F", "I", "B", "C90", "N", "UP", "PLE"]
+ignore = []
+
+# Allow fix for all enabled rules (when `--fix`)
+# Note: MUST NOT use --fix in CI according to user rules.
+fixable = ["ALL"]
+unfixable = []
+
+# Complexity
+mccabe = { max-complexity = 10 }
+
+[format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"

@@ -1,0 +1,42 @@
+# Virtual environments
+.venv/
+venv/
+ENV/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+
+# Legacy Data
+engines/
+
+# Data & Logs (Do not push to container)
+data/db/
+data/history/
+data/logs/
+data/processed/
+data/raw/
+*.log
+tests/
+tools/
+content/
+logs/
+test_reports/
+*.txt
+
+# Git & CI/CD
+.git/
+.github/
+
+# IDE
+.vscode/
+.idea/
+
+# Local env files
+.env
+.env.*

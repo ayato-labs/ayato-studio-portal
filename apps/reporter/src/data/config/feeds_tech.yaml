@@ -1,0 +1,63 @@
+# TECH RSS FEEDS (Technical & Research AI)
+tech_feeds:
+    # --- 日本コミュニティ・プラットフォーム (JP Platforms) ---
+    - "https://zenn.dev/topics/ai/feed"
+    - "https://qiita.com/tags/ai/feed"
+    - "https://rss.itmedia.co.jp/rss/2.0/aiplus.xml"
+
+    - "https://b.hatena.ne.jp/hotentry/it.rss"
+
+    # --- 論文・研究 (Arxiv & Research Blogs) ---
+    - 'http://export.arxiv.org/rss/cs.AI'
+    - 'http://export.arxiv.org/rss/cs.CL'
+    - 'http://export.arxiv.org/rss/cs.LG'
+    
+    # --- 主要 AI ラボ (Top Research Labs) ---
+    - 'https://hf.co/blog/feed.xml'
+    - 'https://deepmind.com/blog/feed/basic'
+    - 'https://bair.berkeley.edu/blog/feed.xml'
+    - 'https://ollama.com/blog/rss.xml'
+    - 'https://github.com/vllm-project/vllm-daily/commits/main.atom'
+    - 'https://blog.langchain.dev/rss/'
+    - 'https://developer.nvidia.com/blog/feed/'
+    - 'https://openai.com/news/rss.xml'
+    - 'https://research.google/blog/rss'
+    - 'https://www.amazon.science/index.rss'
+    
+    # --- 米国ベンチャー & 戦略 (US Venture & Strategy) ---
+    - 'https://tomtunguz.com/index.xml'
+    - 'https://medium.com/feed/boost-vc'
+    - 'https://venturebeat.com/category/ai/feed/'
+    - 'https://techcrunch.com/category/artificial-intelligence/feed/'
+    - "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml"
+
+    # --- 欧州インテリジェンス (EU / UK) ---
+    - "https://www.heise.de/newsticker/heise-atom.xml"      # ドイツ最大の IT メディア
+    - "https://www.lemonde.fr/pixels/rss_full.xml"         # フランス (テクノロジー部門)
+    - "https://www.theregister.com/headlines.rss"          # イギリス (インフラ・ソフトウェア)
+    - 'https://www.technologyreview.com/topic/artificial-intelligence/feed/' 
+
+    # --- アジア・新興市場 (China, Korea, SE Asia, India) ---
+    - 'https://www.jiqizhixin.com/rss'                     # 中国 (機器之心)
+    - 'http://rss.etnews.com/Section901.xml'               # 韓国最大の IT 紙
+    - 'https://soyacincau.com/category/tech/feed/'         # マレーシア (SoyaCincau)
+    - 'https://www.techinasia.com/feed'                    # 東南アジア全域
+    - 'https://economictimes.indiatimes.com/tech/rssfeeds/13357.cms' # インド
+
+    # --- 独自のアルゴリズム・低レイヤ (Russia / CIS) ---
+    - 'https://habr.com/ru/rss/hub/artificial_intelligence/all/' # ロシア最大の技術コミュニティ
+
+    # --- 北朝鮮技術・情勢 (DPRK Intelligence) ---
+    - "https://www.northkoreatech.org/feed/"               # DPRK IT/通信インフラ専門
+    - "https://www.38north.org/feed/"                     # 衛星分析・技術レポート
+    - "https://www.dailynk.com/feed/"                     # 内部情勢・産業動向
+    - "https://www.nknews.org/feed/"                      # 総合的な北朝鮮情勢分析
+
+    # --- 政策・規制・公報 (Policy & Standards) ---
+    - "https://www.whitehouse.gov/feed/"                   
+    - "https://www.nist.gov/news-events/news/rss.xml"      
+    - "https://www.ftc.gov/feeds/press-release-list.xml"   
+    
+    # --- 科学・工学 (Science & Engineering) ---
+    - 'https://www.sciencedaily.com/rss/computers_math/artificial_intelligence.xml'
+    - 'https://spectrum.ieee.org/feeds/topic/artificial-intelligence.rss'
