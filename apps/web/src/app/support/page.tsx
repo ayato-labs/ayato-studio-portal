@@ -1,9 +1,10 @@
 'use client';
 
-import { Suspense } from 'react';
+import { Suspense, useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
+import { issueLicenseKeyForSession } from '@/app/actions/get-license-key';
 
 const OFUSE_URL = 'https://ofuse.me/21cfc1d2';
 
@@ -83,8 +84,36 @@ const DOWNLOAD_RESOURCES: Record<
   },
 };
 
-function PurchaseSuccessHub({ productId }: { productId: string }) {
+function PurchaseSuccessHub({ productId, sessionId }: { productId: string; sessionId: string }) {
   const resource = DOWNLOAD_RESOURCES[productId] || DOWNLOAD_RESOURCES['movie-to-text'];
+  const [licenseInfo, setLicenseInfo] = useState<{ key?: string; loading: boolean; copied: boolean }>({
+    loading: true,
+    copied: false,
+  });
+
+  useEffect(() => {
+    async function loadLicense() {
+      if (!sessionId) {
+        setLicenseInfo({ loading: false, copied: false });
+        return;
+      }
+      const res = await issueLicenseKeyForSession(sessionId);
+      if (res.success && res.licenseKey) {
+        setLicenseInfo({ key: res.licenseKey, loading: false, copied: false });
+      } else {
+        setLicenseInfo({ loading: false, copied: false });
+      }
+    }
+    loadLicense();
+  }, [sessionId]);
+
+  const handleCopy = () => {
+    if (licenseInfo.key) {
+      navigator.clipboard.writeText(licenseInfo.key);
+      setLicenseInfo((prev) => ({ ...prev, copied: true }));
+      setTimeout(() => setLicenseInfo((prev) => ({ ...prev, copied: false })), 2000);
+    }
+  };
 
   return (
     <motion.div
@@ -102,6 +131,29 @@ function PurchaseSuccessHub({ productId }: { productId: string }) {
 
       <h2 className="mb-4 text-3xl font-black text-white md:text-4xl">{resource.title}</h2>
       <p className="mb-8 text-base text-gray-300">{resource.description}</p>
+
+      {/* Cryptographic Offline License Key Box */}
+      {licenseInfo.key && (
+        <div className="mb-10 rounded-3xl border border-emerald-500/30 bg-black/60 p-6 backdrop-blur-xl">
+          <div className="mb-2 flex items-center justify-between">
+            <span className="text-[10px] font-black tracking-widest text-emerald-400 uppercase">
+              Your Offline Ed25519 License Key (0-Byte Verification)
+            </span>
+            <button
+              onClick={handleCopy}
+              className="rounded-full bg-emerald-500/20 px-3 py-1 text-xs font-bold text-emerald-300 transition-colors hover:bg-emerald-500/30"
+            >
+              {licenseInfo.copied ? 'コピー完了！' : 'キーをコピー'}
+            </button>
+          </div>
+          <p className="font-mono text-xs text-gray-300 break-all bg-white/5 p-3 rounded-xl select-all">
+            {licenseInfo.key}
+          </p>
+          <p className="mt-2 text-[11px] text-gray-400">
+            ※ アプリの設定画面にこのキーを貼り付けると、完全オフラインで Pro 機能が即座にアンロックされます。
+          </p>
+        </div>
+      )}
 
       {/* Download Action Cards */}
       <div className="mb-10 grid gap-4 md:grid-cols-2">
@@ -167,11 +219,12 @@ function SupportPageContent() {
   const searchParams = useSearchParams();
   const isSuccess = searchParams.get('success') === 'true';
   const productId = searchParams.get('product') || '';
+  const sessionId = searchParams.get('session_id') || '';
 
   return (
     <div className="mx-auto max-w-4xl">
       {/* If purchase success, render Download Hub */}
-      {isSuccess && <PurchaseSuccessHub productId={productId} />}
+      {isSuccess && <PurchaseSuccessHub productId={productId} sessionId={sessionId} />}
 
       {/* The Philosophy of Independence */}
       <motion.div

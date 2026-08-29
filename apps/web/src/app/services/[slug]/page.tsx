@@ -103,14 +103,32 @@ export default async function ServiceDetailPage({ params }: PageProps) {
             {service.description}
           </p>
 
+          <div className="flex flex-wrap justify-center items-center gap-4 mb-8">
+            <Link
+              href={`/support?product=${slug}&success=true`}
+              className="rounded-full bg-blue-500 px-10 py-5 text-sm font-black tracking-wider text-white uppercase shadow-2xl shadow-blue-500/30 transition-all duration-300 hover:scale-105 hover:bg-blue-400 active:scale-95 flex items-center gap-3"
+            >
+              <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+              </svg>
+              今すぐ無料ダウンロード (Free)
+            </Link>
+            <a
+              href="#pricing"
+              className="glass rounded-full border-white/10 px-8 py-5 text-sm font-black tracking-wider text-white uppercase transition-all duration-300 hover:bg-white/10"
+            >
+              Pro 料金プランを見る
+            </a>
+          </div>
+
           <div className="flex flex-wrap justify-center gap-6">
             <div className="glass flex items-center gap-4 rounded-3xl border-white/10 px-8 py-4">
               <div className="h-2 w-2 rounded-full bg-green-500" />
-              <span className="text-xs font-black tracking-widest uppercase">Production Ready</span>
+              <span className="text-xs font-black tracking-widest uppercase">100% Offline // Air-gapped</span>
             </div>
             <div className="glass flex items-center gap-4 rounded-3xl border-white/10 px-8 py-4">
               <Icons.gitHub className="h-5 w-5" />
-              <span className="text-xs font-black tracking-widest uppercase">Open Source</span>
+              <span className="text-xs font-black tracking-widest uppercase">Open Source Available</span>
             </div>
           </div>
         </section>
@@ -130,7 +148,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
           if (relevantPlans.length === 0) return null;
 
           return (
-            <section className="border-t border-white/5 bg-white/[0.02] py-24">
+            <section id="pricing" className="border-t border-white/5 bg-white/[0.02] py-24 scroll-mt-12">
               <div className="container mx-auto max-w-5xl px-6">
                 <div className="mb-16 text-center">
                   <h3 className="mb-4 text-xs font-black tracking-[0.4em] text-blue-400 uppercase">
