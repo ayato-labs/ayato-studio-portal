@@ -8,7 +8,8 @@
   "homepage": "https://ayato-studio.ai",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "guard:seo": "npx tsx scripts/seo-quality-guard.ts",
+    "build": "npm run guard:seo && next build",
     "start": "next start",
     "lint": "next lint",
     "test": "vitest run",
