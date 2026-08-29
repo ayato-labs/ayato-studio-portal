@@ -134,26 +134,40 @@ export default function AboutPage() {
 
             <div className="rounded-3xl border border-white/5 bg-black/40 p-8 backdrop-blur-xl">
               <h4 className="mb-6 text-[10px] font-black tracking-widest text-blue-500 uppercase">
-                Operator Profile
+                Operator Profile // 運営者情報
               </h4>
               <div className="space-y-4">
                 <div>
-                  <p className="text-sm font-bold text-white">運営者: ayato-labs (Ayato)</p>
-                  <p className="text-xs text-gray-400">
-                    AI Harness Engineer / Full-Stack Developer
+                  <p className="text-sm font-bold text-white">運営者: Ayato</p>
+                  <p className="text-xs text-blue-400 font-bold">
+                    AIフルスタックエンジニア
                   </p>
                 </div>
                 <div className="h-px bg-white/5" />
                 <div>
-                  <p className="text-xs text-gray-500">
-                    AIとWeb技術を組み合わせた「Operative
-                    Domain（動的なデジタル領土）」の構築を研究しています。
+                  <p className="text-xs leading-relaxed text-gray-400">
+                    減算の美学に基づく自律型AIエージェント・分散バッチ基盤から、100%オフラインで動作するWindows専用AI議事録、数理金融バリュエーションエンジン（DCF×LLM）までを一貫して設計・開発。TypeScript/Next.jsとPython 3.12によるエッジファースト・極小コストなシステム構築を専門としています。
                   </p>
                 </div>
                 <div className="h-px bg-white/5" />
-                <div>
-                  <p className="text-xs font-bold text-white">連絡先</p>
-                  <p className="text-xs text-blue-400">Cwblog69@gmail.com</p>
+                <div className="space-y-2">
+                  <div>
+                    <p className="text-[10px] font-bold text-gray-500 uppercase">Contact</p>
+                    <a href="mailto:cwblog69@gmail.com" className="text-xs text-blue-400 hover:underline">
+                      cwblog69@gmail.com
+                    </a>
+                  </div>
+                  <div>
+                    <p className="text-[10px] font-bold text-gray-500 uppercase">Track Record</p>
+                    <a
+                      href="https://crowdworks.jp/public/employees/6435014?ref=login_header"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs font-bold text-blue-400 hover:underline inline-flex items-center gap-1"
+                    >
+                      CrowdWorks 実績・プロフィール →
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>

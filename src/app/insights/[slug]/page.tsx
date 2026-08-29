@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { getLocalArticles } from '@/lib/local-content';
 import { Icons } from '@/components/ui/Icons';
 import { CTASection } from '@/components/ui/CTASection';
-import { NoteCTA } from '@/components/features/blog/NoteCTA';
+import { AuthorCard } from '@/components/features/author/AuthorCard';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -49,7 +49,9 @@ export default async function BlogPostPage(props: PageProps) {
     datePublished: article.date,
     author: {
       '@type': 'Person',
-      name: 'Ayato Human Editor',
+      name: 'Ayato',
+      jobTitle: 'AI Fullstack Engineer',
+      url: 'https://crowdworks.jp/public/employees/6435014?ref=login_header',
     },
     publisher: {
       '@type': 'Organization',
@@ -93,13 +95,13 @@ export default async function BlogPostPage(props: PageProps) {
           <div className="flex items-center gap-6 rounded-3xl border border-white/5 bg-white/[0.02] p-6 backdrop-blur-xl">
             <div className="flex items-center gap-3">
               <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-600 text-xs font-bold shadow-lg shadow-blue-500/20">
-                HI
+                A
               </div>
               <div>
                 <p className="text-[10px] font-bold tracking-wider text-gray-500 uppercase">
                   Author
                 </p>
-                <p className="text-sm font-bold">Ayato Human Editor</p>
+                <p className="text-sm font-bold">Ayato (AIフルスタックエンジニア)</p>
               </div>
             </div>
             <div className="h-10 w-px bg-white/10" />
@@ -121,13 +123,15 @@ export default async function BlogPostPage(props: PageProps) {
               <Markdown>{article.content}</Markdown>
             </div>
 
-            {/* Premium Asset CTA (Note) */}
+            {/* Author Profile (E-E-A-T) */}
             <div className="mt-16">
-              <NoteCTA />
+              <AuthorCard />
             </div>
 
             {/* Business CTA Section */}
-            <CTASection theme="blue" />
+            <div className="mt-12">
+              <CTASection theme="blue" />
+            </div>
           </div>
         </div>
 
