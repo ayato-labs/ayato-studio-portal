@@ -243,18 +243,24 @@ export default function Home() {
               AIが存在することを前提とした、 自律的エージェント・MCP（Model Context Protocol）連携・
               エッジファーストなAIネイティブシステム構築と インテグレーションの専門技術スタジオ。
             </p>
-            <div className="flex gap-6">
+            <div className="flex flex-wrap gap-4 sm:gap-6">
+              <Link
+                href="/news"
+                className="rounded-full bg-cyan-500 px-8 py-4 font-black tracking-widest text-black uppercase transition-all hover:bg-cyan-400 hover:shadow-2xl hover:shadow-cyan-500/30"
+              >
+                Live AI News →
+              </Link>
               <Link
                 href="/reports"
-                className="rounded-full bg-blue-600 px-10 py-5 font-black tracking-widest text-white uppercase transition-all hover:bg-blue-700 hover:shadow-2xl hover:shadow-blue-500/20"
+                className="rounded-full border border-white/10 bg-white/5 px-8 py-4 font-black tracking-widest text-white uppercase transition-all hover:bg-white/10"
               >
-                Browse Reports
+                Reports
               </Link>
               <Link
                 href="/stats"
-                className="rounded-full border border-white/10 bg-white/5 px-10 py-5 font-black tracking-widest text-white uppercase transition-all hover:bg-white/10"
+                className="rounded-full border border-white/10 bg-white/5 px-8 py-4 font-black tracking-widest text-white uppercase transition-all hover:bg-white/10"
               >
-                LLM Stats Dashboard
+                LLM Stats
               </Link>
             </div>
           </div>
