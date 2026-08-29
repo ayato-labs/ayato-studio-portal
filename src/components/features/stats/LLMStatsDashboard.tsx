@@ -1,15 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import {
-  ResponsiveContainer,
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  Tooltip,
-  Cell,
-} from 'recharts';
+import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, Cell } from 'recharts';
 import statsData from '@/content/llm-stats.json';
 
 interface LLMModel {
@@ -229,7 +221,7 @@ export default function LLMStatsDashboard() {
 
   if (!mounted) {
     return (
-      <div className="h-96 animate-pulse rounded-[2rem] bg-white/5 flex items-center justify-center">
+      <div className="flex h-96 animate-pulse items-center justify-center rounded-[2rem] bg-white/5">
         <span className="text-xs font-black tracking-widest text-gray-500 uppercase">
           Loading Dashboard Data...
         </span>
@@ -292,28 +284,28 @@ export default function LLMStatsDashboard() {
   return (
     <div className="space-y-16">
       {/* Metric Selector Tabs */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+      <div className="flex flex-col justify-between gap-6 md:flex-row md:items-center">
         <div>
           <h3 className="text-3xl font-black tracking-tight text-white uppercase">
             LLM Performance Benchmark
           </h3>
-          <div className="flex flex-wrap items-center gap-3 mt-2">
+          <div className="mt-2 flex flex-wrap items-center gap-3">
             <p className="text-sm text-gray-500">
               日本語理解、レスポンス速度、およびAPI利用コストの定量的マトリクス
             </p>
             {isLive ? (
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/10 px-2.5 py-0.5 text-[9px] font-black tracking-widest text-emerald-400 uppercase border border-emerald-500/20">
-                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-2.5 py-0.5 text-[9px] font-black tracking-widest text-emerald-400 uppercase">
+                <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400" />
                 Live Cost API
               </span>
             ) : (
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-yellow-500/10 px-2.5 py-0.5 text-[9px] font-black tracking-widest text-yellow-400 uppercase border border-yellow-500/20">
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-yellow-500/20 bg-yellow-500/10 px-2.5 py-0.5 text-[9px] font-black tracking-widest text-yellow-400 uppercase">
                 Static Cost
               </span>
             )}
           </div>
         </div>
-        <div className="flex items-center gap-2 rounded-xl bg-white/5 p-1 self-start">
+        <div className="flex items-center gap-2 self-start rounded-xl bg-white/5 p-1">
           <button
             onClick={() => setActiveMetric('japaneseScore')}
             className={`rounded-lg px-4 py-2 text-[10px] font-black tracking-widest uppercase transition-all ${
@@ -327,9 +319,7 @@ export default function LLMStatsDashboard() {
           <button
             onClick={() => setActiveMetric('speed')}
             className={`rounded-lg px-4 py-2 text-[10px] font-black tracking-widest uppercase transition-all ${
-              activeMetric === 'speed'
-                ? 'bg-blue-600 text-white'
-                : 'text-gray-400 hover:text-white'
+              activeMetric === 'speed' ? 'bg-blue-600 text-white' : 'text-gray-400 hover:text-white'
             }`}
           >
             推論速度
@@ -354,10 +344,7 @@ export default function LLMStatsDashboard() {
         </h4>
         <div className="h-96 w-full">
           <ResponsiveContainer width="100%" height="100%">
-            <BarChart
-              data={models}
-              margin={{ top: 20, right: 30, left: 20, bottom: 20 }}
-            >
+            <BarChart data={models} margin={{ top: 20, right: 30, left: 20, bottom: 20 }}>
               <XAxis
                 dataKey="name"
                 stroke="#6b7280"
@@ -392,61 +379,61 @@ export default function LLMStatsDashboard() {
       </div>
 
       {/* Data Table */}
-      <div className="rounded-[2rem] border border-white/5 bg-white/[0.01] overflow-hidden">
-        <div className="p-8 border-b border-white/5">
-          <h4 className="text-xl font-black tracking-tight text-white uppercase">Model Matrix Ledger</h4>
+      <div className="overflow-hidden rounded-[2rem] border border-white/5 bg-white/[0.01]">
+        <div className="border-b border-white/5 p-8">
+          <h4 className="text-xl font-black tracking-tight text-white uppercase">
+            Model Matrix Ledger
+          </h4>
           <p className="mt-1 text-xs text-gray-500">
             モデル名をクリックすると各指標でソートできます。
           </p>
         </div>
         <div className="overflow-x-auto">
-          <table className="w-full text-left border-collapse">
+          <table className="w-full border-collapse text-left">
             <thead>
               <tr className="border-b border-white/5 bg-white/[0.01] text-[10px] font-black tracking-[0.2em] text-gray-400 uppercase">
-                <th className="py-5 px-8">Model</th>
-                <th className="py-5 px-6">Developer</th>
+                <th className="px-8 py-5">Model</th>
+                <th className="px-6 py-5">Developer</th>
                 <th
                   onClick={() => handleSort('japaneseScore')}
-                  className="py-5 px-6 cursor-pointer hover:text-white transition-colors"
+                  className="cursor-pointer px-6 py-5 transition-colors hover:text-white"
                 >
                   日本語理解 {sortKey === 'japaneseScore' && (sortOrder === 'desc' ? '↓' : '↑')}
                 </th>
                 <th
                   onClick={() => handleSort('codingScore')}
-                  className="py-5 px-6 cursor-pointer hover:text-white transition-colors"
+                  className="cursor-pointer px-6 py-5 transition-colors hover:text-white"
                 >
                   コーディング {sortKey === 'codingScore' && (sortOrder === 'desc' ? '↓' : '↑')}
                 </th>
                 <th
                   onClick={() => handleSort('speed')}
-                  className="py-5 px-6 cursor-pointer hover:text-white transition-colors"
+                  className="cursor-pointer px-6 py-5 transition-colors hover:text-white"
                 >
                   速度 (tps) {sortKey === 'speed' && (sortOrder === 'desc' ? '↓' : '↑')}
                 </th>
                 <th
                   onClick={() => handleSort('costPer1MInput')}
-                  className="py-5 px-6 cursor-pointer hover:text-white transition-colors"
+                  className="cursor-pointer px-6 py-5 transition-colors hover:text-white"
                 >
                   入力コスト/1M {sortKey === 'costPer1MInput' && (sortOrder === 'desc' ? '↓' : '↑')}
                 </th>
                 <th
                   onClick={() => handleSort('costPer1MOutput')}
-                  className="py-5 px-6 cursor-pointer hover:text-white transition-colors"
+                  className="cursor-pointer px-6 py-5 transition-colors hover:text-white"
                 >
-                  出力コスト/1M {sortKey === 'costPer1MOutput' && (sortOrder === 'desc' ? '↓' : '↑')}
+                  出力コスト/1M{' '}
+                  {sortKey === 'costPer1MOutput' && (sortOrder === 'desc' ? '↓' : '↑')}
                 </th>
               </tr>
             </thead>
             <tbody className="divide-y divide-white/5 text-sm text-gray-300">
               {sortedData.map((model) => (
-                <tr
-                  key={model.id}
-                  className="hover:bg-white/[0.02] transition-colors"
-                >
-                  <td className="py-5 px-8 font-black text-white">{model.name}</td>
-                  <td className="py-5 px-6">
+                <tr key={model.id} className="transition-colors hover:bg-white/[0.02]">
+                  <td className="px-8 py-5 font-black text-white">{model.name}</td>
+                  <td className="px-6 py-5">
                     <span
-                      className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-[10px] font-black tracking-widest uppercase border"
+                      className="inline-flex items-center gap-2 rounded-full border px-3 py-1 text-[10px] font-black tracking-widest uppercase"
                       style={{
                         borderColor: `${getDeveloperColor(model.developer)}33`,
                         backgroundColor: `${getDeveloperColor(model.developer)}0a`,
@@ -456,11 +443,11 @@ export default function LLMStatsDashboard() {
                       {model.developer}
                     </span>
                   </td>
-                  <td className="py-5 px-6 font-bold">{model.japaneseScore}</td>
-                  <td className="py-5 px-6">{model.codingScore}</td>
-                  <td className="py-5 px-6">{model.speed} tps</td>
-                  <td className="py-5 px-6">${model.costPer1MInput.toFixed(3)}</td>
-                  <td className="py-5 px-6">${model.costPer1MOutput.toFixed(2)}</td>
+                  <td className="px-6 py-5 font-bold">{model.japaneseScore}</td>
+                  <td className="px-6 py-5">{model.codingScore}</td>
+                  <td className="px-6 py-5">{model.speed} tps</td>
+                  <td className="px-6 py-5">${model.costPer1MInput.toFixed(3)}</td>
+                  <td className="px-6 py-5">${model.costPer1MOutput.toFixed(2)}</td>
                 </tr>
               ))}
             </tbody>

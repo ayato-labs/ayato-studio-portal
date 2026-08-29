@@ -41,3 +41,14 @@ export interface NoteArticle {
   thumbnail?: string;
   isPremium?: boolean;
 }
+
+export interface AiNewsItem {
+  id: string;
+  title: string;
+  url: string;
+  source_name: string;
+  category: string;
+  published_at: string;
+  created_at: string;
+}
+

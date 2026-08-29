@@ -84,7 +84,8 @@ export default function InsightsPage() {
             <span className="text-blue-500">INSIGHTS</span>
           </h1>
           <p className="text-xl leading-relaxed font-medium text-gray-500">
-            AIエージェントの自律化・ワークフロー統合や、MCP(Model Context Protocol)等のコンテキスト管理に焦点を当てた、
+            AIエージェントの自律化・ワークフロー統合や、MCP(Model Context
+            Protocol)等のコンテキスト管理に焦点を当てた、
             <br className="hidden md:block" />
             実践的なインフラ・ハーネスエンジニアリングに関する技術考察と分析。
           </p>

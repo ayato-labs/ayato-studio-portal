@@ -18,7 +18,8 @@ export default async function ServicesPage() {
           Services & Products
         </h1>
         <p className="text-muted-foreground text-xl">
-          自律型AIエージェント、カスタムMCP連携、エッジファーストアーキテクチャ。Ayato Studio が提供するAIネイティブシステム構築ソリューション。
+          自律型AIエージェント、カスタムMCP連携、エッジファーストアーキテクチャ。Ayato Studio
+          が提供するAIネイティブシステム構築ソリューション。
         </p>
       </div>
 

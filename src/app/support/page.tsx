@@ -68,7 +68,8 @@ function SupportPageContent() {
             <p className="text-lg leading-relaxed font-medium tracking-tight text-gray-400">
               OFUSE を通じて、独立系リサーチの継続をご支援いただけます。
               <br />
-              一文字 1 円からのメッセージが、Ayato Studio の「独立性」を維持する最も純粋なエネルギーとなります。
+              一文字 1 円からのメッセージが、Ayato Studio
+              の「独立性」を維持する最も純粋なエネルギーとなります。
             </p>
           </div>
 

@@ -32,7 +32,16 @@ export const metadata: Metadata = {
   title: 'Ayato Studio | AI Native Systems Engineering',
   description:
     'AIが存在することを前提とした、自律的エージェント・MCP（Model Context Protocol）連携・エッジファーストなAIネイティブシステム構築とインテグレーションの専門技術スタジオ「Ayato Studio」のポータルサイト。',
-  keywords: ['AIエージェント', 'MCP', 'Model Context Protocol', 'AIネイティブ', 'システム構築', 'ハーネスエンジニアリング', 'Cloudflare Pages', 'Supabase'],
+  keywords: [
+    'AIエージェント',
+    'MCP',
+    'Model Context Protocol',
+    'AIネイティブ',
+    'システム構築',
+    'ハーネスエンジニアリング',
+    'Cloudflare Pages',
+    'Supabase',
+  ],
   authors: [{ name: 'Ayato Studio' }],
 };
 

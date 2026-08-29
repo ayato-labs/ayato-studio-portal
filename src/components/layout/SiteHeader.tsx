@@ -7,7 +7,11 @@ export function SiteHeader() {
         <MainNav
           items={[
             {
-              title: 'News',
+              title: 'AI News',
+              href: '/news',
+            },
+            {
+              title: 'Reports',
               href: '/reports',
             },
             {
@@ -21,6 +25,10 @@ export function SiteHeader() {
             {
               title: 'Services',
               href: '/services',
+            },
+            {
+              title: 'Apps',
+              href: '/apps',
             },
             {
               title: 'About',
