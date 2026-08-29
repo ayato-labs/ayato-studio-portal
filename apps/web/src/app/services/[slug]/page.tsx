@@ -31,8 +31,36 @@ export default async function ServiceDetailPage({ params }: PageProps) {
     return null;
   }
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: service.title,
+    description: service.description,
+    applicationCategory: 'DeveloperApplication',
+    operatingSystem: 'Windows, Linux, macOS',
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'JPY',
+    },
+    author: {
+      '@type': 'Person',
+      name: 'Ayato',
+      url: 'https://crowdworks.jp/public/employees/6435014?ref=login_header',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Ayato Studio',
+      url: 'https://ayato-studio.ai',
+    },
+  };
+
   return (
     <main className="bg-background min-h-screen overflow-x-hidden text-white selection:bg-blue-500/30">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* LP Style Background */}
       <div className="fixed inset-0 -z-10">
         <div className="absolute top-0 left-0 h-full w-full bg-[radial-gradient(ellipse_at_top,rgba(59,130,246,0.15)_0%,rgba(0,0,0,0)_50%)]" />
@@ -110,10 +138,10 @@ export default async function ServiceDetailPage({ params }: PageProps) {
               Get in Touch
             </Link>
             <Link
-              href="/blog"
+              href="/insights"
               className="glass rounded-full border-white/10 px-10 py-5 font-black tracking-widest text-white uppercase transition-colors hover:bg-white/5"
             >
-              Read Technical Blog
+              Read Technical Insights
             </Link>
           </div>
         </div>

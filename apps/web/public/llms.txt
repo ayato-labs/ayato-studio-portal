@@ -1,0 +1,29 @@
+# Ayato Studio
+
+> AI-Native Systems Engineering Studio specialized in autonomous agents, Model Context Protocol (MCP), token-efficient AST compression, and completely offline (air-gapped) AI tools.
+
+Ayato Studio builds lightweight, high-performance software based on the philosophy of "Engineering of Subtraction" — maximizing autonomy while minimizing server overhead and cloud token waste.
+
+## Products & Tools
+
+- [Transform_MovieToText](https://ayato-studio.ai/services/movie-to-text): 100% offline, air-gapped local AI meeting transcription and speaker diarization engine for Windows. No cloud data leakage (0 bytes sent). Powered by ONNX CAM++ and Non-Embedding SQLite FTS5 RAG.
+- [ProjectCodeMap](https://ayato-studio.ai/services/project-code-map): AST-based codebase context compressor for AI-driven development (Cursor, Claude, ChatGPT). Compresses repository context by up to 85% into clean XML signatures (`uvx project-code-map`).
+- [Ripen MCP](https://ayato-studio.ai/services/ripen): Knowledge graph & episodic long-term memory server for autonomous AI agents via Model Context Protocol (MCP).
+- [LogicHive MCP](https://ayato-studio.ai/services/logichive): High-efficiency code snippet search and reuse engine for AI coding assistants.
+
+## Technical Insights & Research
+
+- [Why We Built 100% Offline Air-Gapped AI Transcription](https://ayato-studio.ai/insights/air-gapped-local-ai-transcription): Deep dive into local speaker diarization and why we replaced heavy vector embeddings with LLM query expansion + SQLite FTS5.
+- [Compressing Codebase Context with tree-sitter AST](https://ayato-studio.ai/insights/llm-context-compression-with-ast): Preventing LLM hallucinations and reducing token costs by passing structured signatures instead of raw source code.
+- [MCP Security Hardening & SQL Injection Mitigation](https://ayato-studio.ai/insights/mcp-sqlite-hardening): Practical security protocols for autonomous agent tool execution.
+
+## Developer & Operator
+
+- Name: Ayato
+- Role: AI Fullstack Engineer
+- Email: cwblog69@gmail.com
+- CrowdWorks Track Record: https://crowdworks.jp/public/employees/6435014?ref=login_header
+- GitHub: https://github.com/ayato-labs
+
+## Optional Full Context
+- Full Documentation: https://ayato-studio.ai/llms-full.txt

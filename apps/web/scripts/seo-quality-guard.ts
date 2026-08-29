@@ -147,14 +147,54 @@ function checkLegalRequirements() {
   }
 }
 
+// 3. Check GEO / LLMO Machine Readability Prerequisites
+function checkGEOMachineReadability() {
+  console.log('\n--- Checking GEO & LLMO Prerequisites ---');
+
+  // Check llms.txt
+  const llmsTxtPath = path.join(PUBLIC_DIR, 'llms.txt');
+  if (!fs.existsSync(llmsTxtPath)) {
+    logError('public/llms.txt is missing!');
+  } else {
+    const llmsContent = fs.readFileSync(llmsTxtPath, 'utf-8');
+    if (!llmsContent.includes('Transform_MovieToText') || !llmsContent.includes('ProjectCodeMap')) {
+      logError('public/llms.txt is missing key product definitions!');
+    } else {
+      logSuccess('public/llms.txt is present and contains valid product definitions.');
+    }
+  }
+
+  // Check llms-full.txt
+  const llmsFullTxtPath = path.join(PUBLIC_DIR, 'llms-full.txt');
+  if (!fs.existsSync(llmsFullTxtPath)) {
+    logError('public/llms-full.txt is missing!');
+  } else {
+    logSuccess('public/llms-full.txt is present.');
+  }
+
+  // Check robots.ts for AI Crawlers
+  const robotsPath = path.join(APP_DIR, 'robots.ts');
+  if (!fs.existsSync(robotsPath)) {
+    logError('src/app/robots.ts is missing!');
+  } else {
+    const robotsContent = fs.readFileSync(robotsPath, 'utf-8');
+    if (!robotsContent.includes('GPTBot') || !robotsContent.includes('PerplexityBot') || !robotsContent.includes('ClaudeBot')) {
+      logError('robots.ts is not configured to allow major AI crawlers (GPTBot, PerplexityBot, ClaudeBot)!');
+    } else {
+      logSuccess('robots.ts is verified with explicit AI crawler access.');
+    }
+  }
+}
+
 // Run All Checks
 function run() {
   console.log('====================================================');
-  console.log('   AYATO STUDIO - SEO & QUALITY CI GUARDRAIL        ');
+  console.log('   AYATO STUDIO - SEO, GEO & QUALITY CI GUARDRAIL   ');
   console.log('====================================================');
 
   checkDuplicateContent();
   checkLegalRequirements();
+  checkGEOMachineReadability();
 
   console.log('====================================================');
   if (hasErrors) {
