@@ -10,11 +10,14 @@ if (!process.env.STRIPE_SECRET_KEY) {
   );
 }
 
-export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || '', {
-  // Use the latest API version or specify a known stable one
-  apiVersion: '2025-02-24-preview' as any,
-  appInfo: {
-    name: 'Ayato Studio Portal',
-    version: '1.0.0',
+export const stripe = new Stripe(
+  process.env.STRIPE_SECRET_KEY || 'sk_test_build_dummy_placeholder_for_static_analysis_only',
+  {
+    // Use the latest API version or specify a known stable one
+    apiVersion: '2025-02-24-preview' as any,
+    appInfo: {
+      name: 'Ayato Studio Portal',
+      version: '1.0.0',
+    },
   },
-});
+);

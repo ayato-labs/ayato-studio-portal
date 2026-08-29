@@ -2,6 +2,8 @@ import { NextResponse } from 'next/server';
 import { stripe } from '@/lib/stripe/client';
 import { createClient } from '@supabase/supabase-js';
 
+export const runtime = 'edge';
+
 // Initialize Supabase with service role for administrative updates
 const supabaseAdmin =
   process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY

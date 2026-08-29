@@ -54,13 +54,21 @@ ZoomやTeamsなどの重いビデオ会議ツールと同時に起動しても�
 
 ---
 
-## 料金プラン & ダウンロード
+## 料金プラン & エディション比較
 
-| プラン | 価格 | 内容 |
+| 項目 | Community Edition (無料) | Pro / Lifetime Edition (有料) |
 | :--- | :--- | :--- |
-| **Community Free** | **0 円** (オープンソース) | 基本文字起こし、話者分離、ローカル議事録生成（全機能無料） |
-| **Pro Supporter** | **月額 1,480 円** / **買切 4,980 円** | クラウドチーム共有機能、優先アップデート、専用サポート |
-| **Enterprise (閉域網)** | **買切 29,800 円〜** | 庁内・院内閉域網端末への一括導入サポート、エアギャップ証明書 |
+| **対象** | Python 環境構築やビルドができる開発者 | **時間を節約したい士業・企業役員・ライター** |
+| **提供形態** | ソースコード (GitHub / 手動ビルド) | **ワンクリック Windows インストーラー (.exe)** |
+| **モデルセットアップ** | 手動ダウンロード＆環境設定 | **起動時に最適AIモデルを全自動構成** |
+| **話者分離・RAG** | 利用可能 (自力構成) | **完全最適化済み・GUIから即座に利用可能** |
+| **サポート** | なし (GitHub Issueのみ) | **優先アップデート ＆ 専用ダウンロードハブ提供** |
+| **価格 (税込)** | **0 円 (オープンソース)** | **月額 1,480 円 / 買切 9,800 円** |
 
-- **無料版ダウンロード**: [GitHub Releases (Transform_MovieToText)](https://github.com/Ayato-AI-for-Auto/Transform_MovieToText/releases)
-- **ソースコード**: [GitHub Repository](https://github.com/Ayato-AI-for-Auto/Transform_MovieToText)
+---
+
+## 導入方法
+
+- **無料版 (開発者向け)**: [GitHub リポジトリ](https://github.com/ayato-labs/Transform_MovieToText) からクローンし、`uv run python main.py` でご利用ください。
+- **商用 Pro 版 (ワンクリック導入)**: [スタンドアロン Windows 版 ZIP を直接ダウンロード](https://dist.ayato-studio.ai/TransformMovieToText-Windows-v1.1.0-Standalone.zip) し、下記のプランからライセンスキーを取得して制限解除してご利用いただけます。
+
