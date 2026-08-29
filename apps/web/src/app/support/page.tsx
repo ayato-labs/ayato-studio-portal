@@ -25,14 +25,14 @@ const DOWNLOAD_RESOURCES: Record<
     version: 'v1.1.0 (Windows 64bit)',
     downloads: [
       {
-        label: 'Windows インストーラー (ZIP / 64-bit)',
-        url: 'https://github.com/ayato-labs/ayato-studio/releases',
-        badge: 'Recommended',
+        label: 'Windows スタンドアロン版 (EXE 同梱 ZIP / 64-bit)',
+        url: 'https://dist.ayato-studio.ai/TransformMovieToText-Windows-v1.1.0-Standalone.zip',
+        badge: 'Direct Download',
         isPrimary: true,
       },
       {
-        label: 'ソースコード & 手動ビルド手順',
-        url: 'https://github.com/ayato-labs/ayato-studio',
+        label: 'ソースコード (GitHub リポジトリ)',
+        url: 'https://github.com/ayato-labs/Transform_MovieToText',
         badge: 'GitHub',
       },
     ],
