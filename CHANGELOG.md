@@ -1,3 +1,10 @@
+# [1.9.0](https://github.com/ayato-labs/ayato-studio-portal/compare/v1.8.0...v1.9.0) (2026-08-29)
+
+
+### Features
+
+* release v1.8.0 with AI News, Stripe SaaS engine, and E-E-A-T profile ([58aa8a1](https://github.com/ayato-labs/ayato-studio-portal/commit/58aa8a1c2f5c376dc6892177b3e00c93cc605bc7))
+
 # [1.8.0](https://github.com/ayato-labs/ayato-studio-portal/compare/v1.7.1...v1.8.0) (2026-06-08)
 
 
