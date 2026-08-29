@@ -184,6 +184,19 @@ function checkGEOMachineReadability() {
       logSuccess('robots.ts is verified with explicit AI crawler access.');
     }
   }
+
+  // Check Web MCP Endpoint (JSON-RPC 2.0 Route)
+  const mcpRoutePath = path.join(APP_DIR, 'api', 'mcp', 'route.ts');
+  if (!fs.existsSync(mcpRoutePath)) {
+    logError('src/app/api/mcp/route.ts (Web MCP Endpoint) is missing!');
+  } else {
+    const mcpContent = fs.readFileSync(mcpRoutePath, 'utf-8');
+    if (!mcpContent.includes('tools/list') || !mcpContent.includes('search_ai_reports')) {
+      logError('src/app/api/mcp/route.ts is missing required MCP tools!');
+    } else {
+      logSuccess('Web MCP endpoint (api/mcp) is verified and configured.');
+    }
+  }
 }
 
 // Run All Checks

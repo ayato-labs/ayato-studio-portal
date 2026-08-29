@@ -4,6 +4,16 @@
 
 Ayato Studio builds lightweight, high-performance software based on the philosophy of "Engineering of Subtraction" — maximizing autonomy while minimizing server overhead and cloud token waste.
 
+## Web MCP Server (Remote Model Context Protocol Endpoint)
+
+AI agents (Cursor, Claude, Claude Code, ChatGPT) can connect directly to our remote MCP endpoint via JSON-RPC 2.0:
+- Endpoint URL: `https://ayato-studio.ai/api/mcp`
+- Protocol Version: `2024-11-05`
+- Available Tools:
+  - `search_ai_reports`: Search curated global AI research papers and intelligence reports.
+  - `get_product_catalog`: Fetch specifications, pricing, and architectures of Ayato Studio products.
+  - `get_technical_insights`: Retrieve in-depth technical guides and architecture decisions.
+
 ## Products & Tools
 
 - [Transform_MovieToText](https://ayato-studio.ai/services/movie-to-text): 100% offline, air-gapped local AI meeting transcription and speaker diarization engine for Windows. No cloud data leakage (0 bytes sent). Powered by ONNX CAM++ and Non-Embedding SQLite FTS5 RAG.
