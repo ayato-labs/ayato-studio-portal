@@ -1,3 +1,10 @@
+## [1.10.1](https://github.com/ayato-labs/ayato-studio-portal/compare/v1.10.0...v1.10.1) (2026-09-02)
+
+
+### Bug Fixes
+
+* update download URLs to verified R2 public development endpoint ([4a26e85](https://github.com/ayato-labs/ayato-studio-portal/commit/4a26e851cbf14bd59eb409faed76ebc7d6ee37ec))
+
 # [1.10.0](https://github.com/ayato-labs/ayato-studio-portal/compare/v1.9.1...v1.10.0) (2026-08-29)
 
 
