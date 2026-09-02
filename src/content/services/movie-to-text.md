@@ -70,5 +70,5 @@ ZoomやTeamsなどの重いビデオ会議ツールと同時に起動しても�
 ## 導入方法
 
 - **無料版 (開発者向け)**: [GitHub リポジトリ](https://github.com/ayato-labs/Transform_MovieToText) からクローンし、`uv run python main.py` でご利用ください。
-- **商用 Pro 版 (ワンクリック導入)**: [スタンドアロン Windows 版 ZIP を直接ダウンロード](https://dist.ayato-studio.ai/TransformMovieToText-Windows-v1.1.0-Standalone.zip) し、下記のプランからライセンスキーを取得して制限解除してご利用いただけます。
+- **商用 Pro 版 (ワンクリック導入)**: [スタンドアロン Windows 版 ZIP を直接ダウンロード](https://pub-6635a59174424912830591c4b4a000be.r2.dev/TransformMovieToText-Windows-v1.1.0-Standalone.zip) し、下記のプランからライセンスキーを取得して制限解除してご利用いただけます。
 

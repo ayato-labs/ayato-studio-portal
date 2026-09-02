@@ -26,7 +26,7 @@ const DOWNLOAD_RESOURCES: Record<
     downloads: [
       {
         label: 'Windows スタンドアロン版 (EXE 同梱 ZIP / 64-bit)',
-        url: 'https://dist.ayato-studio.ai/TransformMovieToText-Windows-v1.1.0-Standalone.zip',
+        url: 'https://pub-6635a59174424912830591c4b4a000be.r2.dev/TransformMovieToText-Windows-v1.1.0-Standalone.zip',
         badge: 'Direct Download',
         isPrimary: true,
       },
