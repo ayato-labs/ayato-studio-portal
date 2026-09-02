@@ -131,7 +131,30 @@ export default function TermsPage() {
 
           {/* Section 4 */}
           <section className="rounded-[2rem] border border-white/5 bg-white/[0.02] p-8 backdrop-blur-xl md:p-10">
-            <h3 className="mb-6 text-2xl font-black text-blue-400">第4条 - 著作権・知的財産権</h3>
+            <h3 className="mb-6 text-2xl font-black text-blue-400">
+              第4条 - AIツールの利用および入力データの取り扱い
+            </h3>
+            <div className="space-y-4 leading-relaxed text-gray-300">
+              <p>
+                本サービス内で提供されるAIツール（AI Video Generator 等）では、外部の生成AI技術およびAPI（Google AI, Pollinations.ai, gTTS 等）を利用して画像、音声、動画等のメディアコンテンツを合成・処理します。
+              </p>
+              <div className="rounded-2xl border border-blue-500/20 bg-blue-500/5 p-6 space-y-3">
+                <p className="font-bold text-blue-400">【重要】入力データ・フィードバックの利用許諾</p>
+                <ul className="space-y-2 text-sm text-gray-300">
+                  <li>
+                    - ユーザーが本サービスのツールに入力・送信したプロンプト、テキスト、台本データ、ならびに生成結果に対する評価（いいね・リアクション等）およびフィードバックは、当社のAIモデルの学習・精度向上、アルゴリズムの最適化、研究開発、ならびに学術・商用データセットとしての作成・提供に無償で利用される場合があります。
+                  </li>
+                  <li>
+                    - 機密情報、個人を特定できる情報、または第三者の権利を侵害する可能性のあるデータをツールに入力・送信することはお控えください。
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          {/* Section 5 */}
+          <section className="rounded-[2rem] border border-white/5 bg-white/[0.02] p-8 backdrop-blur-xl md:p-10">
+            <h3 className="mb-6 text-2xl font-black text-blue-400">第5条 - 著作権・知的財産権</h3>
             <div className="space-y-4 leading-relaxed text-gray-300">
               <p>
                 本サービスに掲載されるAI生成コンテンツの著作権は運営者に帰属します。
@@ -145,9 +168,9 @@ export default function TermsPage() {
             </div>
           </section>
 
-          {/* Section 5 */}
+          {/* Section 6 */}
           <section className="rounded-[2rem] border border-white/5 bg-white/[0.02] p-8 backdrop-blur-xl md:p-10">
-            <h3 className="mb-6 text-2xl font-black text-blue-400">第5条 - 禁止事項</h3>
+            <h3 className="mb-6 text-2xl font-black text-blue-400">第6条 - 禁止事項</h3>
             <div className="space-y-4 leading-relaxed text-gray-300">
               <ul className="space-y-2">
                 <li>- 本サービスの情報を利用した違法行為</li>
@@ -158,9 +181,9 @@ export default function TermsPage() {
             </div>
           </section>
 
-          {/* Section 6 */}
+          {/* Section 7 */}
           <section className="rounded-[2rem] border border-white/5 bg-white/[0.02] p-8 backdrop-blur-xl md:p-10">
-            <h3 className="mb-6 text-2xl font-black text-blue-400">第6条 - 規約の変更</h3>
+            <h3 className="mb-6 text-2xl font-black text-blue-400">第7条 - 規約の変更</h3>
             <div className="space-y-4 leading-relaxed text-gray-300">
               <p>
                 運営者は、必要に応じて本規約を変更することがあります。

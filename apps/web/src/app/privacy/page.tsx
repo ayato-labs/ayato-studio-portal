@@ -40,11 +40,11 @@ export default function PrivacyPage() {
         <div className="space-y-16">
           {/* Section 1 */}
           <section className="rounded-[2rem] border border-white/5 bg-white/[0.02] p-8 backdrop-blur-xl md:p-10">
-            <h3 className="mb-6 text-2xl font-black text-blue-400">第1条 - 個人情報の収集</h3>
+            <h3 className="mb-6 text-2xl font-black text-blue-400">第1条 - 収集する情報</h3>
             <div className="space-y-4 leading-relaxed text-gray-300">
               <p>
-                本サービスでは、ユーザーの利便性向上およびサービス改善のために、
-                以下の情報を収集する場合があります。
+                本サービスでは、ユーザーの利便性向上、AIモデルの精度改善、ならびにデータ分析のために、
+                以下の情報を収集・記録する場合があります。
               </p>
               <ul className="space-y-2 text-gray-300">
                 <li>
@@ -52,20 +52,29 @@ export default function PrivacyPage() {
                 </li>
                 <li>- Cookie により収集される情報</li>
                 <li>- ユーザーが任意で提供するメールアドレス等の情報（アカウント登録時）</li>
+                <li>
+                  - AIツール（AI Video Generator 等）に入力・送信されたプロンプト、テキスト、台本データ
+                </li>
+                <li>
+                  - 生成結果に対する評価（いいね、Badリアクション）およびフィードバックコメント
+                </li>
               </ul>
             </div>
           </section>
 
           {/* Section 2 */}
           <section className="rounded-[2rem] border border-white/5 bg-white/[0.02] p-8 backdrop-blur-xl md:p-10">
-            <h3 className="mb-6 text-2xl font-black text-blue-400">第2条 - 個人情報の利用目的</h3>
+            <h3 className="mb-6 text-2xl font-black text-blue-400">第2条 - 収集情報の利用目的</h3>
             <div className="space-y-4 leading-relaxed text-gray-300">
-              <p>収集した個人情報は、以下の目的にのみ使用します。</p>
+              <p>収集した情報は、以下の目的にのみ使用します。</p>
               <ul className="space-y-2">
-                <li>- 本サービスの提供・運営・改善</li>
+                <li>- 本サービスの提供・運営・機能改善</li>
                 <li>- ユーザーからのお問い合わせへの対応</li>
                 <li>- 利用状況の分析・統計処理</li>
                 <li>- 広告の配信およびその効果測定</li>
+                <li>
+                  - AIモデルの学習・ファインチューニング、アルゴリズムの最適化、ならびに学術・商用データセットとしての作成・提供
+                </li>
               </ul>
             </div>
           </section>
